@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Your Name",
+    "section": "",
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
+  },
+  {
+    "objectID": "index.html#professional-profile",
+    "href": "index.html#professional-profile",
+    "title": "Your Name",
+    "section": "",
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
+  },
+  {
+    "objectID": "index.html#areas-of-practice",
+    "href": "index.html#areas-of-practice",
+    "title": "Your Name",
+    "section": "Areas of Practice",
+    "text": "Areas of Practice\n\nCell captive arrangements\nCorporate actuarial valuations under IFRS 17 and SAM\nCapital modelling and solvency analysis\nActuarial analysis and model development in R"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "Use this page to publish technical reviews, research summaries, and applied actuarial analyses. Each review can follow the structure below."
+  },
+  {
+    "objectID": "research.html#overview",
+    "href": "research.html#overview",
+    "title": "Research",
+    "section": "",
+    "text": "Use this page to publish technical reviews, research summaries, and applied actuarial analyses. Each review can follow the structure below."
+  },
+  {
+    "objectID": "research.html#technical-review-title",
+    "href": "research.html#technical-review-title",
+    "title": "Research",
+    "section": "Technical Review Title",
+    "text": "Technical Review Title\n\nAbstract\nProvide a concise summary of the question, methods, principal findings, and actuarial relevance.\n\n\nBackground\nIntroduce the problem, define the context, and cite the relevant literature.\n\n\nMethodology\nDescribe the assumptions, data, notation, and analytical approach.\nFor example, the present value of a discrete future loss random variable may be written as\n\\[\nZ = v^T b_T,\n\\]\nwhere (v = (1 + i)^{-1}), (T) is the time of payment, and (b_T) is the benefit payable at time (T).\nAn expected present value can then be expressed as\n\\[\n\\operatorname{EPV}(Z)\n= \\operatorname{E}\\!\\left[v^T b_T\\right].\n\\]\n\n\nResults\nPresent the main results with clearly labelled tables, figures, and equations.\n\n\nDiscussion\nInterpret the findings, discuss limitations, and explain their practical actuarial implications.\n\n\nConclusion\nSummarize the principal insight and identify possible extensions.\n\n\nReferences\nAdd references using a project bibliography or properly formatted Markdown citations."
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Add a short summary of your actuarial experience, technical strengths, and professional objectives."
+  },
+  {
+    "objectID": "resume.html#professional-summary",
+    "href": "resume.html#professional-summary",
+    "title": "Resume",
+    "section": "",
+    "text": "Add a short summary of your actuarial experience, technical strengths, and professional objectives."
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Resume",
+    "section": "Education",
+    "text": "Education\nAdd your degrees, institutions, and relevant academic distinctions."
+  },
+  {
+    "objectID": "resume.html#experience",
+    "href": "resume.html#experience",
+    "title": "Resume",
+    "section": "Experience",
+    "text": "Experience\nAdd your professional experience in reverse chronological order."
+  },
+  {
+    "objectID": "resume.html#skills",
+    "href": "resume.html#skills",
+    "title": "Resume",
+    "section": "Skills",
+    "text": "Skills\nAdd actuarial, statistical, programming, and communication skills."
+  },
+  {
+    "objectID": "resume.html#professional-development",
+    "href": "resume.html#professional-development",
+    "title": "Resume",
+    "section": "Professional Development",
+    "text": "Professional Development\nAdd actuarial examinations, certifications, memberships, and continuing professional development activities."
+  }
+]
