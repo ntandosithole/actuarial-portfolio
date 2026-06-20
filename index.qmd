@@ -1,0 +1,37 @@
+---
+title: "Your Name"
+subtitle: "Actuarial Specialist | Cell Captives, Valuations and Capital Modelling"
+image: assets/profile-placeholder.svg
+about:
+  template: trestles
+  image-shape: round
+  image-width: 18em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/your-profile
+    - icon: github
+      text: GitHub
+      href: https://github.com/your-username
+    - icon: envelope
+      text: Email
+      href: mailto:your.email@example.com
+---
+
+## Professional Profile
+
+I am an Actuarial Specialist working across cell captive arrangements,
+corporate actuarial valuations, and capital modelling. My valuation experience
+includes reporting under IFRS 17 and the Solvency Assessment and Management
+(SAM) framework.
+
+I use R to support actuarial analysis, model development, and the clear
+communication of results. This portfolio presents selected technical work and
+practical perspectives for fellow actuarial and insurance professionals.
+
+## Areas of Practice
+
+- Cell captive arrangements
+- Corporate actuarial valuations under IFRS 17 and SAM
+- Capital modelling and solvency analysis
+- Actuarial analysis and model development in R

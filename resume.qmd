@@ -1,0 +1,25 @@
+---
+title: "Resume"
+---
+
+## Professional Summary
+
+Add a short summary of your actuarial experience, technical strengths, and
+professional objectives.
+
+## Education
+
+Add your degrees, institutions, and relevant academic distinctions.
+
+## Experience
+
+Add your professional experience in reverse chronological order.
+
+## Skills
+
+Add actuarial, statistical, programming, and communication skills.
+
+## Professional Development
+
+Add actuarial examinations, certifications, memberships, and continuing
+professional development activities.

@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Actuarial Portfolio"
+  navbar:
+    background: primary
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Resume"
+        href: resume.qmd
+      - text: "Research"
+        href: research.qmd
+  page-footer:
+    center: "© 2026 Your Name"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    smooth-scroll: true
+    link-external-newwindow: true

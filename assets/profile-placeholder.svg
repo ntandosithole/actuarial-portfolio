@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title description">
+  <title id="title">Profile image placeholder</title>
+  <desc id="description">A simple silhouette marking where a professional profile photograph should be placed.</desc>
+  <rect width="600" height="600" fill="#eef2f6"/>
+  <circle cx="300" cy="220" r="105" fill="#6c7a89"/>
+  <path d="M115 540c14-126 87-200 185-200s171 74 185 200" fill="#6c7a89"/>
+  <text x="300" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#34495e">
+    Replace with profile photo
+  </text>
+</svg>
