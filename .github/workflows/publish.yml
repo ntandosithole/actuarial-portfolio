@@ -34,6 +34,7 @@ jobs:
           set -euo pipefail
 
           touch _site/.nojekyll
+          echo "ntandosithole.com" > _site/CNAME
           rm -rf /tmp/quarto-site
           cp -R _site /tmp/quarto-site
 
