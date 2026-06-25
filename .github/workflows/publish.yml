@@ -7,22 +7,21 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
+  contents: write
 
 concurrency:
   group: github-pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -30,20 +29,28 @@ jobs:
       - name: Render website
         run: quarto render
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
+      - name: Publish rendered site to gh-pages
+        run: |
+          set -euo pipefail
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
+          touch _site/.nojekyll
+          rm -rf /tmp/quarto-site
+          cp -R _site /tmp/quarto-site
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          git fetch origin gh-pages --depth=1 || true
+
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git checkout -B gh-pages origin/gh-pages
+          else
+            git checkout --orphan gh-pages
+          fi
+
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R /tmp/quarto-site/. .
+
+          git add -A
+          git commit -m "Deploy Quarto site from ${GITHUB_SHA}" || exit 0
+          git push origin gh-pages
