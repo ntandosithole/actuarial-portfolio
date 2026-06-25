@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ntando Sithole">
+<meta name="dcterms.date" content="2026-06-24">
+<meta name="description" content="A reproducible R model for term assurance cash flows, level premiums, prospective reserves, and sensitivity testing under synthetic mortality assumptions.">
+
+<title>Life Insurance Cash Flow Projection and Reserve Sensitivity in R – Ntando Sithole</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3f68ad3e9f520ce080573a1ac9e4c9eb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Ntando Sithole</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
+  <li><a href="#implementation-in-r" id="toc-implementation-in-r" class="nav-link" data-scroll-target="#implementation-in-r">Implementation in R</a>
+  <ul class="collapse">
+  <li><a href="#model-setup" id="toc-model-setup" class="nav-link" data-scroll-target="#model-setup">Model setup</a></li>
+  <li><a href="#premium-basis" id="toc-premium-basis" class="nav-link" data-scroll-target="#premium-basis">Premium basis</a></li>
+  <li><a href="#portfolio-cash-flow-projection" id="toc-portfolio-cash-flow-projection" class="nav-link" data-scroll-target="#portfolio-cash-flow-projection">Portfolio cash-flow projection</a></li>
+  <li><a href="#prospective-reserve-development" id="toc-prospective-reserve-development" class="nav-link" data-scroll-target="#prospective-reserve-development">Prospective reserve development</a></li>
+  <li><a href="#sensitivity-testing" id="toc-sensitivity-testing" class="nav-link" data-scroll-target="#sensitivity-testing">Sensitivity testing</a></li>
+  </ul></li>
+  <li><a href="#actuarial-interpretation" id="toc-actuarial-interpretation" class="nav-link" data-scroll-target="#actuarial-interpretation">Actuarial Interpretation</a></li>
+  <li><a href="#model-limitations" id="toc-model-limitations" class="nav-link" data-scroll-target="#model-limitations">Model Limitations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Life Insurance Cash Flow Projection and Reserve Sensitivity in R</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Life Insurance</div>
+    <div class="quarto-category">Actuarial Modelling</div>
+    <div class="quarto-category">Valuation</div>
+    <div class="quarto-category">IFRS 17</div>
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A reproducible R model for term assurance cash flows, level premiums, prospective reserves, and sensitivity testing under synthetic mortality assumptions.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ntando Sithole </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 24, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Life insurance valuation work is ultimately a disciplined projection exercise: future premiums, claims, expenses, and reserves are converted into present-value measures under a clearly stated basis. The modelling can be simple or highly sophisticated, but the core structure should remain auditable.</p>
+<p>This article develops a compact R framework for a level-premium term assurance portfolio. The objective is not to reproduce a production actuarial system. Instead, the model demonstrates the mechanics behind:</p>
+<ul>
+<li>mortality-based expected claim projections;</li>
+<li>level premium calculation;</li>
+<li>prospective reserve development by policy duration; and</li>
+<li>sensitivity testing under alternative discount-rate and mortality bases.</li>
+</ul>
+<p>The assumptions are synthetic and are included directly in the article so that the code can be rendered without external data files.</p>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<p>Consider a policy issued to a life aged (x), with term (n), annual effective interest rate (i), discount factor (v=(1+i)^{-1}), and sum assured (S). Let (q_{x+t}) denote the one-year mortality rate at attained age (x+t).</p>
+<p>The probability of surviving from issue to the start of policy year (t+1) is</p>
+<p><span class="math display">\[
+{}_{t}p_x =
+\prod_{j=0}^{t-1} (1-q_{x+j}),
+\qquad {}_0p_x = 1.
+\]</span></p>
+<p>For a benefit payable at the end of the year of death, the actuarial present value of a term assurance is</p>
+<p><span class="math display">\[
+A^{1}_{x:\overline{n}|}
+=
+\sum_{t=0}^{n-1}
+v^{t+1} {}_{t}p_x q_{x+t}.
+\]</span></p>
+<p>If premiums are payable annually in advance while the policyholder is alive, the temporary life annuity-due factor is</p>
+<p><span class="math display">\[
+\ddot{a}_{x:\overline{n}|}
+=
+\sum_{t=0}^{n-1}
+v^t {}_{t}p_x.
+\]</span></p>
+<p>The net annual level premium is therefore</p>
+<p><span class="math display">\[
+P =
+\frac{S A^{1}_{x:\overline{n}|}}
+{\ddot{a}_{x:\overline{n}|}}.
+\]</span></p>
+<p>At duration (k), immediately after the (k)-th policy anniversary, the prospective net reserve for an in-force policy is</p>
+<p><span class="math display">\[
+V_k =
+S
+\sum_{t=0}^{n-k-1}
+v^{t+1} {}_{t}p_{x+k} q_{x+k+t}
+-
+P
+\sum_{t=0}^{n-k-1}
+v^t {}_{t}p_{x+k}.
+\]</span></p>
+<p>This reserve is a best-estimate technical measure under the selected valuation basis. In production, it would normally be extended for expenses, lapses, reinsurance, policyholder options, risk adjustment, contractual service margin, capital requirements, and governance controls.</p>
+</section>
+<section id="implementation-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-in-r">Implementation in R</h2>
+<section id="model-setup" class="level3">
+<h3 class="anchored" data-anchor-id="model-setup">Model setup</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>format_currency <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"R"</span>, <span class="fu">format</span>(<span class="fu">round</span>(x, <span class="dv">0</span>), <span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>format_percent <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> x, <span class="dv">2</span>), <span class="st">"%"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>issue_age <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>term <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>sum_assured <span class="ot">&lt;-</span> <span class="dv">1000000</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>initial_policies <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>annual_interest <span class="ot">&lt;-</span> <span class="fl">0.085</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>annual_expense <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>claim_expense <span class="ot">&lt;-</span> <span class="dv">1500</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>expense_loading <span class="ot">&lt;-</span> <span class="fl">0.10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The mortality curve below uses a Gompertz-Makeham-style force of mortality. The parameters are deliberately illustrative and are not calibrated to an official insured-life table.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>make_mortality <span class="ot">&lt;-</span> <span class="cf">function</span>(ages, <span class="at">mortality_factor =</span> <span class="dv">1</span>) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  makeham_term <span class="ot">&lt;-</span> <span class="fl">0.00035</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  age_scale <span class="ot">&lt;-</span> <span class="fl">0.000018</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  growth <span class="ot">&lt;-</span> <span class="fl">1.085</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  force_of_mortality <span class="ot">&lt;-</span> makeham_term <span class="sc">+</span> age_scale <span class="sc">*</span> growth<span class="sc">^</span>(ages <span class="sc">-</span> <span class="dv">30</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  qx <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>force_of_mortality <span class="sc">*</span> mortality_factor)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmin</span>(qx, <span class="fl">0.95</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>survival_start <span class="ot">&lt;-</span> <span class="cf">function</span>(qx) {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(qx) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">cumprod</span>(<span class="dv">1</span> <span class="sc">-</span> qx[<span class="sc">-</span><span class="fu">length</span>(qx)]))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> issue_age <span class="sc">+</span> <span class="fu">seq_len</span>(term) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>qx <span class="ot">&lt;-</span> <span class="fu">make_mortality</span>(ages)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>mortality_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">policy_year =</span> <span class="fu">seq_len</span>(term),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">attained_age =</span> ages,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">qx =</span> <span class="fu">round</span>(qx, <span class="dv">6</span>),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">deaths_per_1000 =</span> <span class="fu">round</span>(<span class="dv">1000</span> <span class="sc">*</span> qx, <span class="dv">3</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(mortality_table, <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">policy_year</th>
+<th style="text-align: right;">attained_age</th>
+<th style="text-align: right;">qx</th>
+<th style="text-align: right;">deaths_per_1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.000391</td>
+<td style="text-align: right;">0.391</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0.000394</td>
+<td style="text-align: right;">0.394</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0.000398</td>
+<td style="text-align: right;">0.398</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0.000402</td>
+<td style="text-align: right;">0.402</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.000406</td>
+<td style="text-align: right;">0.406</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0.000411</td>
+<td style="text-align: right;">0.411</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">0.000416</td>
+<td style="text-align: right;">0.416</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">0.000422</td>
+<td style="text-align: right;">0.422</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="premium-basis" class="level3">
+<h3 class="anchored" data-anchor-id="premium-basis">Premium basis</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>term_assurance_apv <span class="ot">&lt;-</span> <span class="cf">function</span>(qx, interest_rate) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  years <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(qx) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  discount_factor <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> interest_rate)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  survival <span class="ot">&lt;-</span> <span class="fu">survival_start</span>(qx)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(discount_factor<span class="sc">^</span>(years <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> survival <span class="sc">*</span> qx)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>annuity_due_apv <span class="ot">&lt;-</span> <span class="cf">function</span>(qx, interest_rate) {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  years <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(qx) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  discount_factor <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> interest_rate)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  survival <span class="ot">&lt;-</span> <span class="fu">survival_start</span>(qx)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(discount_factor<span class="sc">^</span>years <span class="sc">*</span> survival)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>benefit_apv <span class="ot">&lt;-</span> sum_assured <span class="sc">*</span> <span class="fu">term_assurance_apv</span>(qx, annual_interest)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>annuity_apv <span class="ot">&lt;-</span> <span class="fu">annuity_due_apv</span>(qx, annual_interest)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>net_level_premium <span class="ot">&lt;-</span> benefit_apv <span class="sc">/</span> annuity_apv</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>expense_apv <span class="ot">&lt;-</span> annual_expense <span class="sc">*</span> annuity_apv <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  claim_expense <span class="sc">*</span> <span class="fu">term_assurance_apv</span>(qx, annual_interest)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>gross_level_premium <span class="ot">&lt;-</span> (benefit_apv <span class="sc">+</span> expense_apv) <span class="sc">/</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  annuity_apv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> expense_loading)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>premium_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="fu">c</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Issue age"</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Term"</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Annual effective discount rate"</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sum assured"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Net annual level premium"</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Illustrative gross annual premium"</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    issue_age,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(term, <span class="st">"years"</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format_percent</span>(annual_interest),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format_currency</span>(sum_assured),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format_currency</span>(net_level_premium),</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format_currency</span>(gross_level_premium)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(premium_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">metric</th>
+<th style="text-align: left;">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Issue age</td>
+<td style="text-align: left;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Term</td>
+<td style="text-align: left;">20 years</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Annual effective discount rate</td>
+<td style="text-align: left;">8.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sum assured</td>
+<td style="text-align: left;">R1,000,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Net annual level premium</td>
+<td style="text-align: left;">R395</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Illustrative gross annual premium</td>
+<td style="text-align: left;">R711</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The gross premium is included only to make the projected portfolio cash-flow view more realistic. It includes simple per-policy expenses and an illustrative loading. The reserve calculation that follows is based on the net premium formula, which isolates the mortality and discounting mechanics.</p>
+</section>
+<section id="portfolio-cash-flow-projection" class="level3">
+<h3 class="anchored" data-anchor-id="portfolio-cash-flow-projection">Portfolio cash-flow projection</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>survival <span class="ot">&lt;-</span> <span class="fu">survival_start</span>(qx)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>inforce_start <span class="ot">&lt;-</span> initial_policies <span class="sc">*</span> survival</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>expected_deaths <span class="ot">&lt;-</span> inforce_start <span class="sc">*</span> qx</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>cash_flows <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">policy_year =</span> <span class="fu">seq_len</span>(term),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">attained_age =</span> ages,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">inforce_start =</span> inforce_start,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">qx =</span> qx,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">expected_deaths =</span> expected_deaths,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">expected_premiums =</span> inforce_start <span class="sc">*</span> gross_level_premium,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">expected_claims =</span> expected_deaths <span class="sc">*</span> sum_assured,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">expected_maintenance_expenses =</span> inforce_start <span class="sc">*</span> annual_expense,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">expected_claim_expenses =</span> expected_deaths <span class="sc">*</span> claim_expense</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>cash_flows<span class="sc">$</span>expected_outgo <span class="ot">&lt;-</span> <span class="fu">with</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  cash_flows,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  expected_claims <span class="sc">+</span> expected_maintenance_expenses <span class="sc">+</span> expected_claim_expenses</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>cash_flows<span class="sc">$</span>expected_net_cash_flow <span class="ot">&lt;-</span> <span class="fu">with</span>(</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  cash_flows,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  expected_premiums <span class="sc">-</span> expected_outgo</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> annual_interest)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>cash_flows<span class="sc">$</span>pv_expected_premiums <span class="ot">&lt;-</span> cash_flows<span class="sc">$</span>expected_premiums <span class="sc">*</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  v<span class="sc">^</span>(cash_flows<span class="sc">$</span>policy_year <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>cash_flows<span class="sc">$</span>pv_expected_outgo <span class="ot">&lt;-</span> cash_flows<span class="sc">$</span>expected_outgo <span class="sc">*</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  v<span class="sc">^</span>cash_flows<span class="sc">$</span>policy_year</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>cash_flows<span class="sc">$</span>pv_margin <span class="ot">&lt;-</span> cash_flows<span class="sc">$</span>pv_expected_premiums <span class="sc">-</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  cash_flows<span class="sc">$</span>pv_expected_outgo</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>display_cash_flows <span class="ot">&lt;-</span> cash_flows</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>currency_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"expected_premiums"</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"expected_claims"</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"expected_outgo"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"expected_net_cash_flow"</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>display_cash_flows[currency_columns] <span class="ot">&lt;-</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(display_cash_flows[currency_columns], format_currency)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>display_cash_flows<span class="sc">$</span>inforce_start <span class="ot">&lt;-</span> <span class="fu">round</span>(display_cash_flows<span class="sc">$</span>inforce_start, <span class="dv">1</span>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>display_cash_flows<span class="sc">$</span>qx <span class="ot">&lt;-</span> <span class="fu">round</span>(display_cash_flows<span class="sc">$</span>qx, <span class="dv">6</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>display_cash_flows<span class="sc">$</span>expected_deaths <span class="ot">&lt;-</span> <span class="fu">round</span>(display_cash_flows<span class="sc">$</span>expected_deaths, <span class="dv">3</span>)</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(display_cash_flows, <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">policy_year</th>
+<th style="text-align: right;">attained_age</th>
+<th style="text-align: right;">inforce_start</th>
+<th style="text-align: right;">qx</th>
+<th style="text-align: right;">expected_deaths</th>
+<th style="text-align: left;">expected_premiums</th>
+<th style="text-align: left;">expected_claims</th>
+<th style="text-align: right;">expected_maintenance_expenses</th>
+<th style="text-align: right;">expected_claim_expenses</th>
+<th style="text-align: left;">expected_outgo</th>
+<th style="text-align: left;">expected_net_cash_flow</th>
+<th style="text-align: right;">pv_expected_premiums</th>
+<th style="text-align: right;">pv_expected_outgo</th>
+<th style="text-align: right;">pv_margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">1000.0</td>
+<td style="text-align: right;">0.000391</td>
+<td style="text-align: right;">0.391</td>
+<td style="text-align: left;">R710,675</td>
+<td style="text-align: left;">R390,621</td>
+<td style="text-align: right;">250000.0</td>
+<td style="text-align: right;">585.9321</td>
+<td style="text-align: left;">R641,207</td>
+<td style="text-align: left;">R 69,468</td>
+<td style="text-align: right;">710675.0</td>
+<td style="text-align: right;">590974.5</td>
+<td style="text-align: right;">119700.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">999.6</td>
+<td style="text-align: right;">0.000394</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: left;">R710,397</td>
+<td style="text-align: left;">R393,925</td>
+<td style="text-align: right;">249902.3</td>
+<td style="text-align: right;">590.8881</td>
+<td style="text-align: left;">R644,419</td>
+<td style="text-align: left;">R 65,979</td>
+<td style="text-align: right;">654744.2</td>
+<td style="text-align: right;">547404.8</td>
+<td style="text-align: right;">107339.34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">999.2</td>
+<td style="text-align: right;">0.000398</td>
+<td style="text-align: right;">0.398</td>
+<td style="text-align: left;">R710,117</td>
+<td style="text-align: left;">R397,519</td>
+<td style="text-align: right;">249803.9</td>
+<td style="text-align: right;">596.2786</td>
+<td style="text-align: left;">R647,919</td>
+<td style="text-align: left;">R 62,198</td>
+<td style="text-align: right;">603213.0</td>
+<td style="text-align: right;">507261.2</td>
+<td style="text-align: right;">95951.83</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">998.8</td>
+<td style="text-align: right;">0.000402</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: left;">R709,835</td>
+<td style="text-align: left;">R401,427</td>
+<td style="text-align: right;">249704.5</td>
+<td style="text-align: right;">602.1403</td>
+<td style="text-align: left;">R651,733</td>
+<td style="text-align: left;">R 58,101</td>
+<td style="text-align: right;">555735.5</td>
+<td style="text-align: right;">470274.1</td>
+<td style="text-align: right;">85461.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">998.4</td>
+<td style="text-align: right;">0.000406</td>
+<td style="text-align: right;">0.406</td>
+<td style="text-align: left;">R709,550</td>
+<td style="text-align: left;">R405,675</td>
+<td style="text-align: right;">249604.1</td>
+<td style="text-align: right;">608.5129</td>
+<td style="text-align: left;">R655,888</td>
+<td style="text-align: left;">R 53,662</td>
+<td style="text-align: right;">511992.8</td>
+<td style="text-align: right;">436195.3</td>
+<td style="text-align: right;">75797.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">998.0</td>
+<td style="text-align: right;">0.000411</td>
+<td style="text-align: right;">0.410</td>
+<td style="text-align: left;">R709,261</td>
+<td style="text-align: left;">R410,293</td>
+<td style="text-align: right;">249502.7</td>
+<td style="text-align: right;">615.4396</td>
+<td style="text-align: left;">R660,411</td>
+<td style="text-align: left;">R 48,850</td>
+<td style="text-align: right;">471691.0</td>
+<td style="text-align: right;">404795.8</td>
+<td style="text-align: right;">66895.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">997.6</td>
+<td style="text-align: right;">0.000416</td>
+<td style="text-align: right;">0.415</td>
+<td style="text-align: left;">R708,970</td>
+<td style="text-align: left;">R415,311</td>
+<td style="text-align: right;">249400.1</td>
+<td style="text-align: right;">622.9671</td>
+<td style="text-align: left;">R665,334</td>
+<td style="text-align: left;">R 43,635</td>
+<td style="text-align: right;">434559.5</td>
+<td style="text-align: right;">375865.0</td>
+<td style="text-align: right;">58694.57</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">997.2</td>
+<td style="text-align: right;">0.000422</td>
+<td style="text-align: right;">0.421</td>
+<td style="text-align: left;">R708,675</td>
+<td style="text-align: left;">R420,764</td>
+<td style="text-align: right;">249296.3</td>
+<td style="text-align: right;">631.1460</td>
+<td style="text-align: left;">R670,691</td>
+<td style="text-align: left;">R 37,983</td>
+<td style="text-align: right;">400349.0</td>
+<td style="text-align: right;">349208.5</td>
+<td style="text-align: right;">51140.44</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cash_flows<span class="sc">$</span>policy_year,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  cash_flows<span class="sc">$</span>expected_premiums <span class="sc">/</span> <span class="fl">1e6</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#1b998b"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Policy year"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Expected amount (R millions)"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    cash_flows<span class="sc">$</span>expected_premiums,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    cash_flows<span class="sc">$</span>expected_claims,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    cash_flows<span class="sc">$</span>expected_outgo</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">/</span> <span class="fl">1e6</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Projected portfolio cash flows"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cash_flows<span class="sc">$</span>policy_year, cash_flows<span class="sc">$</span>expected_claims <span class="sc">/</span> <span class="fl">1e6</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"#2b4865"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cash_flows<span class="sc">$</span>policy_year, cash_flows<span class="sc">$</span>expected_outgo <span class="sc">/</span> <span class="fl">1e6</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"#d49c2f"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topleft"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Premiums"</span>, <span class="st">"Claims"</span>, <span class="st">"Claims + expenses"</span>),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#1b998b"</span>, <span class="st">"#2b4865"</span>, <span class="st">"#d49c2f"</span>),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/plot-cash-flows-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Expected annual cash flows for the illustrative term assurance portfolio.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="prospective-reserve-development" class="level3">
+<h3 class="anchored" data-anchor-id="prospective-reserve-development">Prospective reserve development</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>prospective_reserve <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    issue_age,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    term,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    duration,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    interest_rate,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    sum_assured,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    annual_premium,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mortality_factor =</span> <span class="dv">1</span>) {</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  remaining_term <span class="ot">&lt;-</span> term <span class="sc">-</span> duration</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (remaining_term <span class="sc">&lt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  attained_ages <span class="ot">&lt;-</span> issue_age <span class="sc">+</span> duration <span class="sc">+</span> <span class="fu">seq_len</span>(remaining_term) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  future_qx <span class="ot">&lt;-</span> <span class="fu">make_mortality</span>(attained_ages, mortality_factor)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  future_benefit_apv <span class="ot">&lt;-</span> sum_assured <span class="sc">*</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">term_assurance_apv</span>(future_qx, interest_rate)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  future_premium_apv <span class="ot">&lt;-</span> annual_premium <span class="sc">*</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annuity_due_apv</span>(future_qx, interest_rate)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  future_benefit_apv <span class="sc">-</span> future_premium_apv</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>durations <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>term</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>reserve_per_policy <span class="ot">&lt;-</span> <span class="fu">vapply</span>(</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  durations,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  prospective_reserve,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">numeric</span>(<span class="dv">1</span>),</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">issue_age =</span> issue_age,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">term =</span> term,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">interest_rate =</span> annual_interest,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">sum_assured =</span> sum_assured,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">annual_premium =</span> net_level_premium</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>reserve_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">duration =</span> durations,</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">attained_age =</span> issue_age <span class="sc">+</span> durations,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">reserve_per_policy =</span> reserve_per_policy</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>reserve_display <span class="ot">&lt;-</span> reserve_table</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>reserve_display<span class="sc">$</span>reserve_per_policy <span class="ot">&lt;-</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_currency</span>(reserve_display<span class="sc">$</span>reserve_per_policy)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reserve_display[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(reserve_display), <span class="at">by =</span> <span class="dv">4</span>), ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">duration</th>
+<th style="text-align: right;">attained_age</th>
+<th style="text-align: left;">reserve_per_policy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">R 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: left;">R152</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: left;">R282</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: left;">R351</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: left;">R294</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: left;">R 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  reserve_table<span class="sc">$</span>duration,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  reserve_table<span class="sc">$</span>reserve_per_policy,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">3</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#2b4865"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Duration"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Reserve per policy"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Prospective reserve trajectory"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">yaxt =</span> <span class="st">"n"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">pretty</span>(reserve_table<span class="sc">$</span>reserve_per_policy),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">format_currency</span>(<span class="fu">pretty</span>(reserve_table<span class="sc">$</span>reserve_per_policy)))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"grey70"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  reserve_table<span class="sc">$</span>duration,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  reserve_table<span class="sc">$</span>reserve_per_policy,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#1b998b"</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/plot-reserve-trajectory-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Prospective net reserve per in-force policy by duration.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The reserve starts close to zero because the net level premium is calibrated on the same basis used for valuation. It then reflects the interaction between ageing mortality, remaining premium income, and the shortening outstanding term.</p>
+</section>
+<section id="sensitivity-testing" class="level3">
+<h3 class="anchored" data-anchor-id="sensitivity-testing">Sensitivity testing</h3>
+<p>In valuation work, the base result is rarely the full story. A useful model should help the reviewer understand how the liability behaves when the basis changes.</p>
+<p>The table below keeps the original net premium fixed and recalculates the issue-date reserve under alternative mortality and discount-rate assumptions. Positive values indicate that the valuation basis is stronger than the pricing basis, before allowing for any explicit risk adjustment or margin.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>valuation_margin <span class="ot">&lt;-</span> <span class="cf">function</span>(discount_rate, mortality_factor) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  stressed_qx <span class="ot">&lt;-</span> <span class="fu">make_mortality</span>(ages, mortality_factor)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  stressed_benefit_apv <span class="ot">&lt;-</span> sum_assured <span class="sc">*</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">term_assurance_apv</span>(stressed_qx, discount_rate)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  stressed_premium_apv <span class="ot">&lt;-</span> net_level_premium <span class="sc">*</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annuity_due_apv</span>(stressed_qx, discount_rate)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  stressed_benefit_apv <span class="sc">-</span> stressed_premium_apv</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>sensitivity <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">discount_rate =</span> <span class="fu">c</span>(<span class="fl">0.065</span>, <span class="fl">0.085</span>, <span class="fl">0.105</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">mortality_factor =</span> <span class="fu">c</span>(<span class="fl">0.90</span>, <span class="fl">1.00</span>, <span class="fl">1.10</span>, <span class="fl">1.25</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>sensitivity<span class="sc">$</span>issue_date_margin <span class="ot">&lt;-</span> <span class="fu">mapply</span>(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  valuation_margin,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  sensitivity<span class="sc">$</span>discount_rate,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  sensitivity<span class="sc">$</span>mortality_factor</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>sensitivity_display <span class="ot">&lt;-</span> sensitivity</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>sensitivity_display<span class="sc">$</span>discount_rate <span class="ot">&lt;-</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_percent</span>(sensitivity_display<span class="sc">$</span>discount_rate)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>sensitivity_display<span class="sc">$</span>mortality_factor <span class="ot">&lt;-</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(sensitivity_display<span class="sc">$</span>mortality_factor, <span class="st">"x"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>sensitivity_display<span class="sc">$</span>issue_date_margin <span class="ot">&lt;-</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_currency</span>(sensitivity_display<span class="sc">$</span>issue_date_margin)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(sensitivity_display)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">discount_rate</th>
+<th style="text-align: left;">mortality_factor</th>
+<th style="text-align: left;">issue_date_margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">6.5%</td>
+<td style="text-align: left;">0.9x</td>
+<td style="text-align: left;">R -345</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8.5%</td>
+<td style="text-align: left;">0.9x</td>
+<td style="text-align: left;">R -405</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.5%</td>
+<td style="text-align: left;">0.9x</td>
+<td style="text-align: left;">R -444</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6.5%</td>
+<td style="text-align: left;">1x</td>
+<td style="text-align: left;">R 130</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8.5%</td>
+<td style="text-align: left;">1x</td>
+<td style="text-align: left;">R 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.5%</td>
+<td style="text-align: left;">1x</td>
+<td style="text-align: left;">R -95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6.5%</td>
+<td style="text-align: left;">1.1x</td>
+<td style="text-align: left;">R 606</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8.5%</td>
+<td style="text-align: left;">1.1x</td>
+<td style="text-align: left;">R 405</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.5%</td>
+<td style="text-align: left;">1.1x</td>
+<td style="text-align: left;">R 255</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6.5%</td>
+<td style="text-align: left;">1.25x</td>
+<td style="text-align: left;">R1,318</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8.5%</td>
+<td style="text-align: left;">1.25x</td>
+<td style="text-align: left;">R1,011</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.5%</td>
+<td style="text-align: left;">1.25x</td>
+<td style="text-align: left;">R 778</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="actuarial-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="actuarial-interpretation">Actuarial Interpretation</h2>
+<p>The model highlights several valuation principles that matter in life insurance practice:</p>
+<ul>
+<li>The premium basis and valuation basis must be separated clearly. A level premium calculated on one basis can create a liability or asset when assessed on another basis.</li>
+<li>Mortality, discounting, and timing conventions drive the result even in a simplified model. Small changes in assumptions can produce visible movement in the reserve profile.</li>
+<li>Portfolio-level cash-flow projections help connect policy-level actuarial formulae to management reporting, business planning, and capital modelling.</li>
+<li>A clean implementation should expose assumptions directly rather than burying them in opaque spreadsheet logic.</li>
+</ul>
+<p>For an IFRS 17 or SAM context, this type of model is best viewed as a transparent analytical layer. It can support reasonableness checks, sensitivity analysis, and communication with finance or risk teams, even when the official valuation engine is more complex.</p>
+</section>
+<section id="model-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="model-limitations">Model Limitations</h2>
+<p>This article intentionally excludes several features that would be required in a production valuation model:</p>
+<ul>
+<li>lapses, surrenders, and paid-up policy behaviour;</li>
+<li>acquisition expenses, commission structures, tax, and reinsurance cash flows;</li>
+<li>stochastic economic scenarios and yield-curve construction;</li>
+<li>policyholder options and guarantees;</li>
+<li>risk adjustment, contractual service margin, and onerous group testing under IFRS 17; and</li>
+<li>governance controls such as assumption versioning, reconciliations, and model change logs.</li>
+</ul>
+<p>Those omissions are deliberate. The purpose of the article is to present a compact, auditable R implementation of the core mechanics before layering on product complexity.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Ntando Sithole</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

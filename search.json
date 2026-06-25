@@ -1,86 +1,177 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Your Name",
-    "section": "",
-    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
-  },
-  {
-    "objectID": "index.html#professional-profile",
-    "href": "index.html#professional-profile",
-    "title": "Your Name",
-    "section": "",
-    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
-  },
-  {
-    "objectID": "index.html#areas-of-practice",
-    "href": "index.html#areas-of-practice",
-    "title": "Your Name",
-    "section": "Areas of Practice",
-    "text": "Areas of Practice\n\nCell captive arrangements\nCorporate actuarial valuations under IFRS 17 and SAM\nCapital modelling and solvency analysis\nActuarial analysis and model development in R"
-  },
-  {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Research",
-    "section": "",
-    "text": "Use this page to publish technical reviews, research summaries, and applied actuarial analyses. Each review can follow the structure below."
-  },
-  {
-    "objectID": "research.html#overview",
-    "href": "research.html#overview",
-    "title": "Research",
-    "section": "",
-    "text": "Use this page to publish technical reviews, research summaries, and applied actuarial analyses. Each review can follow the structure below."
-  },
-  {
-    "objectID": "research.html#technical-review-title",
-    "href": "research.html#technical-review-title",
-    "title": "Research",
-    "section": "Technical Review Title",
-    "text": "Technical Review Title\n\nAbstract\nProvide a concise summary of the question, methods, principal findings, and actuarial relevance.\n\n\nBackground\nIntroduce the problem, define the context, and cite the relevant literature.\n\n\nMethodology\nDescribe the assumptions, data, notation, and analytical approach.\nFor example, the present value of a discrete future loss random variable may be written as\n\\[\nZ = v^T b_T,\n\\]\nwhere (v = (1 + i)^{-1}), (T) is the time of payment, and (b_T) is the benefit payable at time (T).\nAn expected present value can then be expressed as\n\\[\n\\operatorname{EPV}(Z)\n= \\operatorname{E}\\!\\left[v^T b_T\\right].\n\\]\n\n\nResults\nPresent the main results with clearly labelled tables, figures, and equations.\n\n\nDiscussion\nInterpret the findings, discuss limitations, and explain their practical actuarial implications.\n\n\nConclusion\nSummarize the principal insight and identify possible extensions.\n\n\nReferences\nAdd references using a project bibliography or properly formatted Markdown citations."
-  },
-  {
     "objectID": "resume.html",
     "href": "resume.html",
     "title": "Resume",
     "section": "",
-    "text": "Add a short summary of your actuarial experience, technical strengths, and professional objectives."
+    "text": "Actuarial Specialist with experience since 2019 across cell-captive insurance, credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee benefit valuations, and investment analytics.\nMy current work covers actuarial reporting cycles, valuation result analysis, best estimate liabilities, risk adjustment, liability for remaining coverage, CSM-related analysis, Analysis of Surplus, experience investigations, capital analysis, model output review, reconciliations, quality assurance, and audit-ready reporting support.\nI use R, Python, SQL, VBA, and advanced Excel to improve actuarial production, strengthen controls, and develop reproducible analytical workflows."
   },
   {
     "objectID": "resume.html#professional-summary",
     "href": "resume.html#professional-summary",
     "title": "Resume",
     "section": "",
-    "text": "Add a short summary of your actuarial experience, technical strengths, and professional objectives."
+    "text": "Actuarial Specialist with experience since 2019 across cell-captive insurance, credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee benefit valuations, and investment analytics.\nMy current work covers actuarial reporting cycles, valuation result analysis, best estimate liabilities, risk adjustment, liability for remaining coverage, CSM-related analysis, Analysis of Surplus, experience investigations, capital analysis, model output review, reconciliations, quality assurance, and audit-ready reporting support.\nI use R, Python, SQL, VBA, and advanced Excel to improve actuarial production, strengthen controls, and develop reproducible analytical workflows."
+  },
+  {
+    "objectID": "resume.html#professional-experience",
+    "href": "resume.html#professional-experience",
+    "title": "Resume",
+    "section": "Professional Experience",
+    "text": "Professional Experience\n\nActuarial Specialist — Cell Captives\nOld Mutual Alternative Risk Transfer (OMART), Sandton April 2023–Present\n\nDeliver IFRS 17 actuarial reporting for cell-captive portfolios, including credit-life and disability business, across monthly, quarterly, and annual reporting cycles.\nAnalyse best estimate liabilities, risk adjustment, liability for remaining coverage, CSM-related movements, cohort results, new business impacts, profit emergence, and Analysis of Surplus.\nReview actuarial and Prophet-related outputs, investigate unusual movements, reconcile results to downstream reporting, and support improvements to the valuation process.\nLead SAM reporting and capital analysis, including available capital, cover ratios, model alignment, and governance checks.\nPerform claims and exposure analysis across mortality, morbidity, retrenchment, arrears, reinstatements, settlements, premium adjustments, IBNR, and reporting delays.\nApply first-line quality assurance through data validation, reasonability checks, reconciliations, controlled review layers, and documented resolution of discrepancies.\nSupport audit and formal reporting requirements with clear technical explanations, supporting schedules, process documentation, and evidence of controls.\nAutomate data flows and reporting processes using Python, R, SQL, VBA, and Excel.\n\n\n\nActuarial Analyst — Asset Consulting\nSimeka Consultants & Actuaries, Sandton February 2021–April 2023\n\nProduced portfolio monitoring and management reports covering investment returns, volatility, asset allocation, benchmark performance, and portfolio movements.\nDeveloped dashboards and Excel-based reporting tools that improved the consistency, automation, and interpretation of recurring client reports.\nPrepared investment commentary and analysis supporting trustee decisions, strategy reviews, and portfolio governance.\nAssessed market movements, investment manager performance, and asset-class exposures for institutional clients.\n\n\n\nActuarial Analyst — Employee Benefit Valuations\nSimeka Consultants & Actuaries, Sandton February 2019–January 2021\n\nPrepared data, assumptions, and supporting analysis for defined benefit, defined contribution, IAS 19, and other employee benefit valuations.\nCalculated liability projections and actuarial reserves, and contributed to valuation reports, surplus analyses, pension increase reviews, and Section 14 calculations.\nPerformed experience investigations covering mortality, expenses, contributions, and liability movements.\nConducted data validation, reasonability checks, and reconciliations to support accurate and complete valuation results."
+  },
+  {
+    "objectID": "resume.html#selected-achievements",
+    "href": "resume.html#selected-achievements",
+    "title": "Resume",
+    "section": "Selected Achievements",
+    "text": "Selected Achievements\n\nManaged full-year dividend and valuation reporting, including liquidity monitoring and the classification of complex settlement and lapse movements.\nLed a SAM model-alignment project with external consultants to update the valuation to the December 2025 position.\nInvestigated expense reserve bases and liability positions and reallocated risk adjustments to resolve audit queries.\nDeveloped Python automation that reduced valuation-cycle effort and improved the reliability of actuarial data flows and reconciliations.\nStrengthened governance through improved process documentation, quality controls, and audit-ready evidence.\nProduced analysis that informed board-level decisions, capital discussions, and performance reviews."
+  },
+  {
+    "objectID": "resume.html#technical-capabilities",
+    "href": "resume.html#technical-capabilities",
+    "title": "Resume",
+    "section": "Technical Capabilities",
+    "text": "Technical Capabilities\nActuarial and financial reporting: IFRS 17 valuations, SAM reporting, best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of Surplus, experience investigations, reserving inputs, capital analysis, and audit support.\nModelling and production: Prophet Professional, Prophet Enterprise, model output analysis, result reconciliation, valuation controls, and actuarial process improvement.\nData and automation: R, Python, SQL, VBA, advanced Excel, automated data workflows, reproducible modelling templates, dashboard development, and quality-control automation.\nR experience: survival analysis, generalised linear models, random forests, stochastic modelling, and data manipulation with the tidyverse."
   },
   {
     "objectID": "resume.html#education",
     "href": "resume.html#education",
     "title": "Resume",
     "section": "Education",
-    "text": "Education\nAdd your degrees, institutions, and relevant academic distinctions."
+    "text": "Education\n\nBSc (Honours), Actuarial Science\nUniversity of the Witwatersrand, 2018\n\n\nBSc, Actuarial Science and Mathematical Statistics\nUniversity of the Witwatersrand, 2015–2017"
   },
   {
-    "objectID": "resume.html#experience",
-    "href": "resume.html#experience",
+    "objectID": "resume.html#actuarial-progress",
+    "href": "resume.html#actuarial-progress",
     "title": "Resume",
-    "section": "Experience",
-    "text": "Experience\nAdd your professional experience in reverse chronological order."
+    "section": "Actuarial Progress",
+    "text": "Actuarial Progress\nCompleted subjects include A111 (CT3), A112 (CT7), A113 (CT2), A211 (CT1), A213 (CT5), A214 (CT8), and A311 (CA1), or their equivalent core subjects.\nCompleted the CS2 examinations in April 2026 and currently progressing toward F105 and the remaining fellowship requirements."
   },
   {
-    "objectID": "resume.html#skills",
-    "href": "resume.html#skills",
-    "title": "Resume",
-    "section": "Skills",
-    "text": "Skills\nAdd actuarial, statistical, programming, and communication skills."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ntando Sithole",
+    "section": "",
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
   },
   {
-    "objectID": "resume.html#professional-development",
-    "href": "resume.html#professional-development",
-    "title": "Resume",
-    "section": "Professional Development",
-    "text": "Professional Development\nAdd actuarial examinations, certifications, memberships, and continuing professional development activities."
+    "objectID": "index.html#professional-profile",
+    "href": "index.html#professional-profile",
+    "title": "Ntando Sithole",
+    "section": "",
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting under IFRS 17 and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial and insurance professionals."
+  },
+  {
+    "objectID": "index.html#areas-of-practice",
+    "href": "index.html#areas-of-practice",
+    "title": "Ntando Sithole",
+    "section": "Areas of Practice",
+    "text": "Areas of Practice\n\nCell captive arrangements\nCorporate actuarial valuations under IFRS 17 and SAM\nCapital modelling and solvency analysis\nActuarial analysis and model development in R"
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html",
+    "href": "research/life-insurance-reserving/index.html",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "",
+    "text": "Life insurance valuation work is ultimately a disciplined projection exercise: future premiums, claims, expenses, and reserves are converted into present-value measures under a clearly stated basis. The modelling can be simple or highly sophisticated, but the core structure should remain auditable.\nThis article develops a compact R framework for a level-premium term assurance portfolio. The objective is not to reproduce a production actuarial system. Instead, the model demonstrates the mechanics behind:\n\nmortality-based expected claim projections;\nlevel premium calculation;\nprospective reserve development by policy duration; and\nsensitivity testing under alternative discount-rate and mortality bases.\n\nThe assumptions are synthetic and are included directly in the article so that the code can be rendered without external data files."
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html#introduction",
+    "href": "research/life-insurance-reserving/index.html#introduction",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "",
+    "text": "Life insurance valuation work is ultimately a disciplined projection exercise: future premiums, claims, expenses, and reserves are converted into present-value measures under a clearly stated basis. The modelling can be simple or highly sophisticated, but the core structure should remain auditable.\nThis article develops a compact R framework for a level-premium term assurance portfolio. The objective is not to reproduce a production actuarial system. Instead, the model demonstrates the mechanics behind:\n\nmortality-based expected claim projections;\nlevel premium calculation;\nprospective reserve development by policy duration; and\nsensitivity testing under alternative discount-rate and mortality bases.\n\nThe assumptions are synthetic and are included directly in the article so that the code can be rendered without external data files."
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html#methodology",
+    "href": "research/life-insurance-reserving/index.html#methodology",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "Methodology",
+    "text": "Methodology\nConsider a policy issued to a life aged (x), with term (n), annual effective interest rate (i), discount factor (v=(1+i)^{-1}), and sum assured (S). Let (q_{x+t}) denote the one-year mortality rate at attained age (x+t).\nThe probability of surviving from issue to the start of policy year (t+1) is\n\\[\n{}_{t}p_x =\n\\prod_{j=0}^{t-1} (1-q_{x+j}),\n\\qquad {}_0p_x = 1.\n\\]\nFor a benefit payable at the end of the year of death, the actuarial present value of a term assurance is\n\\[\nA^{1}_{x:\\overline{n}|}\n=\n\\sum_{t=0}^{n-1}\nv^{t+1} {}_{t}p_x q_{x+t}.\n\\]\nIf premiums are payable annually in advance while the policyholder is alive, the temporary life annuity-due factor is\n\\[\n\\ddot{a}_{x:\\overline{n}|}\n=\n\\sum_{t=0}^{n-1}\nv^t {}_{t}p_x.\n\\]\nThe net annual level premium is therefore\n\\[\nP =\n\\frac{S A^{1}_{x:\\overline{n}|}}\n{\\ddot{a}_{x:\\overline{n}|}}.\n\\]\nAt duration (k), immediately after the (k)-th policy anniversary, the prospective net reserve for an in-force policy is\n\\[\nV_k =\nS\n\\sum_{t=0}^{n-k-1}\nv^{t+1} {}_{t}p_{x+k} q_{x+k+t}\n-\nP\n\\sum_{t=0}^{n-k-1}\nv^t {}_{t}p_{x+k}.\n\\]\nThis reserve is a best-estimate technical measure under the selected valuation basis. In production, it would normally be extended for expenses, lapses, reinsurance, policyholder options, risk adjustment, contractual service margin, capital requirements, and governance controls."
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html#implementation-in-r",
+    "href": "research/life-insurance-reserving/index.html#implementation-in-r",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "Implementation in R",
+    "text": "Implementation in R\n\nModel setup\n\nknitr::opts_chunk$set(\n  echo = TRUE,\n  warning = FALSE,\n  message = FALSE\n)\n\nformat_currency &lt;- function(x) {\n  paste0(\"R\", format(round(x, 0), big.mark = \",\", scientific = FALSE))\n}\n\nformat_percent &lt;- function(x) {\n  paste0(round(100 * x, 2), \"%\")\n}\n\nissue_age &lt;- 40\nterm &lt;- 20\nsum_assured &lt;- 1000000\ninitial_policies &lt;- 1000\nannual_interest &lt;- 0.085\nannual_expense &lt;- 250\nclaim_expense &lt;- 1500\nexpense_loading &lt;- 0.10\n\nThe mortality curve below uses a Gompertz-Makeham-style force of mortality. The parameters are deliberately illustrative and are not calibrated to an official insured-life table.\n\nmake_mortality &lt;- function(ages, mortality_factor = 1) {\n  makeham_term &lt;- 0.00035\n  age_scale &lt;- 0.000018\n  growth &lt;- 1.085\n\n  force_of_mortality &lt;- makeham_term + age_scale * growth^(ages - 30)\n  qx &lt;- 1 - exp(-force_of_mortality * mortality_factor)\n\n  pmin(qx, 0.95)\n}\n\nsurvival_start &lt;- function(qx) {\n  if (length(qx) == 1) {\n    return(1)\n  }\n\n  c(1, cumprod(1 - qx[-length(qx)]))\n}\n\nages &lt;- issue_age + seq_len(term) - 1\nqx &lt;- make_mortality(ages)\n\nmortality_table &lt;- data.frame(\n  policy_year = seq_len(term),\n  attained_age = ages,\n  qx = round(qx, 6),\n  deaths_per_1000 = round(1000 * qx, 3)\n)\n\nknitr::kable(head(mortality_table, 8))\n\n\n\n\npolicy_year\nattained_age\nqx\ndeaths_per_1000\n\n\n\n\n1\n40\n0.000391\n0.391\n\n\n2\n41\n0.000394\n0.394\n\n\n3\n42\n0.000398\n0.398\n\n\n4\n43\n0.000402\n0.402\n\n\n5\n44\n0.000406\n0.406\n\n\n6\n45\n0.000411\n0.411\n\n\n7\n46\n0.000416\n0.416\n\n\n8\n47\n0.000422\n0.422\n\n\n\n\n\n\n\nPremium basis\n\nterm_assurance_apv &lt;- function(qx, interest_rate) {\n  years &lt;- seq_along(qx) - 1\n  discount_factor &lt;- 1 / (1 + interest_rate)\n  survival &lt;- survival_start(qx)\n\n  sum(discount_factor^(years + 1) * survival * qx)\n}\n\nannuity_due_apv &lt;- function(qx, interest_rate) {\n  years &lt;- seq_along(qx) - 1\n  discount_factor &lt;- 1 / (1 + interest_rate)\n  survival &lt;- survival_start(qx)\n\n  sum(discount_factor^years * survival)\n}\n\nbenefit_apv &lt;- sum_assured * term_assurance_apv(qx, annual_interest)\nannuity_apv &lt;- annuity_due_apv(qx, annual_interest)\nnet_level_premium &lt;- benefit_apv / annuity_apv\n\nexpense_apv &lt;- annual_expense * annuity_apv +\n  claim_expense * term_assurance_apv(qx, annual_interest)\n\ngross_level_premium &lt;- (benefit_apv + expense_apv) /\n  annuity_apv * (1 + expense_loading)\n\npremium_summary &lt;- data.frame(\n  metric = c(\n    \"Issue age\",\n    \"Term\",\n    \"Annual effective discount rate\",\n    \"Sum assured\",\n    \"Net annual level premium\",\n    \"Illustrative gross annual premium\"\n  ),\n  value = c(\n    issue_age,\n    paste(term, \"years\"),\n    format_percent(annual_interest),\n    format_currency(sum_assured),\n    format_currency(net_level_premium),\n    format_currency(gross_level_premium)\n  )\n)\n\nknitr::kable(premium_summary)\n\n\n\n\nmetric\nvalue\n\n\n\n\nIssue age\n40\n\n\nTerm\n20 years\n\n\nAnnual effective discount rate\n8.5%\n\n\nSum assured\nR1,000,000\n\n\nNet annual level premium\nR395\n\n\nIllustrative gross annual premium\nR711\n\n\n\n\n\nThe gross premium is included only to make the projected portfolio cash-flow view more realistic. It includes simple per-policy expenses and an illustrative loading. The reserve calculation that follows is based on the net premium formula, which isolates the mortality and discounting mechanics.\n\n\nPortfolio cash-flow projection\n\nsurvival &lt;- survival_start(qx)\ninforce_start &lt;- initial_policies * survival\nexpected_deaths &lt;- inforce_start * qx\n\ncash_flows &lt;- data.frame(\n  policy_year = seq_len(term),\n  attained_age = ages,\n  inforce_start = inforce_start,\n  qx = qx,\n  expected_deaths = expected_deaths,\n  expected_premiums = inforce_start * gross_level_premium,\n  expected_claims = expected_deaths * sum_assured,\n  expected_maintenance_expenses = inforce_start * annual_expense,\n  expected_claim_expenses = expected_deaths * claim_expense\n)\n\ncash_flows$expected_outgo &lt;- with(\n  cash_flows,\n  expected_claims + expected_maintenance_expenses + expected_claim_expenses\n)\n\ncash_flows$expected_net_cash_flow &lt;- with(\n  cash_flows,\n  expected_premiums - expected_outgo\n)\n\nv &lt;- 1 / (1 + annual_interest)\ncash_flows$pv_expected_premiums &lt;- cash_flows$expected_premiums *\n  v^(cash_flows$policy_year - 1)\ncash_flows$pv_expected_outgo &lt;- cash_flows$expected_outgo *\n  v^cash_flows$policy_year\ncash_flows$pv_margin &lt;- cash_flows$pv_expected_premiums -\n  cash_flows$pv_expected_outgo\n\ndisplay_cash_flows &lt;- cash_flows\ncurrency_columns &lt;- c(\n  \"expected_premiums\",\n  \"expected_claims\",\n  \"expected_outgo\",\n  \"expected_net_cash_flow\"\n)\n\ndisplay_cash_flows[currency_columns] &lt;-\n  lapply(display_cash_flows[currency_columns], format_currency)\n\ndisplay_cash_flows$inforce_start &lt;- round(display_cash_flows$inforce_start, 1)\ndisplay_cash_flows$qx &lt;- round(display_cash_flows$qx, 6)\ndisplay_cash_flows$expected_deaths &lt;- round(display_cash_flows$expected_deaths, 3)\n\nknitr::kable(head(display_cash_flows, 8))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npolicy_year\nattained_age\ninforce_start\nqx\nexpected_deaths\nexpected_premiums\nexpected_claims\nexpected_maintenance_expenses\nexpected_claim_expenses\nexpected_outgo\nexpected_net_cash_flow\npv_expected_premiums\npv_expected_outgo\npv_margin\n\n\n\n\n1\n40\n1000.0\n0.000391\n0.391\nR710,675\nR390,621\n250000.0\n585.9321\nR641,207\nR 69,468\n710675.0\n590974.5\n119700.53\n\n\n2\n41\n999.6\n0.000394\n0.394\nR710,397\nR393,925\n249902.3\n590.8881\nR644,419\nR 65,979\n654744.2\n547404.8\n107339.34\n\n\n3\n42\n999.2\n0.000398\n0.398\nR710,117\nR397,519\n249803.9\n596.2786\nR647,919\nR 62,198\n603213.0\n507261.2\n95951.83\n\n\n4\n43\n998.8\n0.000402\n0.401\nR709,835\nR401,427\n249704.5\n602.1403\nR651,733\nR 58,101\n555735.5\n470274.1\n85461.40\n\n\n5\n44\n998.4\n0.000406\n0.406\nR709,550\nR405,675\n249604.1\n608.5129\nR655,888\nR 53,662\n511992.8\n436195.3\n75797.53\n\n\n6\n45\n998.0\n0.000411\n0.410\nR709,261\nR410,293\n249502.7\n615.4396\nR660,411\nR 48,850\n471691.0\n404795.8\n66895.21\n\n\n7\n46\n997.6\n0.000416\n0.415\nR708,970\nR415,311\n249400.1\n622.9671\nR665,334\nR 43,635\n434559.5\n375865.0\n58694.57\n\n\n8\n47\n997.2\n0.000422\n0.421\nR708,675\nR420,764\n249296.3\n631.1460\nR670,691\nR 37,983\n400349.0\n349208.5\n51140.44\n\n\n\n\n\n\nplot(\n  cash_flows$policy_year,\n  cash_flows$expected_premiums / 1e6,\n  type = \"l\",\n  lwd = 2,\n  col = \"#1b998b\",\n  xlab = \"Policy year\",\n  ylab = \"Expected amount (R millions)\",\n  ylim = range(c(\n    cash_flows$expected_premiums,\n    cash_flows$expected_claims,\n    cash_flows$expected_outgo\n  )) / 1e6,\n  main = \"Projected portfolio cash flows\"\n)\nlines(cash_flows$policy_year, cash_flows$expected_claims / 1e6,\n      lwd = 2, col = \"#2b4865\")\nlines(cash_flows$policy_year, cash_flows$expected_outgo / 1e6,\n      lwd = 2, col = \"#d49c2f\")\nlegend(\n  \"topleft\",\n  legend = c(\"Premiums\", \"Claims\", \"Claims + expenses\"),\n  col = c(\"#1b998b\", \"#2b4865\", \"#d49c2f\"),\n  lwd = 2,\n  bty = \"n\"\n)\n\n\n\n\nExpected annual cash flows for the illustrative term assurance portfolio.\n\n\n\n\n\n\nProspective reserve development\n\nprospective_reserve &lt;- function(\n    issue_age,\n    term,\n    duration,\n    interest_rate,\n    sum_assured,\n    annual_premium,\n    mortality_factor = 1) {\n\n  remaining_term &lt;- term - duration\n\n  if (remaining_term &lt;= 0) {\n    return(0)\n  }\n\n  attained_ages &lt;- issue_age + duration + seq_len(remaining_term) - 1\n  future_qx &lt;- make_mortality(attained_ages, mortality_factor)\n\n  future_benefit_apv &lt;- sum_assured *\n    term_assurance_apv(future_qx, interest_rate)\n  future_premium_apv &lt;- annual_premium *\n    annuity_due_apv(future_qx, interest_rate)\n\n  future_benefit_apv - future_premium_apv\n}\n\ndurations &lt;- 0:term\n\nreserve_per_policy &lt;- vapply(\n  durations,\n  prospective_reserve,\n  numeric(1),\n  issue_age = issue_age,\n  term = term,\n  interest_rate = annual_interest,\n  sum_assured = sum_assured,\n  annual_premium = net_level_premium\n)\n\nreserve_table &lt;- data.frame(\n  duration = durations,\n  attained_age = issue_age + durations,\n  reserve_per_policy = reserve_per_policy\n)\n\nreserve_display &lt;- reserve_table\nreserve_display$reserve_per_policy &lt;-\n  format_currency(reserve_display$reserve_per_policy)\n\nknitr::kable(reserve_display[seq(1, nrow(reserve_display), by = 4), ])\n\n\n\n\n\nduration\nattained_age\nreserve_per_policy\n\n\n\n\n1\n0\n40\nR 0\n\n\n5\n4\n44\nR152\n\n\n9\n8\n48\nR282\n\n\n13\n12\n52\nR351\n\n\n17\n16\n56\nR294\n\n\n21\n20\n60\nR 0\n\n\n\n\n\n\nplot(\n  reserve_table$duration,\n  reserve_table$reserve_per_policy,\n  type = \"l\",\n  lwd = 3,\n  col = \"#2b4865\",\n  xlab = \"Duration\",\n  ylab = \"Reserve per policy\",\n  main = \"Prospective reserve trajectory\",\n  yaxt = \"n\"\n)\naxis(2, at = pretty(reserve_table$reserve_per_policy),\n     labels = format_currency(pretty(reserve_table$reserve_per_policy)))\nabline(h = 0, lty = 2, col = \"grey70\")\npoints(\n  reserve_table$duration,\n  reserve_table$reserve_per_policy,\n  pch = 19,\n  col = \"#1b998b\"\n)\n\n\n\n\nProspective net reserve per in-force policy by duration.\n\n\n\n\nThe reserve starts close to zero because the net level premium is calibrated on the same basis used for valuation. It then reflects the interaction between ageing mortality, remaining premium income, and the shortening outstanding term.\n\n\nSensitivity testing\nIn valuation work, the base result is rarely the full story. A useful model should help the reviewer understand how the liability behaves when the basis changes.\nThe table below keeps the original net premium fixed and recalculates the issue-date reserve under alternative mortality and discount-rate assumptions. Positive values indicate that the valuation basis is stronger than the pricing basis, before allowing for any explicit risk adjustment or margin.\n\nvaluation_margin &lt;- function(discount_rate, mortality_factor) {\n  stressed_qx &lt;- make_mortality(ages, mortality_factor)\n\n  stressed_benefit_apv &lt;- sum_assured *\n    term_assurance_apv(stressed_qx, discount_rate)\n  stressed_premium_apv &lt;- net_level_premium *\n    annuity_due_apv(stressed_qx, discount_rate)\n\n  stressed_benefit_apv - stressed_premium_apv\n}\n\nsensitivity &lt;- expand.grid(\n  discount_rate = c(0.065, 0.085, 0.105),\n  mortality_factor = c(0.90, 1.00, 1.10, 1.25)\n)\n\nsensitivity$issue_date_margin &lt;- mapply(\n  valuation_margin,\n  sensitivity$discount_rate,\n  sensitivity$mortality_factor\n)\n\nsensitivity_display &lt;- sensitivity\nsensitivity_display$discount_rate &lt;-\n  format_percent(sensitivity_display$discount_rate)\nsensitivity_display$mortality_factor &lt;-\n  paste0(sensitivity_display$mortality_factor, \"x\")\nsensitivity_display$issue_date_margin &lt;-\n  format_currency(sensitivity_display$issue_date_margin)\n\nknitr::kable(sensitivity_display)\n\n\n\n\ndiscount_rate\nmortality_factor\nissue_date_margin\n\n\n\n\n6.5%\n0.9x\nR -345\n\n\n8.5%\n0.9x\nR -405\n\n\n10.5%\n0.9x\nR -444\n\n\n6.5%\n1x\nR 130\n\n\n8.5%\n1x\nR 0\n\n\n10.5%\n1x\nR -95\n\n\n6.5%\n1.1x\nR 606\n\n\n8.5%\n1.1x\nR 405\n\n\n10.5%\n1.1x\nR 255\n\n\n6.5%\n1.25x\nR1,318\n\n\n8.5%\n1.25x\nR1,011\n\n\n10.5%\n1.25x\nR 778"
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html#actuarial-interpretation",
+    "href": "research/life-insurance-reserving/index.html#actuarial-interpretation",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "Actuarial Interpretation",
+    "text": "Actuarial Interpretation\nThe model highlights several valuation principles that matter in life insurance practice:\n\nThe premium basis and valuation basis must be separated clearly. A level premium calculated on one basis can create a liability or asset when assessed on another basis.\nMortality, discounting, and timing conventions drive the result even in a simplified model. Small changes in assumptions can produce visible movement in the reserve profile.\nPortfolio-level cash-flow projections help connect policy-level actuarial formulae to management reporting, business planning, and capital modelling.\nA clean implementation should expose assumptions directly rather than burying them in opaque spreadsheet logic.\n\nFor an IFRS 17 or SAM context, this type of model is best viewed as a transparent analytical layer. It can support reasonableness checks, sensitivity analysis, and communication with finance or risk teams, even when the official valuation engine is more complex."
+  },
+  {
+    "objectID": "research/life-insurance-reserving/index.html#model-limitations",
+    "href": "research/life-insurance-reserving/index.html#model-limitations",
+    "title": "Life Insurance Cash Flow Projection and Reserve Sensitivity in R",
+    "section": "Model Limitations",
+    "text": "Model Limitations\nThis article intentionally excludes several features that would be required in a production valuation model:\n\nlapses, surrenders, and paid-up policy behaviour;\nacquisition expenses, commission structures, tax, and reinsurance cash flows;\nstochastic economic scenarios and yield-curve construction;\npolicyholder options and guarantees;\nrisk adjustment, contractual service margin, and onerous group testing under IFRS 17; and\ngovernance controls such as assumption versioning, reconciliations, and model change logs.\n\nThose omissions are deliberate. The purpose of the article is to present a compact, auditable R implementation of the core mechanics before layering on product complexity."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html",
+    "href": "research/markov-ncd/index.html",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "",
+    "text": "No-claims discount (NCD) systems adjust a policyholder’s renewal premium according to recent claims experience. A policyholder typically moves toward a higher-discount class after a claim-free year and toward a lower-discount class after one or more claims.\nA discrete-time Markov chain provides a transparent framework for modelling these movements. The approach supports several practical actuarial tasks, including:\n\nprojecting the future distribution of policyholders across rating classes;\nestimating expected premium income over a planning horizon;\nassessing the long-run mix of an NCD portfolio; and\ntesting the financial effect of alternative transition rules or discount scales.\n\nThis article develops an illustrative four-class NCD model using reproducible base R code. The assumptions are synthetic and are intended to demonstrate the method rather than represent a calibrated insurance portfolio."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#introduction",
+    "href": "research/markov-ncd/index.html#introduction",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "",
+    "text": "No-claims discount (NCD) systems adjust a policyholder’s renewal premium according to recent claims experience. A policyholder typically moves toward a higher-discount class after a claim-free year and toward a lower-discount class after one or more claims.\nA discrete-time Markov chain provides a transparent framework for modelling these movements. The approach supports several practical actuarial tasks, including:\n\nprojecting the future distribution of policyholders across rating classes;\nestimating expected premium income over a planning horizon;\nassessing the long-run mix of an NCD portfolio; and\ntesting the financial effect of alternative transition rules or discount scales.\n\nThis article develops an illustrative four-class NCD model using reproducible base R code. The assumptions are synthetic and are intended to demonstrate the method rather than represent a calibrated insurance portfolio."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#methodology",
+    "href": "research/markov-ncd/index.html#methodology",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "Methodology",
+    "text": "Methodology\nLet (X_t) denote the NCD class occupied at the start of policy year (t). The state space is\n\\[\n\\mathcal{S} = \\{1,2,3,4\\},\n\\]\nwhere Class 1 carries no discount and Class 4 carries the highest discount. Under the first-order Markov assumption,\n\\[\n\\Pr(X_{t+1}=j \\mid X_t=i, X_{t-1},\\ldots,X_0)\n= \\Pr(X_{t+1}=j \\mid X_t=i)\n= p_{ij}.\n\\]\nThe one-year transition matrix is\n\\[\n\\mathbf{P}\n=\n\\begin{pmatrix}\n0.17 & 0.83 & 0.00 & 0.00 \\\\\n0.17 & 0.00 & 0.83 & 0.00 \\\\\n0.05 & 0.12 & 0.00 & 0.83 \\\\\n0.00 & 0.00 & 0.05 & 0.95\n\\end{pmatrix}.\n\\]\nEach row sums to one. Entry (p_{ij}) is the probability that a policyholder in Class (i) at the start of one year occupies Class (j) at the start of the next year.\nIf (_0) is the initial row vector of class probabilities, the distribution after (t) transitions is\n\\[\n\\boldsymbol{q}_t = \\boldsymbol{q}_0\\mathbf{P}^t.\n\\]\nFor a base annual premium (B) and discount vector (=(d_1,,d_4)^), the premium vector is\n\\[\n\\boldsymbol{b}\n= B(\\boldsymbol{1}-\\boldsymbol{d}).\n\\]\nThe expected premium payable in policy year (t+1) is therefore\n\\[\n\\operatorname{E}[B_{t+1}]\n= \\boldsymbol{q}_0\\mathbf{P}^{t}\\boldsymbol{b},\n\\]\nand expected cumulative premium over (n) years is\n\\[\n\\operatorname{E}[C_n]\n= \\sum_{t=0}^{n-1}\n  \\boldsymbol{q}_0\\mathbf{P}^{t}\\boldsymbol{b}.\n\\]\nThis timing convention assumes that the premium for each year is determined by the class occupied at the start of that year."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#implementation-in-r",
+    "href": "research/markov-ncd/index.html#implementation-in-r",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "Implementation in R",
+    "text": "Implementation in R\n\nTransition assumptions\n\nstates &lt;- paste(\"Class\", 1:4)\n\nP &lt;- matrix(\n  c(\n    0.17, 0.83, 0.00, 0.00,\n    0.17, 0.00, 0.83, 0.00,\n    0.05, 0.12, 0.00, 0.83,\n    0.00, 0.00, 0.05, 0.95\n  ),\n  nrow = 4,\n  byrow = TRUE,\n  dimnames = list(states, states)\n)\n\nstopifnot(all(abs(rowSums(P) - 1) &lt; 1e-12))\n\nknitr::kable(\n  P,\n  digits = 2,\n  caption = \"Illustrative annual transition matrix\"\n)\n\n\nIllustrative annual transition matrix\n\n\n\nClass 1\nClass 2\nClass 3\nClass 4\n\n\n\n\nClass 1\n0.17\n0.83\n0.00\n0.00\n\n\nClass 2\n0.17\n0.00\n0.83\n0.00\n\n\nClass 3\n0.05\n0.12\n0.00\n0.83\n\n\nClass 4\n0.00\n0.00\n0.05\n0.95\n\n\n\n\n\nThe matrix reflects progressive movement toward higher-discount classes for policyholders with favourable experience, while retaining a mechanism for movement toward lower-discount classes.\n\n\nMulti-year transition probabilities\nThe following function calculates (^n), including (^0=).\n\nmatrix_power &lt;- function(P, n) {\n  stopifnot(\n    nrow(P) == ncol(P),\n    length(n) == 1,\n    n &gt;= 0,\n    n == as.integer(n)\n  )\n\n  result &lt;- diag(nrow(P))\n\n  if (n &gt; 0) {\n    for (step in seq_len(n)) {\n      result &lt;- result %*% P\n    }\n  }\n\n  dimnames(result) &lt;- dimnames(P)\n  result\n}\n\nP_5 &lt;- matrix_power(P, 5)\n\nknitr::kable(\n  P_5,\n  digits = 4,\n  caption = \"Five-year transition probabilities\"\n)\n\n\nFive-year transition probabilities\n\n\n\nClass 1\nClass 2\nClass 3\nClass 4\n\n\n\n\nClass 1\n0.0354\n0.0745\n0.1038\n0.7863\n\n\nClass 2\n0.0215\n0.0352\n0.1006\n0.8427\n\n\nClass 3\n0.0104\n0.0208\n0.0647\n0.9041\n\n\nClass 4\n0.0050\n0.0102\n0.0545\n0.9303\n\n\n\n\n\nThe first row of (^5) gives the class distribution after five transitions for a policyholder who begins in Class 1.\n\n\nStationary distribution\nFor an ergodic chain, the stationary distribution () satisfies\n\\[\n\\boldsymbol{\\pi}\\mathbf{P}=\\boldsymbol{\\pi},\n\\qquad\n\\sum_{j=1}^{4}\\pi_j=1.\n\\]\nThe system can be solved directly using a constrained linear system.\n\nstationary_distribution &lt;- function(P) {\n  n_states &lt;- nrow(P)\n\n  coefficient_matrix &lt;- rbind(\n    t(P) - diag(n_states),\n    rep(1, n_states)\n  )\n\n  target &lt;- c(rep(0, n_states), 1)\n  stationary &lt;- as.vector(qr.solve(coefficient_matrix, target))\n\n  setNames(stationary, colnames(P))\n}\n\nstationary &lt;- stationary_distribution(P)\n\nknitr::kable(\n  data.frame(\n    Class = names(stationary),\n    Probability = as.numeric(stationary)\n  ),\n  digits = 4,\n  caption = \"Stationary class distribution\"\n)\n\n\nStationary class distribution\n\n\nClass\nProbability\n\n\n\n\nClass 1\n0.0057\n\n\nClass 2\n0.0114\n\n\nClass 3\n0.0558\n\n\nClass 4\n0.9270\n\n\n\n\n\nUnder the illustrative assumptions, approximately (92.7%) of the long-run portfolio occupies Class 4. This concentration is driven by the high probability of remaining in Class 4 once it has been reached.\n\n\nExpected premium projection\nAssume a base annual premium of (750) monetary units and class discounts of (0%), (15%), (25%), and (30%).\n\nbase_premium &lt;- 750\ndiscounts &lt;- c(0.00, 0.15, 0.25, 0.30)\npremium_by_class &lt;- base_premium * (1 - discounts)\nnames(premium_by_class) &lt;- states\n\nknitr::kable(\n  data.frame(\n    Class = states,\n    Discount = sprintf(\"%.0f%%\", 100 * discounts),\n    Premium = premium_by_class\n  ),\n  caption = \"Illustrative NCD premium scale\"\n)\n\n\nIllustrative NCD premium scale\n\n\n\nClass\nDiscount\nPremium\n\n\n\n\nClass 1\nClass 1\n0%\n750.0\n\n\nClass 2\nClass 2\n15%\n637.5\n\n\nClass 3\nClass 3\n25%\n562.5\n\n\nClass 4\nClass 4\n30%\n525.0\n\n\n\n\n\n\nexpected_premium_projection &lt;- function(\n  P,\n  initial_distribution,\n  premium_by_class,\n  years\n) {\n  stopifnot(\n    length(initial_distribution) == nrow(P),\n    length(premium_by_class) == ncol(P),\n    abs(sum(initial_distribution) - 1) &lt; 1e-12,\n    years &gt;= 1\n  )\n\n  class_distributions &lt;- matrix(\n    NA_real_,\n    nrow = years,\n    ncol = ncol(P),\n    dimnames = list(\n      paste(\"Year\", seq_len(years)),\n      colnames(P)\n    )\n  )\n\n  annual_premium &lt;- numeric(years)\n  current_distribution &lt;- initial_distribution\n\n  for (year in seq_len(years)) {\n    class_distributions[year, ] &lt;- current_distribution\n    annual_premium[year] &lt;- sum(\n      current_distribution * premium_by_class\n    )\n    current_distribution &lt;- current_distribution %*% P\n  }\n\n  list(\n    class_distributions = class_distributions,\n    annual_premium = annual_premium,\n    cumulative_premium = cumsum(annual_premium)\n  )\n}\n\nnew_policyholder &lt;- setNames(c(1, 0, 0, 0), states)\n\nprojection &lt;- expected_premium_projection(\n  P = P,\n  initial_distribution = new_policyholder,\n  premium_by_class = premium_by_class,\n  years = 10\n)\n\nprojection_table &lt;- data.frame(\n  Year = seq_len(10),\n  Expected_Annual_Premium = projection$annual_premium,\n  Expected_Cumulative_Premium = projection$cumulative_premium\n)\n\nknitr::kable(\n  projection_table,\n  digits = 2,\n  caption = \"Ten-year expected premium projection for a Class 1 policyholder\"\n)\n\n\nTen-year expected premium projection for a Class 1 policyholder\n\n\nYear\nExpected_Annual_Premium\nExpected_Cumulative_Premium\n\n\n\n\n1\n750.00\n750.00\n\n\n2\n656.62\n1406.62\n\n\n3\n604.96\n2011.58\n\n\n4\n574.22\n2585.80\n\n\n5\n555.99\n3141.79\n\n\n6\n545.24\n3687.03\n\n\n7\n538.87\n4225.90\n\n\n8\n535.11\n4761.01\n\n\n9\n532.89\n5293.90\n\n\n10\n531.57\n5825.47\n\n\n\n\n\nThe expected cumulative premium over ten years is approximately (5{,}825.47) monetary units. The annual expected premium declines as probability mass moves toward the higher-discount classes.\n\nlong_run_premium &lt;- sum(stationary * premium_by_class)\n\nplot(\n  seq_len(10),\n  projection$annual_premium,\n  type = \"b\",\n  pch = 19,\n  xlab = \"Policy year\",\n  ylab = \"Expected premium\",\n  ylim = range(c(projection$annual_premium, long_run_premium))\n)\n\nabline(\n  h = long_run_premium,\n  lty = 2,\n  col = \"steelblue\"\n)\n\nlegend(\n  \"topright\",\n  legend = c(\"Projected annual premium\", \"Long-run expected premium\"),\n  lty = c(1, 2),\n  pch = c(19, NA),\n  col = c(\"black\", \"steelblue\"),\n  bty = \"n\"\n)\n\n\n\n\nExpected annual premium and its long-run equilibrium level\n\n\n\n\nThe long-run expected annual premium is\n\\[\n\\boldsymbol{\\pi}\\boldsymbol{b}\n\\approx 529.67.\n\\]\nThis is a portfolio-mix result under the model assumptions; it is not, by itself, a measure of technical profitability."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#actuarial-interpretation",
+    "href": "research/markov-ncd/index.html#actuarial-interpretation",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "Actuarial Interpretation",
+    "text": "Actuarial Interpretation\nThe model separates two commercially important components:\n\nPolicyholder migration: The transition matrix captures how claims experience changes future rating classes.\nFinancial impact: The premium vector converts projected class distributions into expected income.\n\nThis separation makes the framework useful for pricing governance and scenario analysis. An actuary can change the transition rules without changing the discount scale, or revise the discount scale while holding policyholder behaviour constant. The financial effect of each design decision can therefore be assessed independently.\nThe stationary distribution also provides a useful diagnostic. A very high concentration in the maximum-discount class may indicate that the scale is generous relative to claim frequency, that downward movements are too weak, or that the model omits lapse and selection effects. In practice, the result should be compared with observed portfolio distributions and tested under alternative experience assumptions."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#model-limitations",
+    "href": "research/markov-ncd/index.html#model-limitations",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "Model Limitations",
+    "text": "Model Limitations\nThe model is intentionally compact. A production implementation would need to address several limitations:\n\nMarkov assumption: Future class movement is assumed to depend only on the current class. Claim history beyond the current state may still contain predictive information.\nTime homogeneity: Transition probabilities are assumed constant. Inflation, underwriting actions, economic conditions, and portfolio mix can cause them to vary over time.\nPortfolio heterogeneity: A single matrix may conceal material differences by age, vehicle type, territory, distribution channel, or risk segment.\nLapses and new business: The closed-chain model does not include entry, cancellation, non-renewal, or reinstatement.\nPremium adequacy: Premium income is projected without claim costs, expenses, commission, reinsurance, tax, or the cost of capital.\nParameter uncertainty: Estimated transition probabilities are subject to sampling error and should be accompanied by sensitivity or simulation analysis.\n\nThese limitations do not invalidate the framework. They define the additional features required before it can support pricing, reserving, planning, or capital decisions."
+  },
+  {
+    "objectID": "research/markov-ncd/index.html#conclusion",
+    "href": "research/markov-ncd/index.html#conclusion",
+    "title": "Markov Chain Modelling of No-Claims Discount Systems",
+    "section": "Conclusion",
+    "text": "Conclusion\nA Markov-chain representation of an NCD system provides a concise link between policyholder claims experience, rating-class migration, and future premium income. The model is transparent, auditable, and straightforward to implement in R.\nFor practical actuarial use, the next development step would be to estimate transition matrices from portfolio experience, segment the assumptions by material risk characteristics, and integrate projected premium with claims, expenses, lapses, and capital requirements."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "This section presents reproducible technical work in actuarial modelling, stochastic processes, insurance analytics, and statistical computing. Each article focuses on the practical interpretation of a model alongside its mathematical and computational implementation."
+  },
+  {
+    "objectID": "research.html#overview",
+    "href": "research.html#overview",
+    "title": "Research",
+    "section": "",
+    "text": "This section presents reproducible technical work in actuarial modelling, stochastic processes, insurance analytics, and statistical computing. Each article focuses on the practical interpretation of a model alongside its mathematical and computational implementation."
   }
 ]
