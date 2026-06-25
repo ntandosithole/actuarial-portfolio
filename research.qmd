@@ -1,59 +1,26 @@
 ---
 title: "Research"
 subtitle: "Technical Reviews and Actuarial Analysis"
+listing:
+  contents:
+    - research
+  sort: "date desc"
+  type: default
+  fields:
+    - image
+    - title
+    - description
+    - date
+    - categories
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
 ---
 
 ## Overview
 
-Use this page to publish technical reviews, research summaries, and applied
-actuarial analyses. Each review can follow the structure below.
-
-## Technical Review Title
-
-### Abstract
-
-Provide a concise summary of the question, methods, principal findings, and
-actuarial relevance.
-
-### Background
-
-Introduce the problem, define the context, and cite the relevant literature.
-
-### Methodology
-
-Describe the assumptions, data, notation, and analytical approach.
-
-For example, the present value of a discrete future loss random variable may
-be written as
-
-$$
-Z = v^T b_T,
-$$
-
-where \(v = (1 + i)^{-1}\), \(T\) is the time of payment, and \(b_T\) is the
-benefit payable at time \(T\).
-
-An expected present value can then be expressed as
-
-$$
-\operatorname{EPV}(Z)
-= \operatorname{E}\!\left[v^T b_T\right].
-$$
-
-### Results
-
-Present the main results with clearly labelled tables, figures, and equations.
-
-### Discussion
-
-Interpret the findings, discuss limitations, and explain their practical
-actuarial implications.
-
-### Conclusion
-
-Summarize the principal insight and identify possible extensions.
-
-### References
-
-Add references using a project bibliography or properly formatted Markdown
-citations.
+This section presents reproducible technical work in actuarial modelling,
+stochastic processes, insurance analytics, and statistical computing. Each
+article focuses on the practical interpretation of a model alongside its
+mathematical and computational implementation.

@@ -1,0 +1,144 @@
+:root {
+  --portfolio-navy: #0d2742;
+  --portfolio-blue: #174a69;
+  --portfolio-teal: #2a8c8c;
+  --portfolio-sand: #d9c8a9;
+  --portfolio-ink: #172633;
+  --portfolio-muted: #5d6c78;
+  --portfolio-surface: #f5f8fa;
+}
+
+body {
+  color: var(--portfolio-ink);
+  background:
+    radial-gradient(circle at 92% 8%, rgb(42 140 140 / 8%), transparent 25rem),
+    #ffffff;
+}
+
+.navbar {
+  background: linear-gradient(105deg, var(--portfolio-navy), var(--portfolio-blue)) !important;
+  box-shadow: 0 0.35rem 1rem rgb(13 39 66 / 18%);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: #c6eeee !important;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--portfolio-navy);
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  margin-top: 2.4rem;
+}
+
+a {
+  color: var(--portfolio-blue);
+}
+
+a:hover {
+  color: var(--portfolio-teal);
+}
+
+.about-entity .about-image {
+  border: 0.35rem solid #ffffff;
+  background: var(--portfolio-navy);
+  box-shadow:
+    0 1.2rem 2.8rem rgb(13 39 66 / 22%),
+    0 0 0 1px rgb(13 39 66 / 8%);
+}
+
+.about-entity .about-link {
+  border-color: rgb(23 74 105 / 25%);
+  border-radius: 999px;
+  color: var(--portfolio-navy);
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.about-entity .about-link:hover {
+  color: var(--portfolio-navy);
+  border-color: var(--portfolio-teal);
+  background-color: rgb(42 140 140 / 9%);
+  transform: translateY(-2px);
+}
+
+#professional-profile + p {
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+#areas-of-practice + ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+#areas-of-practice + ul li {
+  padding: 0.9rem 1rem;
+  border-left: 0.25rem solid var(--portfolio-teal);
+  border-radius: 0.3rem;
+  background: var(--portfolio-surface);
+}
+
+.quarto-listing-default .listing-item {
+  overflow: hidden;
+  padding: 1.15rem;
+  border: 1px solid rgb(13 39 66 / 10%);
+  border-radius: 0.8rem;
+  background: #ffffff;
+  box-shadow: 0 0.65rem 1.8rem rgb(13 39 66 / 8%);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.quarto-listing-default .listing-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.9rem 2.2rem rgb(13 39 66 / 13%);
+}
+
+.quarto-listing-default .listing-image {
+  border-radius: 0.55rem;
+}
+
+.quarto-category {
+  color: var(--portfolio-blue);
+  border-color: rgb(42 140 140 / 30%);
+  background: rgb(42 140 140 / 8%);
+}
+
+blockquote {
+  border-left-color: var(--portfolio-teal);
+  background: var(--portfolio-surface);
+}
+
+footer.footer {
+  margin-top: 4rem;
+  color: #dce8ef;
+  background: var(--portfolio-navy);
+}
+
+footer.footer a {
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  #areas-of-practice + ul {
+    grid-template-columns: 1fr;
+  }
+}

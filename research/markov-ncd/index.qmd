@@ -1,0 +1,427 @@
+---
+title: "Markov Chain Modelling of No-Claims Discount Systems"
+author: "Ntando Sithole"
+date: "2026-06-20"
+description: "A reproducible R framework for projecting rating-class migration, premium income, and the long-run portfolio mix of a no-claims discount system."
+image: ../../assets/markov-ncd-cover.svg
+image-alt: "Abstract transition paths connecting four no-claims discount classes"
+categories:
+  - Stochastic Processes
+  - Actuarial Modelling
+  - General Insurance
+  - R
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-copy: true
+execute:
+  freeze: true
+  echo: true
+  warning: false
+  message: false
+---
+
+## Introduction
+
+No-claims discount (NCD) systems adjust a policyholder's renewal premium
+according to recent claims experience. A policyholder typically moves toward a
+higher-discount class after a claim-free year and toward a lower-discount class
+after one or more claims.
+
+A discrete-time Markov chain provides a transparent framework for modelling
+these movements. The approach supports several practical actuarial tasks,
+including:
+
+- projecting the future distribution of policyholders across rating classes;
+- estimating expected premium income over a planning horizon;
+- assessing the long-run mix of an NCD portfolio; and
+- testing the financial effect of alternative transition rules or discount
+  scales.
+
+This article develops an illustrative four-class NCD model using reproducible
+base R code. The assumptions are synthetic and are intended to demonstrate the
+method rather than represent a calibrated insurance portfolio.
+
+## Methodology
+
+Let \(X_t\) denote the NCD class occupied at the start of policy year \(t\).
+The state space is
+
+$$
+\mathcal{S} = \{1,2,3,4\},
+$$
+
+where Class 1 carries no discount and Class 4 carries the highest discount.
+Under the first-order Markov assumption,
+
+$$
+\Pr(X_{t+1}=j \mid X_t=i, X_{t-1},\ldots,X_0)
+= \Pr(X_{t+1}=j \mid X_t=i)
+= p_{ij}.
+$$
+
+The one-year transition matrix is
+
+$$
+\mathbf{P}
+=
+\begin{pmatrix}
+0.17 & 0.83 & 0.00 & 0.00 \\
+0.17 & 0.00 & 0.83 & 0.00 \\
+0.05 & 0.12 & 0.00 & 0.83 \\
+0.00 & 0.00 & 0.05 & 0.95
+\end{pmatrix}.
+$$
+
+Each row sums to one. Entry \(p_{ij}\) is the probability that a policyholder
+in Class \(i\) at the start of one year occupies Class \(j\) at the start of the
+next year.
+
+If \(\boldsymbol{q}_0\) is the initial row vector of class probabilities, the
+distribution after \(t\) transitions is
+
+$$
+\boldsymbol{q}_t = \boldsymbol{q}_0\mathbf{P}^t.
+$$
+
+For a base annual premium \(B\) and discount vector
+\(\boldsymbol{d}=(d_1,\ldots,d_4)^\mathsf{T}\), the premium vector is
+
+$$
+\boldsymbol{b}
+= B(\boldsymbol{1}-\boldsymbol{d}).
+$$
+
+The expected premium payable in policy year \(t+1\) is therefore
+
+$$
+\operatorname{E}[B_{t+1}]
+= \boldsymbol{q}_0\mathbf{P}^{t}\boldsymbol{b},
+$$
+
+and expected cumulative premium over \(n\) years is
+
+$$
+\operatorname{E}[C_n]
+= \sum_{t=0}^{n-1}
+  \boldsymbol{q}_0\mathbf{P}^{t}\boldsymbol{b}.
+$$
+
+This timing convention assumes that the premium for each year is determined by
+the class occupied at the start of that year.
+
+## Implementation in R
+
+### Transition assumptions
+
+```{r}
+#| label: define-transition-matrix
+
+states <- paste("Class", 1:4)
+
+P <- matrix(
+  c(
+    0.17, 0.83, 0.00, 0.00,
+    0.17, 0.00, 0.83, 0.00,
+    0.05, 0.12, 0.00, 0.83,
+    0.00, 0.00, 0.05, 0.95
+  ),
+  nrow = 4,
+  byrow = TRUE,
+  dimnames = list(states, states)
+)
+
+stopifnot(all(abs(rowSums(P) - 1) < 1e-12))
+
+knitr::kable(
+  P,
+  digits = 2,
+  caption = "Illustrative annual transition matrix"
+)
+```
+
+The matrix reflects progressive movement toward higher-discount classes for
+policyholders with favourable experience, while retaining a mechanism for
+movement toward lower-discount classes.
+
+### Multi-year transition probabilities
+
+The following function calculates \(\mathbf{P}^n\), including
+\(\mathbf{P}^0=\mathbf{I}\).
+
+```{r}
+#| label: matrix-power
+
+matrix_power <- function(P, n) {
+  stopifnot(
+    nrow(P) == ncol(P),
+    length(n) == 1,
+    n >= 0,
+    n == as.integer(n)
+  )
+
+  result <- diag(nrow(P))
+
+  if (n > 0) {
+    for (step in seq_len(n)) {
+      result <- result %*% P
+    }
+  }
+
+  dimnames(result) <- dimnames(P)
+  result
+}
+
+P_5 <- matrix_power(P, 5)
+
+knitr::kable(
+  P_5,
+  digits = 4,
+  caption = "Five-year transition probabilities"
+)
+```
+
+The first row of \(\mathbf{P}^5\) gives the class distribution after five
+transitions for a policyholder who begins in Class 1.
+
+### Stationary distribution
+
+For an ergodic chain, the stationary distribution
+\(\boldsymbol{\pi}\) satisfies
+
+$$
+\boldsymbol{\pi}\mathbf{P}=\boldsymbol{\pi},
+\qquad
+\sum_{j=1}^{4}\pi_j=1.
+$$
+
+The system can be solved directly using a constrained linear system.
+
+```{r}
+#| label: stationary-distribution
+
+stationary_distribution <- function(P) {
+  n_states <- nrow(P)
+
+  coefficient_matrix <- rbind(
+    t(P) - diag(n_states),
+    rep(1, n_states)
+  )
+
+  target <- c(rep(0, n_states), 1)
+  stationary <- as.vector(qr.solve(coefficient_matrix, target))
+
+  setNames(stationary, colnames(P))
+}
+
+stationary <- stationary_distribution(P)
+
+knitr::kable(
+  data.frame(
+    Class = names(stationary),
+    Probability = as.numeric(stationary)
+  ),
+  digits = 4,
+  caption = "Stationary class distribution"
+)
+```
+
+Under the illustrative assumptions, approximately \(92.7\%\) of the long-run
+portfolio occupies Class 4. This concentration is driven by the high
+probability of remaining in Class 4 once it has been reached.
+
+### Expected premium projection
+
+Assume a base annual premium of \(750\) monetary units and class discounts of
+\(0\%\), \(15\%\), \(25\%\), and \(30\%\).
+
+```{r}
+#| label: premium-assumptions
+
+base_premium <- 750
+discounts <- c(0.00, 0.15, 0.25, 0.30)
+premium_by_class <- base_premium * (1 - discounts)
+names(premium_by_class) <- states
+
+knitr::kable(
+  data.frame(
+    Class = states,
+    Discount = sprintf("%.0f%%", 100 * discounts),
+    Premium = premium_by_class
+  ),
+  caption = "Illustrative NCD premium scale"
+)
+```
+
+```{r}
+#| label: premium-projection-function
+
+expected_premium_projection <- function(
+  P,
+  initial_distribution,
+  premium_by_class,
+  years
+) {
+  stopifnot(
+    length(initial_distribution) == nrow(P),
+    length(premium_by_class) == ncol(P),
+    abs(sum(initial_distribution) - 1) < 1e-12,
+    years >= 1
+  )
+
+  class_distributions <- matrix(
+    NA_real_,
+    nrow = years,
+    ncol = ncol(P),
+    dimnames = list(
+      paste("Year", seq_len(years)),
+      colnames(P)
+    )
+  )
+
+  annual_premium <- numeric(years)
+  current_distribution <- initial_distribution
+
+  for (year in seq_len(years)) {
+    class_distributions[year, ] <- current_distribution
+    annual_premium[year] <- sum(
+      current_distribution * premium_by_class
+    )
+    current_distribution <- current_distribution %*% P
+  }
+
+  list(
+    class_distributions = class_distributions,
+    annual_premium = annual_premium,
+    cumulative_premium = cumsum(annual_premium)
+  )
+}
+
+new_policyholder <- setNames(c(1, 0, 0, 0), states)
+
+projection <- expected_premium_projection(
+  P = P,
+  initial_distribution = new_policyholder,
+  premium_by_class = premium_by_class,
+  years = 10
+)
+
+projection_table <- data.frame(
+  Year = seq_len(10),
+  Expected_Annual_Premium = projection$annual_premium,
+  Expected_Cumulative_Premium = projection$cumulative_premium
+)
+
+knitr::kable(
+  projection_table,
+  digits = 2,
+  caption = "Ten-year expected premium projection for a Class 1 policyholder"
+)
+```
+
+The expected cumulative premium over ten years is approximately \(5{,}825.47\)
+monetary units. The annual expected premium declines as probability mass moves
+toward the higher-discount classes.
+
+```{r}
+#| label: premium-projection-plot
+#| fig-cap: "Expected annual premium and its long-run equilibrium level"
+
+long_run_premium <- sum(stationary * premium_by_class)
+
+plot(
+  seq_len(10),
+  projection$annual_premium,
+  type = "b",
+  pch = 19,
+  xlab = "Policy year",
+  ylab = "Expected premium",
+  ylim = range(c(projection$annual_premium, long_run_premium))
+)
+
+abline(
+  h = long_run_premium,
+  lty = 2,
+  col = "steelblue"
+)
+
+legend(
+  "topright",
+  legend = c("Projected annual premium", "Long-run expected premium"),
+  lty = c(1, 2),
+  pch = c(19, NA),
+  col = c("black", "steelblue"),
+  bty = "n"
+)
+```
+
+The long-run expected annual premium is
+
+$$
+\boldsymbol{\pi}\boldsymbol{b}
+\approx 529.67.
+$$
+
+This is a portfolio-mix result under the model assumptions; it is not, by
+itself, a measure of technical profitability.
+
+## Actuarial Interpretation
+
+The model separates two commercially important components:
+
+1. **Policyholder migration:** The transition matrix captures how claims
+   experience changes future rating classes.
+2. **Financial impact:** The premium vector converts projected class
+   distributions into expected income.
+
+This separation makes the framework useful for pricing governance and scenario
+analysis. An actuary can change the transition rules without changing the
+discount scale, or revise the discount scale while holding policyholder
+behaviour constant. The financial effect of each design decision can therefore
+be assessed independently.
+
+The stationary distribution also provides a useful diagnostic. A very high
+concentration in the maximum-discount class may indicate that the scale is
+generous relative to claim frequency, that downward movements are too weak, or
+that the model omits lapse and selection effects. In practice, the result
+should be compared with observed portfolio distributions and tested under
+alternative experience assumptions.
+
+## Model Limitations
+
+The model is intentionally compact. A production implementation would need to
+address several limitations:
+
+- **Markov assumption:** Future class movement is assumed to depend only on
+  the current class. Claim history beyond the current state may still contain
+  predictive information.
+- **Time homogeneity:** Transition probabilities are assumed constant.
+  Inflation, underwriting actions, economic conditions, and portfolio mix can
+  cause them to vary over time.
+- **Portfolio heterogeneity:** A single matrix may conceal material differences
+  by age, vehicle type, territory, distribution channel, or risk segment.
+- **Lapses and new business:** The closed-chain model does not include entry,
+  cancellation, non-renewal, or reinstatement.
+- **Premium adequacy:** Premium income is projected without claim costs,
+  expenses, commission, reinsurance, tax, or the cost of capital.
+- **Parameter uncertainty:** Estimated transition probabilities are subject to
+  sampling error and should be accompanied by sensitivity or simulation
+  analysis.
+
+These limitations do not invalidate the framework. They define the additional
+features required before it can support pricing, reserving, planning, or
+capital decisions.
+
+## Conclusion
+
+A Markov-chain representation of an NCD system provides a concise link between
+policyholder claims experience, rating-class migration, and future premium
+income. The model is transparent, auditable, and straightforward to implement
+in R.
+
+For practical actuarial use, the next development step would be to estimate
+transition matrices from portfolio experience, segment the assumptions by
+material risk characteristics, and integrate projected premium with claims,
+expenses, lapses, and capital requirements.

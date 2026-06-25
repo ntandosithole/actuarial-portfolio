@@ -1,21 +1,21 @@
 ---
-title: "Your Name"
+title: "Ntando Sithole"
 subtitle: "Actuarial Specialist | Cell Captives, Valuations and Capital Modelling"
-image: assets/profile-placeholder.svg
+image: assets/profile-avatar-male.png
+image-alt: "Male illustrated profile avatar of Ntando Sithole"
 about:
   template: trestles
+  image: assets/profile-avatar-male.png
+  image-alt: "Male illustrated profile avatar of Ntando Sithole"
   image-shape: round
   image-width: 18em
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/your-profile
-    - icon: github
-      text: GitHub
-      href: https://github.com/your-username
+      href: https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/
     - icon: envelope
       text: Email
-      href: mailto:your.email@example.com
+      href: mailto:ntandwenhle.sithole@gmail.com
 ---
 
 ## Professional Profile

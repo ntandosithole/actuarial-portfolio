@@ -1,5 +1,7 @@
 /.quarto/
 /_site/
 
+research/**/index_cache/
+research/**/index_files/
 
 **/*.quarto_ipynb

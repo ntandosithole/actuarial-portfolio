@@ -1,9 +1,14 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - assets/markov-ncd-cover.svg
+    - assets/life-insurance-reserve-cover.svg
 
 website:
-  title: "Actuarial Portfolio"
+  title: "Ntando Sithole"
+  favicon: assets/favicon.svg
+  search: true
   navbar:
     background: primary
     left:
@@ -14,11 +19,13 @@ website:
       - text: "Research"
         href: research.qmd
   page-footer:
-    center: "© 2026 Your Name"
+    left: "© 2026 Ntando Sithole"
+    right: "Built with Quarto"
 
 format:
   html:
     theme: cosmo
+    css: styles.css
     toc: true
     smooth-scroll: true
     link-external-newwindow: true

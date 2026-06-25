@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Life insurance reserve modelling cover graphic</title>
+  <desc id="desc">A shield, cash-flow bars, mortality curve and reserve trajectory on a navy actuarial modelling background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071b2f"/>
+      <stop offset="0.55" stop-color="#102f4f"/>
+      <stop offset="1" stop-color="#183b5e"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5f7fb"/>
+      <stop offset="1" stop-color="#d7e4ee"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#3dc5b6"/>
+      <stop offset="1" stop-color="#6fd6c9"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M 52 0 L 0 0 0 52" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+
+  <path d="M-40 520 C180 395 280 610 470 430 C630 278 740 422 920 265 C1038 162 1115 184 1248 95"
+        fill="none" stroke="#3dc5b6" stroke-width="10" stroke-linecap="round" opacity="0.33"/>
+  <path d="M-35 350 C140 310 240 230 390 275 C520 314 560 470 712 420 C866 368 890 168 1070 132 C1130 120 1170 124 1238 144"
+        fill="none" stroke="#f1c45b" stroke-width="5" stroke-linecap="round" opacity="0.48"/>
+  <path d="M86 606 C255 526 352 546 475 474 C600 400 680 260 813 280 C944 300 995 390 1170 338"
+        fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+
+  <g opacity="0.36">
+    <circle cx="168" cy="179" r="5" fill="#f1c45b"/>
+    <circle cx="228" cy="214" r="5" fill="#3dc5b6"/>
+    <circle cx="994" cy="95" r="5" fill="#f1c45b"/>
+    <circle cx="1038" cy="525" r="6" fill="#3dc5b6"/>
+    <circle cx="1116" cy="480" r="5" fill="#ffffff"/>
+  </g>
+
+  <g transform="translate(114 146)" filter="url(#soft-shadow)">
+    <rect x="0" y="0" width="418" height="382" rx="34" fill="#ffffff" opacity="0.95"/>
+    <rect x="32" y="44" width="72" height="270" rx="12" fill="#183b5e" opacity="0.18"/>
+    <rect x="132" y="94" width="72" height="220" rx="12" fill="#3dc5b6" opacity="0.80"/>
+    <rect x="232" y="144" width="72" height="170" rx="12" fill="#f1c45b" opacity="0.86"/>
+    <rect x="332" y="72" width="54" height="242" rx="12" fill="#6fd6c9" opacity="0.58"/>
+    <path d="M44 260 C108 226 150 230 202 190 C250 153 274 129 350 118"
+          fill="none" stroke="#2b4865" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="44" cy="260" r="10" fill="#2b4865"/>
+    <circle cx="202" cy="190" r="10" fill="#2b4865"/>
+    <circle cx="350" cy="118" r="10" fill="#2b4865"/>
+  </g>
+
+  <g transform="translate(492 104)" filter="url(#soft-shadow)">
+    <path d="M174 0 C234 42 297 54 352 56 L352 226 C352 339 279 407 176 458 C73 407 0 339 0 226 L0 56 C55 54 116 42 174 0Z"
+          fill="url(#shield)"/>
+    <path d="M176 54 C219 84 266 92 306 94 L306 226 C306 305 254 355 176 394 C98 355 46 305 46 226 L46 94 C87 92 133 84 176 54Z"
+          fill="none" stroke="#183b5e" stroke-width="14" opacity="0.88"/>
+    <path d="M106 226 L154 272 L252 166"
+          fill="none" stroke="#3dc5b6" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M118 132 C154 108 197 108 234 132"
+          fill="none" stroke="#f1c45b" stroke-width="12" stroke-linecap="round" opacity="0.84"/>
+  </g>
+
+  <g transform="translate(825 138)" filter="url(#soft-shadow)">
+    <rect x="0" y="0" width="264" height="382" rx="34" fill="#ffffff" opacity="0.94"/>
+    <path d="M42 306 C78 284 92 238 112 214 C144 176 163 158 196 84"
+          fill="none" stroke="#3dc5b6" stroke-width="10" stroke-linecap="round"/>
+    <path d="M42 314 C82 305 126 310 166 258 C196 219 214 158 228 58"
+          fill="none" stroke="#183b5e" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="42" cy="306" r="10" fill="#f1c45b"/>
+    <circle cx="112" cy="214" r="10" fill="#f1c45b"/>
+    <circle cx="196" cy="84" r="10" fill="#f1c45b"/>
+    <path d="M34 334 H232" stroke="#183b5e" stroke-width="4" opacity="0.24"/>
+    <path d="M34 334 V44" stroke="#183b5e" stroke-width="4" opacity="0.24"/>
+  </g>
+</svg>

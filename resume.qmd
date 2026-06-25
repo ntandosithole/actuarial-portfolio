@@ -1,25 +1,131 @@
 ---
 title: "Resume"
+subtitle: "Actuarial Specialist | IFRS 17 Valuations, Cell Captives and Capital Modelling"
+toc: true
 ---
 
 ## Professional Summary
 
-Add a short summary of your actuarial experience, technical strengths, and
-professional objectives.
+Actuarial Specialist with experience since 2019 across cell-captive insurance,
+credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee
+benefit valuations, and investment analytics.
+
+My current work covers actuarial reporting cycles, valuation result analysis,
+best estimate liabilities, risk adjustment, liability for remaining coverage,
+CSM-related analysis, Analysis of Surplus, experience investigations, capital
+analysis, model output review, reconciliations, quality assurance, and
+audit-ready reporting support.
+
+I use R, Python, SQL, VBA, and advanced Excel to improve actuarial production,
+strengthen controls, and develop reproducible analytical workflows.
+
+## Professional Experience
+
+### Actuarial Specialist — Cell Captives
+
+**Old Mutual Alternative Risk Transfer (OMART), Sandton**<br>
+*April 2023–Present*
+
+- Deliver IFRS 17 actuarial reporting for cell-captive portfolios, including
+  credit-life and disability business, across monthly, quarterly, and annual
+  reporting cycles.
+- Analyse best estimate liabilities, risk adjustment, liability for remaining
+  coverage, CSM-related movements, cohort results, new business impacts, profit
+  emergence, and Analysis of Surplus.
+- Review actuarial and Prophet-related outputs, investigate unusual movements,
+  reconcile results to downstream reporting, and support improvements to the
+  valuation process.
+- Lead SAM reporting and capital analysis, including available capital, cover
+  ratios, model alignment, and governance checks.
+- Perform claims and exposure analysis across mortality, morbidity,
+  retrenchment, arrears, reinstatements, settlements, premium adjustments,
+  IBNR, and reporting delays.
+- Apply first-line quality assurance through data validation, reasonability
+  checks, reconciliations, controlled review layers, and documented resolution
+  of discrepancies.
+- Support audit and formal reporting requirements with clear technical
+  explanations, supporting schedules, process documentation, and evidence of
+  controls.
+- Automate data flows and reporting processes using Python, R, SQL, VBA, and
+  Excel.
+
+### Actuarial Analyst — Asset Consulting
+
+**Simeka Consultants & Actuaries, Sandton**<br>
+*February 2021–April 2023*
+
+- Produced portfolio monitoring and management reports covering investment
+  returns, volatility, asset allocation, benchmark performance, and portfolio
+  movements.
+- Developed dashboards and Excel-based reporting tools that improved the
+  consistency, automation, and interpretation of recurring client reports.
+- Prepared investment commentary and analysis supporting trustee decisions,
+  strategy reviews, and portfolio governance.
+- Assessed market movements, investment manager performance, and asset-class
+  exposures for institutional clients.
+
+### Actuarial Analyst — Employee Benefit Valuations
+
+**Simeka Consultants & Actuaries, Sandton**<br>
+*February 2019–January 2021*
+
+- Prepared data, assumptions, and supporting analysis for defined benefit,
+  defined contribution, IAS 19, and other employee benefit valuations.
+- Calculated liability projections and actuarial reserves, and contributed to
+  valuation reports, surplus analyses, pension increase reviews, and Section 14
+  calculations.
+- Performed experience investigations covering mortality, expenses,
+  contributions, and liability movements.
+- Conducted data validation, reasonability checks, and reconciliations to
+  support accurate and complete valuation results.
+
+## Selected Achievements
+
+- Managed full-year dividend and valuation reporting, including liquidity
+  monitoring and the classification of complex settlement and lapse movements.
+- Led a SAM model-alignment project with external consultants to update the
+  valuation to the December 2025 position.
+- Investigated expense reserve bases and liability positions and reallocated
+  risk adjustments to resolve audit queries.
+- Developed Python automation that reduced valuation-cycle effort and improved
+  the reliability of actuarial data flows and reconciliations.
+- Strengthened governance through improved process documentation, quality
+  controls, and audit-ready evidence.
+- Produced analysis that informed board-level decisions, capital discussions,
+  and performance reviews.
+
+## Technical Capabilities
+
+**Actuarial and financial reporting:** IFRS 17 valuations, SAM reporting,
+best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of
+Surplus, experience investigations, reserving inputs, capital analysis, and
+audit support.
+
+**Modelling and production:** Prophet Professional, Prophet Enterprise, model
+output analysis, result reconciliation, valuation controls, and actuarial
+process improvement.
+
+**Data and automation:** R, Python, SQL, VBA, advanced Excel, automated data
+workflows, reproducible modelling templates, dashboard development, and
+quality-control automation.
+
+**R experience:** survival analysis, generalised linear models, random forests,
+stochastic modelling, and data manipulation with the tidyverse.
 
 ## Education
 
-Add your degrees, institutions, and relevant academic distinctions.
+### BSc (Honours), Actuarial Science
 
-## Experience
+**University of the Witwatersrand, 2018**
 
-Add your professional experience in reverse chronological order.
+### BSc, Actuarial Science and Mathematical Statistics
 
-## Skills
+**University of the Witwatersrand, 2015–2017**
 
-Add actuarial, statistical, programming, and communication skills.
+## Actuarial Progress
 
-## Professional Development
+Completed subjects include A111 (CT3), A112 (CT7), A113 (CT2), A211 (CT1),
+A213 (CT5), A214 (CT8), and A311 (CA1), or their equivalent core subjects.
 
-Add actuarial examinations, certifications, memberships, and continuing
-professional development activities.
+Completed the CS2 examinations in April 2026 and currently progressing toward
+F105 and the remaining fellowship requirements.
