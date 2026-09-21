@@ -5,6 +5,10 @@ date: "2026-06-24"
 description: "A reproducible R model for term assurance cash flows, level premiums, prospective reserves, and sensitivity testing under synthetic mortality assumptions."
 image: ../../assets/life-insurance-reserve-cover.svg
 image-alt: "Abstract life insurance reserve modelling graphic with a shield, cash-flow bars, and reserve curve"
+open-graph:
+  image: ../../assets/life-insurance-reserve-social.png
+twitter-card:
+  image: ../../assets/life-insurance-reserve-social.png
 categories:
   - Life Insurance
   - Actuarial Modelling
@@ -45,11 +49,11 @@ the code can be rendered without external data files.
 
 ## Methodology
 
-Consider a policy issued to a life aged \(x\), with term \(n\), annual effective
-interest rate \(i\), discount factor \(v=(1+i)^{-1}\), and sum assured \(S\).
-Let \(q_{x+t}\) denote the one-year mortality rate at attained age \(x+t\).
+Consider a policy issued to a life aged $x$, with term $n$, annual effective
+interest rate $i$, discount factor $v=(1+i)^{-1}$, and sum assured $S$.
+Let $q_{x+t}$ denote the one-year mortality rate at attained age $x+t$.
 
-The probability of surviving from issue to the start of policy year \(t+1\) is
+The probability of surviving from issue to the start of policy year $t+1$ is
 
 $$
 {}_{t}p_x =
@@ -85,7 +89,7 @@ P =
 {\ddot{a}_{x:\overline{n}|}}.
 $$
 
-At duration \(k\), immediately after the \(k\)-th policy anniversary, the
+At duration $k$, immediately after the $k$-th policy anniversary, the
 prospective net reserve for an in-force policy is
 
 $$
@@ -288,6 +292,7 @@ knitr::kable(head(display_cash_flows, 8))
 ```{r}
 #| label: plot-cash-flows
 #| fig-cap: "Expected annual cash flows for the illustrative term assurance portfolio."
+#| fig-alt: "Line chart of expected annual portfolio cash flows in R millions over 20 policy years. Premiums stay close to R0.71 million; claims rise from about R0.39 million to R0.54 million, and claims plus expenses rise from about R0.64 million to R0.79 million, exceeding premiums from policy year 14."
 plot(
   cash_flows$policy_year,
   cash_flows$expected_premiums / 1e6,
@@ -369,12 +374,16 @@ reserve_display <- reserve_table
 reserve_display$reserve_per_policy <-
   format_currency(reserve_display$reserve_per_policy)
 
-knitr::kable(reserve_display[seq(1, nrow(reserve_display), by = 4), ])
+knitr::kable(
+  reserve_display[seq(1, nrow(reserve_display), by = 4), ],
+  row.names = FALSE
+)
 ```
 
 ```{r}
 #| label: plot-reserve-trajectory
 #| fig-cap: "Prospective net reserve per in-force policy by duration."
+#| fig-alt: "Line chart of the prospective net reserve per in-force policy by duration. The reserve is zero at issue, rises to a peak of about R352 at duration 13 and returns to zero at the end of the 20-year term."
 plot(
   reserve_table$duration,
   reserve_table$reserve_per_policy,

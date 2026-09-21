@@ -1,8 +1,19 @@
 ---
 title: "Resume"
 subtitle: "Actuarial Specialist | IFRS 17 Valuations, Cell Captives and Capital Modelling"
+description: "Resume of Ntando Sithole, Actuarial Specialist: IFRS 17 and SAM reporting for cell-captive portfolios, employee benefit valuations, investment analytics and actuarial automation."
+image: assets/profile-avatar-male-640.jpg
+image-alt: "Male illustrated profile avatar of Ntando Sithole"
+body-classes: hide-description
+twitter-card:
+  card-style: summary
 toc: true
 ---
+
+::: {.resume-contact}
+[[]{.bi .bi-linkedin aria-hidden="true"} LinkedIn](https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/)
+[[]{.bi .bi-envelope aria-hidden="true"} Email](mailto:ntandwenhle.sithole@gmail.com)
+:::
 
 ## Professional Summary
 
@@ -96,6 +107,7 @@ strengthen controls, and develop reproducible analytical workflows.
 
 ## Technical Capabilities
 
+::: {.capability-grid}
 **Actuarial and financial reporting:** IFRS 17 valuations, SAM reporting,
 best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of
 Surplus, experience investigations, reserving inputs, capital analysis, and
@@ -111,6 +123,7 @@ quality-control automation.
 
 **R experience:** survival analysis, generalised linear models, random forests,
 stochastic modelling, and data manipulation with the tidyverse.
+:::
 
 ## Education
 

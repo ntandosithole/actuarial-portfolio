@@ -1,0 +1,14 @@
+---
+title: "Page not found"
+toc: false
+search: false
+---
+
+The page you requested could not be found. It may have moved when this
+portfolio was updated.
+
+::: {.profile-actions}
+[Home](index.qmd){.btn .btn-primary}
+[Resume](resume.qmd){.btn .btn-outline-primary}
+[Research](research.qmd){.btn .btn-outline-primary}
+:::

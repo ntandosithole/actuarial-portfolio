@@ -4,11 +4,20 @@ project:
   resources:
     - assets/markov-ncd-cover.svg
     - assets/life-insurance-reserve-cover.svg
+    - assets/markov-ncd-social.png
+    - assets/life-insurance-reserve-social.png
+
+lang: en-GB
 
 website:
   title: "Ntando Sithole"
+  description: "Actuarial portfolio of Ntando Sithole: cell captives, IFRS 17, MCEV and SAM valuations, capital modelling and reproducible analysis in R."
+  site-url: https://ntandosithole.com
   favicon: assets/favicon.svg
   search: true
+  back-to-top-navigation: true
+  open-graph: true
+  twitter-card: true
   navbar:
     background: primary
     left:
@@ -20,12 +29,23 @@ website:
         href: research.qmd
   page-footer:
     left: "© 2026 Ntando Sithole"
+    center:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/
+        aria-label: "LinkedIn"
+      - icon: envelope
+        href: mailto:ntandwenhle.sithole@gmail.com
+        aria-label: "Email"
     right: "Built with Quarto"
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - cosmo
+      - theme.scss
     css: styles.css
     toc: true
     smooth-scroll: true
     link-external-newwindow: true
+    link-external-filter: '^(?:https?://(?:www\.)?ntandosithole\.(?:com|github\.io)|https?://(?:localhost|127\.0\.0\.1)(?::[0-9]+)?/|file:)'
+    include-after-body: _includes/accessibility.html

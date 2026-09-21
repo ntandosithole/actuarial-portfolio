@@ -1,0 +1,51 @@
+<script>
+  (function () {
+    // Skip link: first focusable element on every page.
+    var main = document.getElementById("quarto-document-content");
+    if (main) {
+      if (!main.hasAttribute("tabindex")) {
+        main.setAttribute("tabindex", "-1");
+      }
+      var skip = document.createElement("a");
+      skip.className = "skip-link";
+      skip.href = "#quarto-document-content";
+      skip.textContent = "Skip to main content";
+      skip.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        main.scrollIntoView();
+        main.focus({ preventScroll: true });
+      });
+      var header = document.getElementById("quarto-header");
+      var container = header || document.body;
+      container.insertBefore(skip, container.firstChild);
+    }
+
+    // Keyboard access to horizontally scrollable tables, code and equations.
+    var selector = ".cell-output-display, div.sourceCode, mjx-container[display='true']";
+    function update() {
+      document.querySelectorAll(selector).forEach(function (el) {
+        var scrollable = el.scrollWidth > el.clientWidth + 1;
+        if (scrollable && !el.hasAttribute("tabindex")) {
+          el.setAttribute("tabindex", "0");
+          el.setAttribute("data-scroll-region", "");
+        } else if (!scrollable && el.hasAttribute("data-scroll-region")) {
+          el.removeAttribute("tabindex");
+          el.removeAttribute("data-scroll-region");
+        }
+      });
+    }
+    var timer;
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(update, 150);
+    }
+    window.addEventListener("load", function () {
+      update();
+      if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+        window.MathJax.startup.promise.then(update);
+      }
+    });
+    window.addEventListener("resize", schedule);
+  })();
+</script>

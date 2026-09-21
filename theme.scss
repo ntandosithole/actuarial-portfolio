@@ -1,0 +1,29 @@
+/*-- scss:defaults --*/
+
+// Navy/teal portfolio identity applied to the Cosmo theme
+$portfolio-navy: #0d2742;
+$portfolio-blue: #174a69;
+$portfolio-teal: #2a8c8c;
+$portfolio-teal-dark: #1f6f6f;
+$portfolio-ink: #172633;
+$portfolio-surface: #f5f8fa;
+
+$primary: $portfolio-blue;
+$body-color: $portfolio-ink;
+$headings-color: $portfolio-navy;
+$link-color: $portfolio-blue;
+$link-hover-color: $portfolio-teal-dark;
+
+$navbar-bg: $portfolio-navy;
+$navbar-fg: #ffffff;
+$navbar-hl: #c6eeee;
+
+$footer-bg: $portfolio-navy;
+$footer-fg: #dce8ef;
+
+$toc-color: $portfolio-blue;
+$toc-active-border: $portfolio-teal;
+
+$code-color: #14505f;
+$code-block-bg: $portfolio-surface;
+$code-block-border-left: $portfolio-teal;

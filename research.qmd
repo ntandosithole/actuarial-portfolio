@@ -1,6 +1,13 @@
 ---
 title: "Research"
 subtitle: "Technical Reviews and Actuarial Analysis"
+description: "Reproducible technical reviews by Ntando Sithole in actuarial modelling, insurance analytics and statistical computing, implemented in R."
+image: assets/profile-avatar-male-640.jpg
+image-alt: "Male illustrated profile avatar of Ntando Sithole"
+body-classes: hide-description
+twitter-card:
+  card-style: summary
+toc: false
 listing:
   contents:
     - research
@@ -11,6 +18,7 @@ listing:
     - title
     - description
     - date
+    - reading-time
     - categories
   categories: true
   sort-ui: false
@@ -24,3 +32,9 @@ This section presents reproducible technical work in actuarial modelling,
 stochastic processes, insurance analytics, and statistical computing. Each
 article focuses on the practical interpretation of a model alongside its
 mathematical and computational implementation.
+
+::: {.research-note}
+The examples use synthetic assumptions and are intended as educational
+technical reviews. They are not production IFRS 17, SAM or MCEV valuation
+models.
+:::

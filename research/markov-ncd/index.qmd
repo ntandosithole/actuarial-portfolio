@@ -5,6 +5,10 @@ date: "2026-06-20"
 description: "A reproducible R framework for projecting rating-class migration, premium income, and the long-run portfolio mix of a no-claims discount system."
 image: ../../assets/markov-ncd-cover.svg
 image-alt: "Abstract transition paths connecting four no-claims discount classes"
+open-graph:
+  image: ../../assets/markov-ncd-social.png
+twitter-card:
+  image: ../../assets/markov-ncd-social.png
 categories:
   - Stochastic Processes
   - Actuarial Modelling
@@ -46,7 +50,7 @@ method rather than represent a calibrated insurance portfolio.
 
 ## Methodology
 
-Let \(X_t\) denote the NCD class occupied at the start of policy year \(t\).
+Let $X_t$ denote the NCD class occupied at the start of policy year $t$.
 The state space is
 
 $$
@@ -75,33 +79,33 @@ $$
 \end{pmatrix}.
 $$
 
-Each row sums to one. Entry \(p_{ij}\) is the probability that a policyholder
-in Class \(i\) at the start of one year occupies Class \(j\) at the start of the
+Each row sums to one. Entry $p_{ij}$ is the probability that a policyholder
+in Class $i$ at the start of one year occupies Class $j$ at the start of the
 next year.
 
-If \(\boldsymbol{q}_0\) is the initial row vector of class probabilities, the
-distribution after \(t\) transitions is
+If $\boldsymbol{q}_0$ is the initial row vector of class probabilities, the
+distribution after $t$ transitions is
 
 $$
 \boldsymbol{q}_t = \boldsymbol{q}_0\mathbf{P}^t.
 $$
 
-For a base annual premium \(B\) and discount vector
-\(\boldsymbol{d}=(d_1,\ldots,d_4)^\mathsf{T}\), the premium vector is
+For a base annual premium $B$ and discount vector
+$\boldsymbol{d}=(d_1,\ldots,d_4)^\mathsf{T}$, the premium vector is
 
 $$
 \boldsymbol{b}
 = B(\boldsymbol{1}-\boldsymbol{d}).
 $$
 
-The expected premium payable in policy year \(t+1\) is therefore
+The expected premium payable in policy year $t+1$ is therefore
 
 $$
 \operatorname{E}[B_{t+1}]
 = \boldsymbol{q}_0\mathbf{P}^{t}\boldsymbol{b},
 $$
 
-and expected cumulative premium over \(n\) years is
+and expected cumulative premium over $n$ years is
 
 $$
 \operatorname{E}[C_n]
@@ -148,8 +152,8 @@ movement toward lower-discount classes.
 
 ### Multi-year transition probabilities
 
-The following function calculates \(\mathbf{P}^n\), including
-\(\mathbf{P}^0=\mathbf{I}\).
+The following function calculates $\mathbf{P}^n$, including
+$\mathbf{P}^0=\mathbf{I}$.
 
 ```{r}
 #| label: matrix-power
@@ -183,13 +187,13 @@ knitr::kable(
 )
 ```
 
-The first row of \(\mathbf{P}^5\) gives the class distribution after five
+The first row of $\mathbf{P}^5$ gives the class distribution after five
 transitions for a policyholder who begins in Class 1.
 
 ### Stationary distribution
 
 For an ergodic chain, the stationary distribution
-\(\boldsymbol{\pi}\) satisfies
+$\boldsymbol{\pi}$ satisfies
 
 $$
 \boldsymbol{\pi}\mathbf{P}=\boldsymbol{\pi},
@@ -228,14 +232,14 @@ knitr::kable(
 )
 ```
 
-Under the illustrative assumptions, approximately \(92.7\%\) of the long-run
+Under the illustrative assumptions, approximately $92.7\%$ of the long-run
 portfolio occupies Class 4. This concentration is driven by the high
 probability of remaining in Class 4 once it has been reached.
 
 ### Expected premium projection
 
-Assume a base annual premium of \(750\) monetary units and class discounts of
-\(0\%\), \(15\%\), \(25\%\), and \(30\%\).
+Assume a base annual premium of $750$ monetary units and class discounts of
+$0\%$, $15\%$, $25\%$, and $30\%$.
 
 ```{r}
 #| label: premium-assumptions
@@ -251,6 +255,7 @@ knitr::kable(
     Discount = sprintf("%.0f%%", 100 * discounts),
     Premium = premium_by_class
   ),
+  row.names = FALSE,
   caption = "Illustrative NCD premium scale"
 )
 ```
@@ -321,13 +326,14 @@ knitr::kable(
 )
 ```
 
-The expected cumulative premium over ten years is approximately \(5{,}825.47\)
+The expected cumulative premium over ten years is approximately $5{,}825.47$
 monetary units. The annual expected premium declines as probability mass moves
 toward the higher-discount classes.
 
 ```{r}
 #| label: premium-projection-plot
 #| fig-cap: "Expected annual premium and its long-run equilibrium level"
+#| fig-alt: "Line chart of the expected annual premium for a new Class 1 policyholder over ten policy years. The premium falls from 750 in year 1 to about 532 in year 10, approaching the dashed long-run expected premium of about 530."
 
 long_run_premium <- sum(stationary * premium_by_class)
 
