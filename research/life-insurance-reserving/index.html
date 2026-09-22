@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -15,10 +15,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -78,10 +81,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3f68ad3e9f520ce080573a1ac9e4c9eb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cd2d8d90ae04a1aea0fb80ded0579ee5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -142,6 +145,20 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Life Insurance Cash Flow Projection and Reserve Sensitivity in R – Ntando Sithole">
+<meta property="og:description" content="A reproducible R model for term assurance cash flows, level premiums, prospective reserves, and sensitivity testing under synthetic mortality assumptions.">
+<meta property="og:image" content="https://ntandosithole.com/assets/life-insurance-reserve-social.png">
+<meta property="og:site_name" content="Ntando Sithole">
+<meta property="og:image:height" content="675">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:alt" content="Abstract life insurance reserve modelling graphic with a shield, cash-flow bars, and reserve curve">
+<meta name="twitter:title" content="Life Insurance Cash Flow Projection and Reserve Sensitivity in R – Ntando Sithole">
+<meta name="twitter:description" content="A reproducible R model for term assurance cash flows, level premiums, prospective reserves, and sensitivity testing under synthetic mortality assumptions.">
+<meta name="twitter:image" content="https://ntandosithole.com/assets/life-insurance-reserve-social.png">
+<meta name="twitter:image-height" content="675">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="Abstract life insurance reserve modelling graphic with a shield, cash-flow bars, and reserve curve">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -238,7 +255,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 24, 2026</p>
+      <p class="date">24 June 2026</p>
     </div>
   </div>
   
@@ -264,8 +281,8 @@ window.Quarto = {
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<p>Consider a policy issued to a life aged (x), with term (n), annual effective interest rate (i), discount factor (v=(1+i)^{-1}), and sum assured (S). Let (q_{x+t}) denote the one-year mortality rate at attained age (x+t).</p>
-<p>The probability of surviving from issue to the start of policy year (t+1) is</p>
+<p>Consider a policy issued to a life aged <span class="math inline">\(x\)</span>, with term <span class="math inline">\(n\)</span>, annual effective interest rate <span class="math inline">\(i\)</span>, discount factor <span class="math inline">\(v=(1+i)^{-1}\)</span>, and sum assured <span class="math inline">\(S\)</span>. Let <span class="math inline">\(q_{x+t}\)</span> denote the one-year mortality rate at attained age <span class="math inline">\(x+t\)</span>.</p>
+<p>The probability of surviving from issue to the start of policy year <span class="math inline">\(t+1\)</span> is</p>
 <p><span class="math display">\[
 {}_{t}p_x =
 \prod_{j=0}^{t-1} (1-q_{x+j}),
@@ -291,7 +308,7 @@ P =
 \frac{S A^{1}_{x:\overline{n}|}}
 {\ddot{a}_{x:\overline{n}|}}.
 \]</span></p>
-<p>At duration (k), immediately after the (k)-th policy anniversary, the prospective net reserve for an in-force policy is</p>
+<p>At duration <span class="math inline">\(k\)</span>, immediately after the <span class="math inline">\(k\)</span>-th policy anniversary, the prospective net reserve for an in-force policy is</p>
 <p><span class="math display">\[
 V_k =
 S
@@ -768,7 +785,7 @@ v^t {}_{t}p_{x+k}.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/plot-cash-flows-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/plot-cash-flows-1.png" class="img-fluid figure-img" alt="Line chart of expected annual portfolio cash flows in R millions over 20 policy years. Premiums stay close to R0.71 million; claims rise from about R0.39 million to R0.54 million, and claims plus expenses rise from about R0.64 million to R0.79 million, exceeding premiums from policy year 14." width="672"></p>
 <figcaption>Expected annual cash flows for the illustrative term assurance portfolio.</figcaption>
 </figure>
 </div>
@@ -827,12 +844,14 @@ v^t {}_{t}p_{x+k}.
 <span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>reserve_display<span class="sc">$</span>reserve_per_policy <span class="ot">&lt;-</span></span>
 <span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_currency</span>(reserve_display<span class="sc">$</span>reserve_per_policy)</span>
 <span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reserve_display[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(reserve_display), <span class="at">by =</span> <span class="dv">4</span>), ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  reserve_display[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(reserve_display), <span class="at">by =</span> <span class="dv">4</span>), ],</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
 <th style="text-align: right;">duration</th>
 <th style="text-align: right;">attained_age</th>
 <th style="text-align: left;">reserve_per_policy</th>
@@ -840,37 +859,31 @@ v^t {}_{t}p_{x+k}.
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: left;">R 0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">5</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">44</td>
 <td style="text-align: left;">R152</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">9</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: left;">R282</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">13</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">52</td>
 <td style="text-align: left;">R351</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">17</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">56</td>
 <td style="text-align: left;">R294</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">21</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: left;">R 0</td>
@@ -903,7 +916,7 @@ v^t {}_{t}p_{x+k}.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/plot-reserve-trajectory-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/plot-reserve-trajectory-1.png" class="img-fluid figure-img" alt="Line chart of the prospective net reserve per in-force policy by duration. The reserve is zero at issue, rises to a peak of about R352 at duration 13 and returns to zero at the end of the 20-year term." width="672"></p>
 <figcaption>Prospective net reserve per in-force policy by duration.</figcaption>
 </figure>
 </div>
@@ -1050,7 +1063,58 @@ v^t {}_{t}p_{x+k}.
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script>
+  (function () {
+    // Skip link: first focusable element on every page.
+    var main = document.getElementById("quarto-document-content");
+    if (main) {
+      if (!main.hasAttribute("tabindex")) {
+        main.setAttribute("tabindex", "-1");
+      }
+      var skip = document.createElement("a");
+      skip.className = "skip-link";
+      skip.href = "#quarto-document-content";
+      skip.textContent = "Skip to main content";
+      skip.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        main.scrollIntoView();
+        main.focus({ preventScroll: true });
+      });
+      var header = document.getElementById("quarto-header");
+      var container = header || document.body;
+      container.insertBefore(skip, container.firstChild);
+    }
+
+    // Keyboard access to horizontally scrollable tables, code and equations.
+    var selector = ".cell-output-display, div.sourceCode, mjx-container[display='true']";
+    function update() {
+      document.querySelectorAll(selector).forEach(function (el) {
+        var scrollable = el.scrollWidth > el.clientWidth + 1;
+        if (scrollable && !el.hasAttribute("tabindex")) {
+          el.setAttribute("tabindex", "0");
+          el.setAttribute("data-scroll-region", "");
+        } else if (!scrollable && el.hasAttribute("data-scroll-region")) {
+          el.removeAttribute("tabindex");
+          el.removeAttribute("data-scroll-region");
+        }
+      });
+    }
+    var timer;
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(update, 150);
+    }
+    window.addEventListener("load", function () {
+      update();
+      if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+        window.MathJax.startup.promise.then(update);
+      }
+    });
+    window.addEventListener("resize", schedule);
+  })();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1124,7 +1188,7 @@ v^t {}_{t}p_{x+k}.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("^(?:https?://(?:www\.)?ntandosithole\.(?:com|github\.io)|https?://(?:localhost|127\.0\.0\.1)(?::[0-9]+)?/|file:)");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1463,7 +1527,20 @@ v^t {}_{t}p_{x+k}.
 <p>© 2026 Ntando Sithole</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/">
+      <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:ntandwenhle.sithole@gmail.com">
+      <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+    </a>
+  </li>  
+</ul>
     </div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
