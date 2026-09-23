@@ -637,3 +637,73 @@ footer.footer .nav-footer-center .bi {
     break-inside: avoid;
   }
 }
+
+/* Contact --------------------------------------------------------------- */
+
+.contact-form {
+  max-width: 40rem;
+  margin: 1.5rem 0 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--portfolio-border);
+  border-top: 0.2rem solid var(--portfolio-teal);
+  border-radius: 0.5rem;
+  background: var(--portfolio-surface);
+  box-shadow: var(--portfolio-shadow);
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+}
+
+.contact-field {
+  margin-bottom: 1rem;
+}
+
+.contact-form .form-label {
+  font-weight: 600;
+  color: var(--portfolio-navy);
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--portfolio-teal);
+  box-shadow: 0 0 0 0.2rem rgb(42 140 140 / 25%);
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-status {
+  margin: 0.85rem 0 0;
+  min-height: 1.5em;
+  color: var(--portfolio-muted);
+}
+
+.contact-status.is-success {
+  color: var(--portfolio-teal-dark);
+  font-weight: 600;
+}
+
+.contact-status.is-error {
+  color: #9b2c2c;
+}
+
+.contact-alt {
+  color: var(--portfolio-muted);
+}
+
+@media (max-width: 575.98px) {
+  .contact-form {
+    padding: 1.1rem;
+  }
+
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+}
