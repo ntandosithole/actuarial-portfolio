@@ -20,8 +20,8 @@ about:
       text: LinkedIn
       href: https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/
     - icon: envelope
-      text: Email
-      href: mailto:ntandwenhle.sithole@gmail.com
+      text: Contact
+      href: contact.qmd
 listing:
   id: featured-research
   contents: research
@@ -53,6 +53,7 @@ risk professionals.
 ::: {.profile-actions}
 [View resume](resume.qmd){.btn .btn-primary}
 [Browse research](research.qmd){.btn .btn-outline-primary}
+[Get in touch](contact.qmd){.btn .btn-outline-primary}
 :::
 
 ## Areas of Practice

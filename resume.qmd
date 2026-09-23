@@ -12,7 +12,7 @@ toc: true
 
 ::: {.resume-contact}
 [[]{.bi .bi-linkedin aria-hidden="true"} LinkedIn](https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/)
-[[]{.bi .bi-envelope aria-hidden="true"} Email](mailto:ntandwenhle.sithole@gmail.com)
+[[]{.bi .bi-envelope aria-hidden="true"} Contact](contact.qmd)
 :::
 
 ## Professional Summary

@@ -27,6 +27,8 @@ website:
         href: resume.qmd
       - text: "Research"
         href: research.qmd
+      - text: "Contact"
+        href: contact.qmd
   page-footer:
     left: "© 2026 Ntando Sithole"
     center:
@@ -34,8 +36,8 @@ website:
         href: https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/
         aria-label: "LinkedIn"
       - icon: envelope
-        href: mailto:ntandwenhle.sithole@gmail.com
-        aria-label: "Email"
+        href: contact.qmd
+        aria-label: "Contact"
     right: "Built with Quarto"
 
 format:
@@ -48,4 +50,5 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
     link-external-filter: '^(?:https?://(?:www\.)?ntandosithole\.(?:com|github\.io)|https?://(?:localhost|127\.0\.0\.1)(?::[0-9]+)?/|file:)'
+    include-in-header: _includes/analytics.html
     include-after-body: _includes/accessibility.html
