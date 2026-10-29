@@ -6,6 +6,10 @@ project:
     - assets/life-insurance-reserve-cover.svg
     - assets/markov-ncd-social.png
     - assets/life-insurance-reserve-social.png
+    - assets/automation/*.js
+    - assets/automation/*.json
+    - assets/automation/*.css
+    - assets/automation/*.zip
 
 lang: en-GB
 
@@ -27,6 +31,8 @@ website:
         href: resume.qmd
       - text: "Research"
         href: research.qmd
+      - text: "Automation"
+        href: projects/workflow-triage/index.qmd
       - text: "Contact"
         href: contact.qmd
   page-footer:

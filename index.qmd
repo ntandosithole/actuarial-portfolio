@@ -79,3 +79,15 @@ reproducible R code and an explicit discussion of model limitations.
 ::: {.research-actions}
 [View all research](research.qmd){.btn .btn-outline-primary}
 :::
+
+## Automation & AI
+
+::: {.research-note}
+### AI-Assisted Workflow Triage
+
+A reproducible workflow that validates a synthetic request inbox, prepares
+routing and overdue follow-ups, and drafts an AI-assisted review brief.
+Try the controls, inspect a worked AI draft and download the source and tests.
+
+[Explore the automation project](projects/workflow-triage/index.qmd){.btn .btn-primary}
+:::

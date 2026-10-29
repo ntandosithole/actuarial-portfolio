@@ -1,0 +1,165 @@
+---
+pagetitle: "AI-Assisted Workflow Triage"
+description: "An automation and AI project: validate an operations inbox, prepare routing and follow-ups, then turn structured evidence into a review draft."
+page-layout: full
+toc: false
+css: ../../assets/automation/review.css
+---
+
+```{=html}
+<header class="review-hero">
+  <p class="review-kicker">Automation &amp; applied AI · Portfolio project</p>
+  <h1>From inbox to action.</h1>
+  <p>A repeatable workflow for incoming requests: catch intake issues, prepare the right owner queues and use AI to draft the review brief.</p>
+  <ol class="review-flow" aria-label="Review workflow">
+    <li>Validate intake</li><li>Plan routing</li><li>Draft with AI</li><li>Human review</li>
+  </ol>
+</header>
+```
+
+::: {.review-lead}
+## AI-Assisted Workflow Triage
+
+A shared inbox can become a manual sorting exercise: identify incomplete or
+duplicate requests, decide who owns each item and chase work that has waited
+too long. This project makes those steps repeatable and gives an AI reviewer
+structured evidence for a first review draft.
+:::
+
+```{=html}
+<div class="review-principles">
+  <article><h3>Repeatable intake checks</h3><p>Five controls expose missing fields, duplicate requests, invalid ages, unknown categories and overdue work.</p></article>
+  <article><h3>Routing and follow-ups</h3><p>Eligible requests become a proposed queue for Service Desk, Finance or Operations, with overdue follow-ups clearly flagged.</p></article>
+  <article><h3>Evidence-grounded AI</h3><p>The AI drafts observations and next steps from the control evidence. A person reviews the brief and approves any action.</p></article>
+</div>
+```
+
+## Try the workflow {#try-it}
+
+Choose an inbox and run the workflow. Both scenarios are invented. The
+corrected example is a separate fixture, not an automatic repair of the
+exception data. Changing a selection clears the previous results.
+
+```{=html}
+<div class="review-console">
+  <div class="review-toolbar">
+    <label for="review-scenario">Synthetic inbox
+      <select id="review-scenario"><option value="exceptions">Inbox with exceptions</option><option value="clean">Corrected example</option></select>
+    </label>
+    <label for="review-threshold">Overdue follow-up threshold
+      <select id="review-threshold"><option value="8">Older than 8 hours</option><option value="24" selected>Older than 24 hours</option><option value="48">Older than 48 hours</option><option value="72">Older than 72 hours</option></select>
+    </label>
+    <button id="review-run" type="button" class="btn btn-primary">Run workflow</button>
+    <button id="review-download" type="button" class="btn btn-outline-primary" disabled>Download evidence JSON</button>
+  </div>
+  <p id="review-status" class="review-status" role="status" aria-live="polite"></p>
+  <details class="review-details">
+    <summary>Inspect the synthetic inbox</summary>
+    <p>One row per intended request. Age is whole elapsed hours at a fixed snapshot of 30 September 2026, 12:00 UTC; weekends and working hours are not adjusted.</p>
+    <div class="review-table-scroll" role="region" aria-label="Synthetic inbox input" tabindex="0">
+      <table class="review-table"><caption class="visually-hidden">Synthetic request inbox</caption><thead><tr><th scope="col">Row</th><th scope="col">Demo identifier</th><th scope="col">Subject</th><th scope="col">Age (hours)</th><th scope="col">Category</th></tr></thead><tbody id="review-input-rows"></tbody></table>
+    </div>
+  </details>
+  <div id="review-results" hidden>
+    <div id="review-metrics" class="review-metrics" aria-label="Run summary"></div>
+    <div class="review-table-scroll" role="region" aria-label="Control results" tabindex="0">
+      <table class="review-table"><caption class="visually-hidden">Automated control results</caption><thead><tr><th scope="col">Control</th><th scope="col">Result</th><th scope="col">Observed</th><th scope="col">Evidence &amp; follow-up</th></tr></thead><tbody id="review-control-rows"></tbody></table>
+    </div>
+    <div id="review-plan" class="review-plan"></div>
+    <details class="review-details"><summary>Inspect the aggregate evidence sent to AI</summary><pre><code id="review-evidence"></code></pre></details>
+  </div>
+  <noscript>This demo requires JavaScript. Download the source runner below to execute the workflow locally.</noscript>
+</div>
+```
+
+## What is automated?
+
+The same JavaScript engine runs in the browser and the command-line runner.
+It checks the intake, excludes every row in a duplicate group, builds a
+routing plan for eligible requests and identifies items older than the chosen
+threshold. The route rules are explicit: access requests go to Service Desk,
+billing to Finance and general requests to Operations.
+
+An unresolved intake issue blocks release of the batch. Eligible routes remain
+visible as diagnostic proposals. A threshold breach calls for review; it does
+not prove urgency. Nothing in this demonstration sends a message, creates an
+external task or silently changes the source.
+
+## Where AI adds value
+
+The AI step turns the exception register into a short review brief: what needs
+attention, what the evidence establishes and what follow-up to request. It
+receives aggregate counts, queue totals, the snapshot and control results.
+Request subjects, identifiers and row references are excluded.
+
+The public page runs locally in your browser and does not call an AI provider.
+The worked example below is AI-authored text prepared for the default
+scenario; it is not a saved API response. The downloadable runner implements
+the live AI step separately.
+
+```{=html}
+<div class="review-ai">
+  <h3>Worked AI review · exception inbox at 24 hours</h3>
+  <button id="review-show-ai" type="button" class="btn btn-outline-primary" disabled>Show worked AI draft</button>
+  <p id="review-ai-note" class="review-ai-note"></p>
+  <div id="review-ai-output"></div>
+</div>
+```
+
+Every flagged control must appear exactly once in the AI output, with its
+observed count unchanged. Unknown controls, missing findings, refusals and
+incomplete responses fail the AI step. These checks constrain the structure
+and cited counts; a person still needs to assess the narrative and approve
+any action. AI cannot change the control results or release the batch.
+
+## Reproduce the project
+
+[Download the source and tests](../../assets/automation/workflow-triage-source.zip){.btn .btn-primary}
+[Inspect the control engine](../../assets/automation/review-engine.js){.btn .btn-outline-primary}
+
+Extract the source bundle and run these commands from its root with Node.js
+22 or later. The workflow and tests use built-in Node modules, with no
+package installation or external service required.
+
+```bash
+node --test tests/workflow-triage.test.mjs
+node projects/workflow-triage/run.mjs
+node projects/workflow-triage/run.mjs --scenario clean --threshold 8
+```
+
+For a fresh AI draft, provide an API key through your local environment and
+choose a model that supports structured outputs. Keep the key outside the
+website, source files and shell history. The explicit `--ai` flag sends the
+synthetic aggregate evidence to OpenAI and can incur API charges.
+
+```bash
+node projects/workflow-triage/run.mjs --ai --model YOUR_MODEL_ID
+```
+
+The runner prints the routing plan, control evidence, its SHA-256 fingerprint
+and any AI draft as JSON. It requests `store: false`, imposes a request timeout and leaves any
+accepted draft awaiting human review. Without `--ai`, it makes no external
+request. The integration follows the official [Responses API structured-output
+documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
+
+## Scope and limits
+
+The exception fixture contains 14 incoming rows: 8 are eligible for a draft
+routing plan and 6 are excluded. All five controls flag an issue at the default
+24-hour threshold. The corrected fixture contains 12 eligible requests, split
+four per queue, with no overdue requests at that threshold.
+
+This is a working prototype for workflow automation and a bounded AI handoff.
+It does not claim production deployment or measured time savings. It uses
+small synthetic batches and supplied categories rather than classifying
+unstructured emails. A production extension would need an approved inbox
+integration, business-calendar rules, access controls, broader tests and
+human approval before creating or sending work.
+
+[Back to the portfolio](../../index.qmd) · [View research](../../research.qmd)
+
+```{=html}
+<script src="../../assets/automation/review-engine.js"></script>
+<script src="../../assets/automation/worked-review.js"></script>
+<script src="../../assets/automation/review-ui.js"></script>
+```

@@ -1,0 +1,17 @@
+{
+  "provenance": "AI-authored worked example prepared for this portfolio. This is not a saved API response and no live model runs on the public page.",
+  "scenario": "exceptions",
+  "thresholdHours": 24,
+  "evidenceHash": "e708923701782552c5d366c0c2cd085985dcde2ede651eafc94641986145a693",
+  "draft": {
+    "summary": "Hold the batch for source corrections. Of 14 incoming rows, 8 are eligible for draft routing and 6 are excluded. Four intake controls have unresolved exceptions. One eligible request is older than the 24-hour follow-up threshold. The proposed queues are Service Desk (2), Finance (4) and Operations (2); these are planning outputs, not evidence that any request has been assigned or resolved.",
+    "findings": [
+      { "controlId": "C01", "observedCount": 1, "interpretation": "One row lacks an identifier or subject, so it is not eligible for routing.", "suggestedAction": "Ask the intake owner to complete the required fields rather than inferring them." },
+      { "controlId": "C02", "observedCount": 1, "interpretation": "One duplicate identifier group creates a risk of duplicated work. All rows in the group are excluded from the routing plan.", "suggestedAction": "Confirm the intended source records before rerunning. Do not silently select the first duplicate." },
+      { "controlId": "C03", "observedCount": 2, "interpretation": "Two rows have invalid request ages. Their overdue status cannot be assessed reliably.", "suggestedAction": "Correct the missing or invalid age calculation using the received-time source." },
+      { "controlId": "C04", "observedCount": 1, "interpretation": "One row has an unsupported category and cannot be assigned to a defined owner queue.", "suggestedAction": "Have the intake owner confirm the category before including the row in the routing plan." },
+      { "controlId": "C05", "observedCount": 1, "interpretation": "One eligible request exceeds the 24-hour follow-up threshold. Age alone does not establish business urgency.", "suggestedAction": "Ask its queue owner to assess priority and record the next action after reviewing the underlying request." }
+    ],
+    "requiresHumanReview": true
+  }
+}
