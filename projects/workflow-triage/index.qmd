@@ -156,7 +156,7 @@ unstructured emails. A production extension would need an approved inbox
 integration, business-calendar rules, access controls, broader tests and
 human approval before creating or sending work.
 
-[Back to the portfolio](../../index.qmd) · [View research](../../research.qmd)
+[All Automation & AI projects](../index.qmd) · [Back to the portfolio](../../index.qmd) · [View research](../../research.qmd)
 
 ```{=html}
 <script src="../../assets/automation/review-engine.js"></script>

@@ -1,0 +1,57 @@
+---
+title: "Automation & AI"
+description: "Small, practical AI demonstrations: turn rough notes into handovers, spot gaps in instructions and explain changes between versions."
+page-layout: full
+toc: false
+css: ../assets/automation/everyday.css
+---
+
+## Small tasks. Useful assistance.
+
+The overlooked uses of AI often sit between bigger pieces of work: making a handover clearer, spotting an unstated assumption, or noticing a changed commitment. These demonstrations show the input, a reusable prompt and a worked response you can check against the source.
+
+**Start with a familiar task.** Each example is invented and runs locally. The worked responses are prewritten AI-authored illustrations; no live AI request is made by these pages.
+
+```{=html}
+<div class="everyday-grid">
+<article class="everyday-card">
+  <p class="everyday-kicker">01 · Organise the loose ends</p>
+  <h2><a href="notes-to-handover/index.html">Rough Notes → Clear Handover</a></h2>
+  <p>Turn scattered notes into decisions, actions and questions without inventing owners or deadlines.</p>
+  <p class="everyday-note">Two worked examples · editable prompt</p>
+  <a class="btn btn-outline-primary" href="notes-to-handover/index.html">Try the demonstration</a>
+</article>
+<article class="everyday-card">
+  <p class="everyday-kicker">02 · Find the unstated assumptions</p>
+  <h2><a href="instruction-check/index.html">Instructions → Missing Questions</a></h2>
+  <p>Read a short process as a newcomer and surface the questions its author forgot to answer.</p>
+  <p class="everyday-note">Two worked examples · editable prompt</p>
+  <a class="btn btn-outline-primary" href="instruction-check/index.html">Try the demonstration</a>
+</article>
+<article class="everyday-card">
+  <p class="everyday-kicker">03 · Make small edits visible</p>
+  <h2><a href="change-brief/index.html">Two Versions → What Changed</a></h2>
+  <p>Explain changes to dates, commitments and conditions that are easy to miss when rereading a document.</p>
+  <p class="everyday-note">Two worked examples · editable prompt</p>
+  <a class="btn btn-outline-primary" href="change-brief/index.html">Try the demonstration</a>
+</article>
+</div>
+```
+
+## A fuller workflow
+
+::: {.research-note}
+### AI-Assisted Workflow Triage
+
+Validate a synthetic request inbox, prepare routing and overdue follow-ups, and inspect an evidence-based AI review brief. Includes a reproducible runner and tests.
+
+[Explore workflow triage](workflow-triage/index.qmd){.btn .btn-primary}
+:::
+
+## Try it on a task of your own
+
+1. Open a demonstration and compare the source with the worked response.
+2. Edit the input using non-sensitive text. The reusable prompt updates immediately.
+3. Copy the prompt into your chosen AI tool, then check the new response against the source and the project’s review guidance.
+
+[Back to the portfolio](../index.qmd)

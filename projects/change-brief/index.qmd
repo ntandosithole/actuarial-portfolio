@@ -1,0 +1,86 @@
+---
+title: "Two Versions → What Changed"
+description: "Explain changes to dates, commitments and conditions that are easy to miss when rereading a document."
+page-layout: full
+toc: false
+css: ../../assets/automation/everyday.css
+---
+
+[← All Automation & AI projects](../index.qmd)
+
+[Everyday AI · Make small edits visible]{.everyday-kicker}
+
+A paragraph can look almost unchanged while its meaning shifts. AI can draft a change brief that pairs each claim with the old and new wording.
+
+## Try the demonstration
+
+Choose a synthetic example, inspect its worked response, then edit the input to build your own prompt. **Worked responses are prewritten, AI-authored illustrations, not live model results.** The browser builds a prompt; run it in your chosen AI tool to get a fresh response.
+
+```{=html}
+<section class="everyday-demo" data-demo="change-brief" aria-label="Two Versions → What Changed demonstration">
+  <div class="everyday-controls">
+    <label for="demo-scenario">Example</label>
+    <select id="demo-scenario"><option value="0">Event arrangements</option><option value="1">Delivery update</option></select>
+    <button id="demo-reset" class="btn btn-outline-primary" type="button">Restore this example</button>
+  </div>
+  <p id="demo-privacy" class="everyday-note">Inputs stay in this page’s memory and are not sent to an AI provider or saved by this demo. Use invented or non-sensitive text. Copying a prompt to another service is a separate action.</p>
+  <div class="everyday-inputs"><label for="demo-input-0">Earlier version</label>
+<textarea id="demo-input-0" rows="9" maxlength="12000" spellcheck="false" aria-describedby="demo-privacy">The workshop is on 12 November, 10:00–12:00. Registration includes lunch. Participants may bring one guest. Please respond by 5 November.</textarea>
+<label for="demo-input-1">Revised version</label>
+<textarea id="demo-input-1" rows="9" maxlength="12000" spellcheck="false" aria-describedby="demo-privacy">The workshop is on 19 November, 10:00–12:00. Registration includes refreshments. Participants must register guests in advance, up to one guest each. Please respond by 9 November.</textarea></div>
+  <p id="demo-status" role="status" aria-live="polite"></p>
+  <div class="everyday-actions">
+    <button id="demo-show" class="btn btn-primary" type="button">Show worked response</button>
+    <button id="demo-copy" class="btn btn-outline-primary" type="button">Copy prompt</button>
+    <button id="demo-download" class="btn btn-outline-primary" type="button">Download prompt &amp; notes</button>
+  </div>
+  <section id="demo-output-panel" class="everyday-output" aria-labelledby="demo-output-heading" hidden>
+    <h3 id="demo-output-heading">Worked response · selected example only</h3>
+    <p class="everyday-note">An illustrative AI-authored draft. Review the source and the checks below before relying on it.</p>
+    <pre id="demo-output"></pre>
+  </section>
+  <details class="everyday-prompt" open>
+    <summary>Prompt to reuse · updates as you type</summary>
+    <pre id="demo-prompt" tabindex="0" aria-label="Reusable prompt"></pre>
+  </details>
+  <noscript>The interactive controls require JavaScript. Read the worked example and reusable instructions below.</noscript>
+</section>
+```
+
+## What to check
+
+Read both versions alongside the brief. Verify numbers, negations and qualifiers such as “may”, “must”, “proposed” and “subject to”.
+
+This exercise demonstrates a useful way to ask for help, not a guarantee of model accuracy or measured time savings. The examples are invented. A person decides which findings are valid and what to do next.
+
+::: {.callout-tip}
+## Reusable instructions
+
+Compare the earlier and revised versions. Identify substantive changes to dates, quantities, scope, obligations and conditions. For every finding quote both versions (or say Not present), explain the practical effect, and flag anything that needs confirmation. Distinguish a proposal from a confirmed commitment. Do not infer intent or claim legal significance. End with a short checklist for a human reviewer.
+:::
+
+```{=html}
+<details class="everyday-prompt">
+<summary>Read the first worked example without running the demo</summary>
+<p>The first example’s input appears above. Its illustrative response is:</p>
+<pre style="white-space: pre-wrap; overflow-wrap: anywhere;">WHAT CHANGED
+• Date: “12 November” → “19 November”. The workshop moves seven days later; year is not stated.
+• Catering: “includes lunch” → “includes refreshments”. Lunch is no longer explicitly included; confirm what will be served.
+• Guests: “may bring one guest” → “must register guests in advance, up to one guest each”. The one-guest limit remains, with a new advance-registration requirement. The registration method and guest deadline are not stated.
+• Reply deadline: “5 November” → “9 November”. Responses are requested four days later.
+
+UNCHANGED
+The stated time is still 10:00–12:00.
+
+REVIEW CHECKLIST
+Confirm the year, catering, and guest-registration details before updating the invitation.</pre>
+</details>
+```
+
+[Explore the other everyday projects](../index.qmd) · [AI-Assisted Workflow Triage](../workflow-triage/index.qmd)
+
+```{=html}
+<script src="../../assets/automation/everyday-data.js"></script>
+<script src="../../assets/automation/everyday-engine.js"></script>
+<script src="../../assets/automation/everyday-ui.js"></script>
+```

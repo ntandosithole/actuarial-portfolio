@@ -1,0 +1,22 @@
+.everyday-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin: 2rem 0 3rem; }
+.everyday-card { display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid var(--portfolio-border, #ccd9df); border-top: 4px solid var(--portfolio-teal, #2a8c8c); border-radius: .6rem; background: var(--portfolio-surface, #f5f8fa); }
+.everyday-card h2 { font-size: 1.4rem; border: 0; padding: 0; margin: .3rem 0 1rem; }
+.everyday-card > .btn { align-self: start; margin-top: auto; white-space: normal; }
+.everyday-kicker { font-size: .78rem; letter-spacing: .05em; font-weight: 700; color: #286a6a; }
+.everyday-note { font-size: .9rem; color: #495c68; }
+.everyday-demo { padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--portfolio-border, #ccd9df); border-radius: .8rem; background: var(--portfolio-surface, #f5f8fa); margin: 1.5rem 0 2rem; }
+.everyday-controls, .everyday-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; margin-bottom: 1rem; }
+.everyday-demo label { font-weight: 600; }
+.everyday-demo select { max-width: 100%; min-height: 2.8rem; border: 1px solid #8296a3; border-radius: .3rem; padding: .5rem; background: #fff; color: #172633; }
+.everyday-inputs { display: grid; gap: .6rem; }
+.everyday-inputs textarea { width: 100%; min-height: 10rem; resize: vertical; border: 1px solid #8296a3; border-radius: .4rem; padding: 1rem; font: inherit; line-height: 1.6; color: #172633; background: #fff; }
+.everyday-demo :is(textarea, select, button, summary):focus-visible { outline: 3px solid #287c83; outline-offset: 3px; }
+#demo-status { margin: 1.2rem 0; font-size: .95rem; }
+.everyday-output { padding: 1.3rem; border-left: 4px solid #2a8c8c; background: white; margin: 1.5rem 0; }
+.everyday-output h3 { font-size: 1.25rem; margin-top: 0; }
+.everyday-demo pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: .94rem; line-height: 1.65; color: #172633; background: transparent; border: 0; padding: 0; margin-top: 1rem; }
+.everyday-prompt { border-top: 1px solid #ccd9df; padding-top: 1rem; }
+.everyday-prompt summary { font-weight: 600; cursor: pointer; }
+.everyday-demo [hidden] { display: none !important; }
+@media (max-width: 850px) { .everyday-grid { grid-template-columns: 1fr; } }
+@media (max-width: 500px) { .everyday-actions { align-items: stretch; flex-direction: column; } .everyday-actions .btn { white-space: normal; } }

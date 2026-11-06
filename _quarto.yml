@@ -32,7 +32,7 @@ website:
       - text: "Research"
         href: research.qmd
       - text: "Automation"
-        href: projects/workflow-triage/index.qmd
+        href: projects/index.qmd
       - text: "Contact"
         href: contact.qmd
   page-footer:

@@ -82,6 +82,17 @@ reproducible R code and an explicit discussion of model limitations.
 
 ## Automation & AI
 
+Small, often overlooked tasks are useful places to try AI: turn rough notes
+into a handover, spot gaps in instructions, or explain what changed between
+two versions. Explore three demonstrations with worked examples and editable,
+reusable prompts.
+
+- [Rough Notes → Clear Handover](projects/notes-to-handover/index.qmd)
+- [Instructions → Missing Questions](projects/instruction-check/index.qmd)
+- [Two Versions → What Changed](projects/change-brief/index.qmd)
+
+[Browse all Automation & AI projects](projects/index.qmd){.btn .btn-primary}
+
 ::: {.research-note}
 ### AI-Assisted Workflow Triage
 
