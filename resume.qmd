@@ -113,7 +113,7 @@ into actionable management intelligence.
 ### Actuarial Analyst — Asset Consulting
 
 **Simeka Consultants & Actuaries, Sandton**<br>
-*February 2021–April 2023*
+*February 2022–April 2023*
 
 - Produced portfolio monitoring and management reports covering investment
   returns, volatility, asset allocation, benchmark performance, and portfolio
@@ -128,7 +128,7 @@ into actionable management intelligence.
 ### Actuarial Analyst — Employee Benefit Valuations
 
 **Simeka Consultants & Actuaries, Sandton**<br>
-*February 2019–January 2021*
+*February 2019–January 2022*
 
 - Prepared data, assumptions, and supporting analysis for defined benefit,
   defined contribution, IAS 19, and other employee benefit valuations.
@@ -183,9 +183,6 @@ reproducible reporting with Quarto and the tidyverse.
 
 Completed subjects include A111 (CT3), A112 (CT7), A113 (CT2), A211 (CT1),
 A213 (CT5), A214 (CT8), and A311 (CA1), or their equivalent core subjects.
-
-Completed the CS2 examinations in April 2026 and currently progressing toward
-F105 and the remaining fellowship requirements.
 
 ```{=html}
 <script>
