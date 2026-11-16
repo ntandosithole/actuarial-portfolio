@@ -95,4 +95,5 @@
   });
   if (!example) el('review-ai-note').textContent = 'The worked example could not be loaded. Use the source runner for the AI step.';
   showInput();
+  run();
 }());

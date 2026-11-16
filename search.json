@@ -18,21 +18,21 @@
     "href": "index.html",
     "title": "Ntando Sithole",
     "section": "",
-    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting and review work under IFRS 17, Market Consistent Embedded Value (MCEV), and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, sensitivity testing, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial, insurance, and risk professionals.\n\nView resume Browse research Get in touch"
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting and review work under IFRS 17, Market Consistent Embedded Value (MCEV), and the Solvency Assessment and Management (SAM) framework.\nBeyond core statutory and corporate reporting, my current focus is on data, decision-oriented data insights, applied AI, and actuarial systems automation—designing auditable data pipelines, modernising valuation workflows in R and Python, and embedding structured quality controls that turn complex actuarial outputs into clear commercial and risk insights.\n\nView resume Browse research Get in touch"
   },
   {
     "objectID": "index.html#professional-profile",
     "href": "index.html#professional-profile",
     "title": "Ntando Sithole",
     "section": "",
-    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting and review work under IFRS 17, Market Consistent Embedded Value (MCEV), and the Solvency Assessment and Management (SAM) framework.\nI use R to support actuarial analysis, model development, sensitivity testing, and the clear communication of results. This portfolio presents selected technical work and practical perspectives for fellow actuarial, insurance, and risk professionals.\n\nView resume Browse research Get in touch"
+    "text": "I am an Actuarial Specialist working across cell captive arrangements, corporate actuarial valuations, and capital modelling. My valuation experience includes reporting and review work under IFRS 17, Market Consistent Embedded Value (MCEV), and the Solvency Assessment and Management (SAM) framework.\nBeyond core statutory and corporate reporting, my current focus is on data, decision-oriented data insights, applied AI, and actuarial systems automation—designing auditable data pipelines, modernising valuation workflows in R and Python, and embedding structured quality controls that turn complex actuarial outputs into clear commercial and risk insights.\n\nView resume Browse research Get in touch"
   },
   {
     "objectID": "index.html#areas-of-practice",
     "href": "index.html#areas-of-practice",
     "title": "Ntando Sithole",
     "section": "Areas of Practice",
-    "text": "Areas of Practice\n\nCell captive structuring, monitoring, and profitability analysis\nCorporate actuarial valuations under IFRS 17, MCEV, and SAM\nEmbedded value, value-of-new-business, and valuation movement analysis\nCapital modelling, solvency assessment, and stress/scenario testing\nLife insurance cash-flow projection, reserving, and assumption review\nShort-term insurance rating, portfolio analytics, and claims experience review\nExperience investigations, basis setting, and actuarial control checks\nReproducible actuarial analysis, model development, and reporting in R\nTechnical communication for finance, risk, and insurance stakeholders"
+    "text": "Areas of Practice\n\nCell captive structuring, monitoring, and profitability analysis\nCorporate actuarial valuations under IFRS 17, MCEV, and SAM\nActuarial systems automation, data pipelines, and workflow modernisation\nData analytics, portfolio insights, and executive decision support\nApplied AI for structured review, reconciliation, and process governance\nEmbedded value, value-of-new-business, and valuation movement analysis\nCapital modelling, solvency assessment, and stress/scenario testing\nLife insurance cash-flow projection, reserving, and assumption review\nShort-term insurance rating, portfolio analytics, and claims experience review\nReproducible actuarial analysis, model development, and reporting in R & Python"
   },
   {
     "objectID": "index.html#featured-research",
@@ -291,14 +291,21 @@
     "href": "resume.html",
     "title": "Resume",
     "section": "",
-    "text": "LinkedIn  Contact"
+    "text": "LinkedIn\n   Contact\n  \n     Request CV (PDF / DOCX)"
   },
   {
     "objectID": "resume.html#professional-summary",
     "href": "resume.html#professional-summary",
     "title": "Resume",
     "section": "Professional Summary",
-    "text": "Professional Summary\nActuarial Specialist with experience since 2019 across cell-captive insurance, credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee benefit valuations, and investment analytics.\nMy current work covers actuarial reporting cycles, valuation result analysis, best estimate liabilities, risk adjustment, liability for remaining coverage, CSM-related analysis, Analysis of Surplus, experience investigations, capital analysis, model output review, reconciliations, quality assurance, and audit-ready reporting support.\nI use R, Python, SQL, VBA, and advanced Excel to improve actuarial production, strengthen controls, and develop reproducible analytical workflows."
+    "text": "Professional Summary\nActuarial Specialist with experience since 2019 across cell-captive insurance, credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee benefit valuations, and investment analytics.\nMy work spans end-to-end actuarial reporting cycles, valuation movement analysis, best estimate liabilities (BEL), risk adjustment (RA), liability for remaining coverage (LFRC), contractual service margin (CSM) analysis, Analysis of Surplus, experience investigations, capital modelling, reconciliations, and audit-ready reporting governance.\nI combine core actuarial rigour with a strong focus on data architecture, decision-oriented data insights, applied AI, and actuarial systems automation—using R, Python, SQL, VBA, and Prophet to streamline production pipelines, strengthen first-line controls, and translate complex model outputs into actionable management intelligence."
+  },
+  {
+    "objectID": "resume.html#current-focus-interests",
+    "href": "resume.html#current-focus-interests",
+    "title": "Resume",
+    "section": "Current Focus & Interests",
+    "text": "Current Focus & Interests\n\n\nActuarial Systems Automation: Engineering repeatable, version-controlled pipelines in Python, R, and SQL that eliminate brittle manual spreadsheet handoffs across data preparation, Prophet input/output processing, and downstream IFRS 17 / SAM reporting schedules.\nData & Portfolio Insights: Designing clean analytical layers and interactive diagnostics that surface claims emergence, lapse dynamics, cohort profitability, and capital drivers for boards, cell owners, and risk committees.\nApplied AI in Controlled Workflows: Embedding evidence-grounded AI into operational and actuarial review processes—automating intake triage, assumption-change comparisons, and exception commentary while preserving strict audit trails and human sign-off."
   },
   {
     "objectID": "resume.html#professional-experience",
@@ -312,14 +319,14 @@
     "href": "resume.html#selected-achievements",
     "title": "Resume",
     "section": "Selected Achievements",
-    "text": "Selected Achievements\n\nManaged full-year dividend and valuation reporting, including liquidity monitoring and the classification of complex settlement and lapse movements.\nLed a SAM model-alignment project with external consultants to update the valuation to the December 2025 position.\nInvestigated expense reserve bases and liability positions and reallocated risk adjustments to resolve audit queries.\nDeveloped Python automation that reduced valuation-cycle effort and improved the reliability of actuarial data flows and reconciliations.\nStrengthened governance through improved process documentation, quality controls, and audit-ready evidence.\nProduced analysis that informed board-level decisions, capital discussions, and performance reviews."
+    "text": "Selected Achievements\n\nActuarial Systems & Workflow Automation: Engineered Python and R automation pipelines that reduced valuation-cycle effort, eliminated repetitive manual reconciliations, and improved the reliability and auditability of actuarial data flows across monthly and quarterly closes.\nData Insights & Executive Decision Support: Delivered structured claims, lapse, liquidity, and valuation-movement analytics that directly informed board-level dividend declarations, capital discussions, and cell-captive performance reviews.\nSAM Model Alignment & Capital Governance: Led a SAM model-alignment project with external consultants to transition and validate the valuation position through December 2025, strengthening solvency governance and model sign-off controls.\nAudit Resolution & Reserve Investigation: Investigated expense reserve bases and liability positions and reallocated risk adjustments with transparent supporting schedules to resolve external audit queries.\nControl Modernisation: Strengthened first-line actuarial quality assurance through automated reasonability checks, structured process documentation, and reproducible audit-ready evidence."
   },
   {
     "objectID": "resume.html#technical-capabilities",
     "href": "resume.html#technical-capabilities",
     "title": "Resume",
     "section": "Technical Capabilities",
-    "text": "Technical Capabilities\n\nActuarial and financial reporting: IFRS 17 valuations, SAM reporting, best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of Surplus, experience investigations, reserving inputs, capital analysis, and audit support.\nModelling and production: Prophet Professional, Prophet Enterprise, model output analysis, result reconciliation, valuation controls, and actuarial process improvement.\nData and automation: R, Python, SQL, VBA, advanced Excel, automated data workflows, reproducible modelling templates, dashboard development, and quality-control automation.\nR experience: survival analysis, generalised linear models, random forests, stochastic modelling, and data manipulation with the tidyverse."
+    "text": "Technical Capabilities\n\nActuarial and financial reporting: IFRS 17 valuations, SAM reporting, best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of Surplus, experience investigations, reserving inputs, capital analysis, and audit support.\nActuarial systems & production: Prophet Professional, Prophet Enterprise, end-to-end valuation workflow automation, model output diagnostics, automated result reconciliation, and valuation control frameworks.\nData, insights & applied AI: R, Python, SQL, VBA, advanced Excel, automated data pipelines, portfolio & claims analytics, executive dashboarding, and evidence-grounded AI workflows for technical review and triage.\nStatistical & quantitative modelling in R: survival analysis, generalised linear models (GLMs), Markov chains, random forests, stochastic simulation, and reproducible reporting with Quarto and the tidyverse."
   },
   {
     "objectID": "resume.html#education",
