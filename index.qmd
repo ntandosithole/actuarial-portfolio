@@ -45,10 +45,11 @@ corporate actuarial valuations, and capital modelling. My valuation experience
 includes reporting and review work under IFRS 17, Market Consistent Embedded
 Value (MCEV), and the Solvency Assessment and Management (SAM) framework.
 
-I use R to support actuarial analysis, model development, sensitivity testing,
-and the clear communication of results. This portfolio presents selected
-technical work and practical perspectives for fellow actuarial, insurance, and
-risk professionals.
+Beyond core statutory and corporate reporting, my current focus is on **data,
+decision-oriented data insights, applied AI, and actuarial systems
+automation**—designing auditable data pipelines, modernising valuation
+workflows in R and Python, and embedding structured quality controls that turn
+complex actuarial outputs into clear commercial and risk insights.
 
 ::: {.profile-actions}
 [View resume](resume.qmd){.btn .btn-primary}
@@ -60,13 +61,14 @@ risk professionals.
 
 - Cell captive structuring, monitoring, and profitability analysis
 - Corporate actuarial valuations under IFRS 17, MCEV, and SAM
+- Actuarial systems automation, data pipelines, and workflow modernisation
+- Data analytics, portfolio insights, and executive decision support
+- Applied AI for structured review, reconciliation, and process governance
 - Embedded value, value-of-new-business, and valuation movement analysis
 - Capital modelling, solvency assessment, and stress/scenario testing
 - Life insurance cash-flow projection, reserving, and assumption review
 - Short-term insurance rating, portfolio analytics, and claims experience review
-- Experience investigations, basis setting, and actuarial control checks
-- Reproducible actuarial analysis, model development, and reporting in R
-- Technical communication for finance, risk, and insurance stakeholders
+- Reproducible actuarial analysis, model development, and reporting in R & Python
 
 ## Featured Research
 
@@ -102,3 +104,35 @@ Try the controls, inspect a worked AI draft and download the source and tests.
 
 [Explore the automation project](projects/workflow-triage/index.qmd){.btn .btn-primary}
 :::
+
+```{=html}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ntando Sithole",
+  "url": "https://ntandosithole.com",
+  "jobTitle": "Actuarial Specialist",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of the Witwatersrand"
+  },
+  "knowsAbout": [
+    "Actuarial Science",
+    "IFRS 17",
+    "Cell Captives",
+    "SAM Valuations",
+    "MCEV",
+    "Capital Modelling",
+    "Actuarial Systems Automation",
+    "Data Analytics and Insights",
+    "Applied Artificial Intelligence",
+    "R",
+    "Python"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/"
+  ]
+}
+</script>
+```

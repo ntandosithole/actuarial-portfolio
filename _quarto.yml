@@ -15,13 +15,18 @@ lang: en-GB
 
 website:
   title: "Ntando Sithole"
-  description: "Actuarial portfolio of Ntando Sithole: cell captives, IFRS 17, MCEV and SAM valuations, capital modelling and reproducible analysis in R."
+  description: "Actuarial portfolio of Ntando Sithole: cell captives, IFRS 17, MCEV and SAM valuations, capital modelling, data insights, applied AI, and actuarial systems automation."
   site-url: https://ntandosithole.com
   favicon: assets/favicon.svg
   search: true
   back-to-top-navigation: true
-  open-graph: true
-  twitter-card: true
+  open-graph:
+    image: assets/profile-avatar-male-640.jpg
+    image-alt: "Male illustrated profile avatar of Ntando Sithole"
+  twitter-card:
+    card-style: summary
+    image: assets/profile-avatar-male-640.jpg
+    image-alt: "Male illustrated profile avatar of Ntando Sithole"
   navbar:
     background: primary
     left:

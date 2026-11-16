@@ -281,21 +281,81 @@ div.quarto-about-trestles .about-entity .about-link:focus-visible {
   display: contents;
 }
 
-.resume-contact a {
+.resume-contact a,
+.resume-cv-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.95rem;
   border: 1px solid rgb(23 74 105 / 28%);
   border-radius: 999px;
+  background: #ffffff;
   color: var(--portfolio-navy);
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
 }
 
-.resume-contact a:hover {
+.resume-contact a:hover,
+.resume-cv-btn:hover {
   border-color: var(--portfolio-teal);
   background: rgb(42 140 140 / 9%);
+}
+
+.resume-cv-btn[aria-expanded="true"] {
+  border-color: var(--portfolio-teal);
+  background: var(--portfolio-teal-soft);
+}
+
+.cv-request-panel {
+  max-width: 46rem;
+  margin: -0.5rem 0 1.75rem;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--portfolio-border);
+  border-left: 0.3rem solid var(--portfolio-teal);
+  border-radius: 0.55rem;
+  background: var(--portfolio-surface);
+  box-shadow: var(--portfolio-shadow);
+}
+
+.cv-request-lead {
+  margin: 0 0 0.85rem;
+  color: var(--portfolio-ink);
+  font-size: 0.94rem;
+}
+
+.cv-request-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 0.9fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.cv-request-form .form-label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--portfolio-navy);
+  margin-bottom: 0.3rem;
+}
+
+.cv-request-actions .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 991.98px) {
+  .cv-request-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cv-request-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 #professional-experience > section.level3 {
@@ -583,6 +643,7 @@ footer.footer .nav-footer-center .bi {
   .skip-link,
   .code-copy-button,
   .resume-contact,
+  .cv-request-panel,
   .profile-actions,
   .research-actions {
     display: none !important;

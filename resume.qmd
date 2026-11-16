@@ -10,10 +10,49 @@ twitter-card:
 toc: true
 ---
 
-::: {.resume-contact}
-[[]{.bi .bi-linkedin aria-hidden="true"} LinkedIn](https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/)
-[[]{.bi .bi-envelope aria-hidden="true"} Contact](contact.qmd)
-:::
+```{=html}
+<div class="resume-contact">
+  <a href="https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/"><span class="bi bi-linkedin" aria-hidden="true"></span> LinkedIn</a>
+  <a href="contact.html"><span class="bi bi-envelope" aria-hidden="true"></span> Contact</a>
+  <button type="button" class="resume-cv-btn" id="request-cv-btn" aria-expanded="false" aria-controls="cv-request-panel">
+    <span class="bi bi-file-earmark-text" aria-hidden="true"></span> Request CV (PDF / DOCX)
+  </button>
+</div>
+
+<div class="cv-request-panel" id="cv-request-panel" hidden>
+  <p class="cv-request-lead" id="cv-auto-status" role="status" aria-live="polite">
+    Request noted. Enter your email below and choose your preferred format so I can send the CV directly to your inbox.
+  </p>
+  <form class="cv-request-form" id="cv-request-form" action="https://formsubmit.co/ea4a86c8593343c2c78e6a100e14c2c5" method="POST">
+    <input type="hidden" name="_subject" value="CV Request (PDF / DOCX) from ntandosithole.com">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="request_type" value="Full CV Request (PDF / DOCX)">
+    <input type="text" name="_honey" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cv-request-grid">
+      <div>
+        <label for="cv-req-name" class="form-label">Name / Organisation <span class="text-muted">(optional)</span></label>
+        <input type="text" id="cv-req-name" name="name" class="form-control" autocomplete="name" maxlength="120" placeholder="Jane Doe · Acme Re">
+      </div>
+      <div>
+        <label for="cv-req-email" class="form-label">Email address</label>
+        <input type="email" id="cv-req-email" name="email" class="form-control" autocomplete="email" required maxlength="200" placeholder="you@company.com">
+      </div>
+      <div>
+        <label for="cv-req-format" class="form-label">Format</label>
+        <select id="cv-req-format" name="preferred_format" class="form-control">
+          <option value="PDF">PDF</option>
+          <option value="DOCX">DOCX</option>
+          <option value="PDF and DOCX">Both (PDF &amp; DOCX)</option>
+        </select>
+      </div>
+      <div class="cv-request-actions">
+        <button type="submit" class="btn btn-primary" id="cv-req-submit">Send CV request</button>
+      </div>
+    </div>
+    <p class="contact-status" id="cv-req-status" role="status" aria-live="polite"></p>
+  </form>
+</div>
+```
 
 ## Professional Summary
 
@@ -21,14 +60,25 @@ Actuarial Specialist with experience since 2019 across cell-captive insurance,
 credit-life portfolios, IFRS 17 actuarial reporting, SAM reporting, employee
 benefit valuations, and investment analytics.
 
-My current work covers actuarial reporting cycles, valuation result analysis,
-best estimate liabilities, risk adjustment, liability for remaining coverage,
-CSM-related analysis, Analysis of Surplus, experience investigations, capital
-analysis, model output review, reconciliations, quality assurance, and
-audit-ready reporting support.
+My work spans end-to-end actuarial reporting cycles, valuation movement
+analysis, best estimate liabilities (BEL), risk adjustment (RA), liability for
+remaining coverage (LFRC), contractual service margin (CSM) analysis, Analysis
+of Surplus, experience investigations, capital modelling, reconciliations, and
+audit-ready reporting governance.
 
-I use R, Python, SQL, VBA, and advanced Excel to improve actuarial production,
-strengthen controls, and develop reproducible analytical workflows.
+I combine core actuarial rigour with a strong focus on **data architecture,
+decision-oriented data insights, applied AI, and actuarial systems
+automation**—using R, Python, SQL, VBA, and Prophet to streamline production
+pipelines, strengthen first-line controls, and translate complex model outputs
+into actionable management intelligence.
+
+## Current Focus & Interests
+
+::: {.research-note}
+- **Actuarial Systems Automation:** Engineering repeatable, version-controlled pipelines in Python, R, and SQL that eliminate brittle manual spreadsheet handoffs across data preparation, Prophet input/output processing, and downstream IFRS 17 / SAM reporting schedules.
+- **Data & Portfolio Insights:** Designing clean analytical layers and interactive diagnostics that surface claims emergence, lapse dynamics, cohort profitability, and capital drivers for boards, cell owners, and risk committees.
+- **Applied AI in Controlled Workflows:** Embedding evidence-grounded AI into operational and actuarial review processes—automating intake triage, assumption-change comparisons, and exception commentary while preserving strict audit trails and human sign-off.
+:::
 
 ## Professional Experience
 
@@ -92,18 +142,11 @@ strengthen controls, and develop reproducible analytical workflows.
 
 ## Selected Achievements
 
-- Managed full-year dividend and valuation reporting, including liquidity
-  monitoring and the classification of complex settlement and lapse movements.
-- Led a SAM model-alignment project with external consultants to update the
-  valuation to the December 2025 position.
-- Investigated expense reserve bases and liability positions and reallocated
-  risk adjustments to resolve audit queries.
-- Developed Python automation that reduced valuation-cycle effort and improved
-  the reliability of actuarial data flows and reconciliations.
-- Strengthened governance through improved process documentation, quality
-  controls, and audit-ready evidence.
-- Produced analysis that informed board-level decisions, capital discussions,
-  and performance reviews.
+- **Actuarial Systems & Workflow Automation:** Engineered Python and R automation pipelines that reduced valuation-cycle effort, eliminated repetitive manual reconciliations, and improved the reliability and auditability of actuarial data flows across monthly and quarterly closes.
+- **Data Insights & Executive Decision Support:** Delivered structured claims, lapse, liquidity, and valuation-movement analytics that directly informed board-level dividend declarations, capital discussions, and cell-captive performance reviews.
+- **SAM Model Alignment & Capital Governance:** Led a SAM model-alignment project with external consultants to transition and validate the valuation position through December 2025, strengthening solvency governance and model sign-off controls.
+- **Audit Resolution & Reserve Investigation:** Investigated expense reserve bases and liability positions and reallocated risk adjustments with transparent supporting schedules to resolve external audit queries.
+- **Control Modernisation:** Strengthened first-line actuarial quality assurance through automated reasonability checks, structured process documentation, and reproducible audit-ready evidence.
 
 ## Technical Capabilities
 
@@ -113,16 +156,17 @@ best estimate liabilities, risk adjustment, LFRC, CSM analysis, Analysis of
 Surplus, experience investigations, reserving inputs, capital analysis, and
 audit support.
 
-**Modelling and production:** Prophet Professional, Prophet Enterprise, model
-output analysis, result reconciliation, valuation controls, and actuarial
-process improvement.
+**Actuarial systems & production:** Prophet Professional, Prophet Enterprise,
+end-to-end valuation workflow automation, model output diagnostics, automated
+result reconciliation, and valuation control frameworks.
 
-**Data and automation:** R, Python, SQL, VBA, advanced Excel, automated data
-workflows, reproducible modelling templates, dashboard development, and
-quality-control automation.
+**Data, insights & applied AI:** R, Python, SQL, VBA, advanced Excel,
+automated data pipelines, portfolio & claims analytics, executive dashboarding,
+and evidence-grounded AI workflows for technical review and triage.
 
-**R experience:** survival analysis, generalised linear models, random forests,
-stochastic modelling, and data manipulation with the tidyverse.
+**Statistical & quantitative modelling in R:** survival analysis, generalised
+linear models (GLMs), Markov chains, random forests, stochastic simulation, and
+reproducible reporting with Quarto and the tidyverse.
 :::
 
 ## Education
@@ -142,3 +186,86 @@ A213 (CT5), A214 (CT8), and A311 (CA1), or their equivalent core subjects.
 
 Completed the CS2 examinations in April 2026 and currently progressing toward
 F105 and the remaining fellowship requirements.
+
+```{=html}
+<script>
+(function () {
+  var endpoint = "https://formsubmit.co/ajax/ea4a86c8593343c2c78e6a100e14c2c5";
+  var triggerBtn = document.getElementById("request-cv-btn");
+  var panel = document.getElementById("cv-request-panel");
+  var autoStatus = document.getElementById("cv-auto-status");
+  var form = document.getElementById("cv-request-form");
+  var status = document.getElementById("cv-req-status");
+  var submitBtn = document.getElementById("cv-req-submit");
+  var autoNotified = false;
+
+  if (!triggerBtn || !panel) return;
+
+  triggerBtn.addEventListener("click", function () {
+    var isHidden = panel.hasAttribute("hidden");
+    if (isHidden) {
+      panel.removeAttribute("hidden");
+      triggerBtn.setAttribute("aria-expanded", "true");
+      var emailInput = document.getElementById("cv-req-email");
+      if (emailInput) emailInput.focus();
+    } else {
+      panel.setAttribute("hidden", "");
+      triggerBtn.setAttribute("aria-expanded", "false");
+    }
+
+    // Automatically notify Ntando by email as soon as someone clicks "Request CV (PDF / DOCX)"
+    if (!autoNotified && window.fetch) {
+      autoNotified = true;
+      var pingData = new FormData();
+      pingData.append("_subject", "Alert: Someone clicked Request CV (PDF / DOCX) on ntandosithole.com");
+      pingData.append("_template", "table");
+      pingData.append("event", "Visitor clicked 'Request CV (PDF / DOCX)' on the Resume page");
+      pingData.append("page", window.location.href);
+      pingData.append("timestamp_utc", new Date().toISOString());
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: pingData
+      }).catch(function () {
+        // Silent fallback if offline; the form below remains available
+      });
+    }
+  });
+
+  if (!form || !window.fetch) return;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    submitBtn.disabled = true;
+    status.textContent = "Sending your CV request...";
+    status.className = "contact-status";
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form)
+    })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok || String(data.success) !== "true") {
+            throw new Error(data.message || "Request failed");
+          }
+        });
+      })
+      .then(function () {
+        form.reset();
+        status.textContent = "Thank you. Your request for the CV (PDF / DOCX) has been emailed to Ntando Sithole.";
+        status.className = "contact-status is-success";
+      })
+      .catch(function () {
+        status.innerHTML = 'Could not send automatically. Please submit via the <a href="contact.html">Contact page</a> or message on <a href="https://www.linkedin.com/in/ntandwenhle-sithole-b06896169/">LinkedIn</a>.';
+        status.className = "contact-status is-error";
+      })
+      .then(function () {
+        submitBtn.disabled = false;
+      });
+  });
+})();
+</script>
+```
