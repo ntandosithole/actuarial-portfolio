@@ -1,14 +1,16 @@
 [
   {
-    "listing": "/research.html",
+    "listing": "/index.html",
     "items": [
+      "/research/claims-reinsurance-simulation/index.html",
       "/research/life-insurance-reserving/index.html",
       "/research/markov-ncd/index.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/research.html",
     "items": [
+      "/research/claims-reinsurance-simulation/index.html",
       "/research/life-insurance-reserving/index.html",
       "/research/markov-ncd/index.html"
     ]

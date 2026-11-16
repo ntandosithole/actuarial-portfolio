@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" role="img" aria-labelledby="fig1-title fig1-desc" style="font-family: system-ui, -apple-system, sans-serif; background: #ffffff;">
+  <title id="fig1-title">Simulated individual claims under an Excess of Loss retention cap of R150,000</title>
+  <desc id="fig1-desc">Bar chart of 84 simulated individual claims in a single policy year, showing retained claim amounts up to R150,000 in teal/navy and ceded excess recoveries above R150,000 in amber.</desc>
+  <text x="88" y="28" font-size="15" font-weight="700" fill="#0d2742">Single-Year Claim Severities: Retained vs. Ceded under Individual XoL (M = R150,000)</text>
+  <text x="88" y="46" font-size="12" fill="#5d6c78">Simulated year (N = 84 claims) · 16 claims pierce the R150k retention cap · Ceded recovery = R1,677,954</text>
+  <line x1="88" y1="378.0" x2="804" y2="378.0" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="382.0" font-size="11" fill="#5d6c78" text-anchor="end">R0</text>
+  <line x1="88" y1="353.2" x2="804" y2="353.2" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="357.2" font-size="11" fill="#5d6c78" text-anchor="end">R100k</text>
+  <line x1="88" y1="328.5" x2="804" y2="328.5" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="332.5" font-size="11" fill="#5d6c78" text-anchor="end">R200k</text>
+  <line x1="88" y1="303.7" x2="804" y2="303.7" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="307.7" font-size="11" fill="#5d6c78" text-anchor="end">R300k</text>
+  <line x1="88" y1="278.9" x2="804" y2="278.9" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="282.9" font-size="11" fill="#5d6c78" text-anchor="end">R400k</text>
+  <line x1="88" y1="254.2" x2="804" y2="254.2" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="258.2" font-size="11" fill="#5d6c78" text-anchor="end">R500k</text>
+  <line x1="88" y1="229.4" x2="804" y2="229.4" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="233.4" font-size="11" fill="#5d6c78" text-anchor="end">R600k</text>
+  <line x1="88" y1="204.6" x2="804" y2="204.6" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="208.6" font-size="11" fill="#5d6c78" text-anchor="end">R700k</text>
+  <line x1="88" y1="179.8" x2="804" y2="179.8" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="183.8" font-size="11" fill="#5d6c78" text-anchor="end">R800k</text>
+  <line x1="88" y1="155.1" x2="804" y2="155.1" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="159.1" font-size="11" fill="#5d6c78" text-anchor="end">R900k</text>
+  <line x1="88" y1="130.3" x2="804" y2="130.3" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="134.3" font-size="11" fill="#5d6c78" text-anchor="end">R1,000k</text>
+  <line x1="88" y1="105.5" x2="804" y2="105.5" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="109.5" font-size="11" fill="#5d6c78" text-anchor="end">R1,100k</text>
+  <line x1="88" y1="80.8" x2="804" y2="80.8" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="84.8" font-size="11" fill="#5d6c78" text-anchor="end">R1,200k</text>
+  <line x1="88" y1="56.0" x2="804" y2="56.0" stroke="#e5edf2" stroke-width="1"/>
+  <text x="78" y="60.0" font-size="11" fill="#5d6c78" text-anchor="end">R1,300k</text>
+  <rect x="89.4" y="369.0" width="5.8" height="9.0" fill="#174a69" rx="1"/>
+  <rect x="97.9" y="365.0" width="5.8" height="13.0" fill="#174a69" rx="1"/>
+  <rect x="106.4" y="374.9" width="5.8" height="3.1" fill="#174a69" rx="1"/>
+  <rect x="114.9" y="351.7" width="5.8" height="26.3" fill="#174a69" rx="1"/>
+  <rect x="123.5" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="123.5" y="335.0" width="5.8" height="5.8" fill="#e08b2c" rx="1"/>
+  <rect x="132.0" y="371.5" width="5.8" height="6.5" fill="#174a69" rx="1"/>
+  <rect x="140.5" y="372.5" width="5.8" height="5.5" fill="#174a69" rx="1"/>
+  <rect x="149.0" y="370.9" width="5.8" height="7.1" fill="#174a69" rx="1"/>
+  <rect x="157.6" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="157.6" y="299.1" width="5.8" height="41.8" fill="#e08b2c" rx="1"/>
+  <rect x="166.1" y="374.5" width="5.8" height="3.5" fill="#174a69" rx="1"/>
+  <rect x="174.6" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="174.6" y="311.8" width="5.8" height="29.0" fill="#e08b2c" rx="1"/>
+  <rect x="183.1" y="373.1" width="5.8" height="4.9" fill="#174a69" rx="1"/>
+  <rect x="191.6" y="366.8" width="5.8" height="11.2" fill="#174a69" rx="1"/>
+  <rect x="200.2" y="373.0" width="5.8" height="5.0" fill="#174a69" rx="1"/>
+  <rect x="208.7" y="373.1" width="5.8" height="4.9" fill="#174a69" rx="1"/>
+  <rect x="217.2" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="217.2" y="339.5" width="5.8" height="1.5" fill="#e08b2c" rx="1"/>
+  <rect x="225.7" y="371.0" width="5.8" height="7.0" fill="#174a69" rx="1"/>
+  <rect x="234.3" y="360.2" width="5.8" height="17.8" fill="#174a69" rx="1"/>
+  <rect x="242.8" y="360.4" width="5.8" height="17.6" fill="#174a69" rx="1"/>
+  <rect x="251.3" y="375.1" width="5.8" height="2.9" fill="#174a69" rx="1"/>
+  <rect x="259.8" y="365.8" width="5.8" height="12.2" fill="#174a69" rx="1"/>
+  <rect x="268.4" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="268.4" y="323.1" width="5.8" height="17.7" fill="#e08b2c" rx="1"/>
+  <rect x="276.9" y="366.5" width="5.8" height="11.5" fill="#174a69" rx="1"/>
+  <rect x="285.4" y="372.4" width="5.8" height="5.6" fill="#174a69" rx="1"/>
+  <rect x="293.9" y="374.4" width="5.8" height="3.6" fill="#174a69" rx="1"/>
+  <rect x="302.5" y="375.1" width="5.8" height="2.9" fill="#174a69" rx="1"/>
+  <rect x="311.0" y="377.1" width="5.8" height="1.0" fill="#174a69" rx="1"/>
+  <rect x="319.5" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="319.5" y="319.5" width="5.8" height="21.3" fill="#e08b2c" rx="1"/>
+  <rect x="328.0" y="375.3" width="5.8" height="2.7" fill="#174a69" rx="1"/>
+  <rect x="336.6" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="336.6" y="332.0" width="5.8" height="8.9" fill="#e08b2c" rx="1"/>
+  <rect x="345.1" y="372.5" width="5.8" height="5.5" fill="#174a69" rx="1"/>
+  <rect x="353.6" y="373.8" width="5.8" height="4.2" fill="#174a69" rx="1"/>
+  <rect x="362.1" y="370.8" width="5.8" height="7.2" fill="#174a69" rx="1"/>
+  <rect x="370.6" y="373.1" width="5.8" height="4.9" fill="#174a69" rx="1"/>
+  <rect x="379.2" y="357.5" width="5.8" height="20.5" fill="#174a69" rx="1"/>
+  <rect x="387.7" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="387.7" y="331.9" width="5.8" height="8.9" fill="#e08b2c" rx="1"/>
+  <rect x="396.2" y="374.2" width="5.8" height="3.8" fill="#174a69" rx="1"/>
+  <rect x="404.7" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="404.7" y="338.9" width="5.8" height="1.9" fill="#e08b2c" rx="1"/>
+  <rect x="413.3" y="368.1" width="5.8" height="9.9" fill="#174a69" rx="1"/>
+  <rect x="421.8" y="369.1" width="5.8" height="8.9" fill="#174a69" rx="1"/>
+  <rect x="430.3" y="352.6" width="5.8" height="25.4" fill="#174a69" rx="1"/>
+  <rect x="438.8" y="373.7" width="5.8" height="4.3" fill="#174a69" rx="1"/>
+  <rect x="447.4" y="374.5" width="5.8" height="3.5" fill="#174a69" rx="1"/>
+  <rect x="455.9" y="366.7" width="5.8" height="11.3" fill="#174a69" rx="1"/>
+  <rect x="464.4" y="375.5" width="5.8" height="2.5" fill="#174a69" rx="1"/>
+  <rect x="472.9" y="357.9" width="5.8" height="20.1" fill="#174a69" rx="1"/>
+  <rect x="481.5" y="373.4" width="5.8" height="4.6" fill="#174a69" rx="1"/>
+  <rect x="490.0" y="358.2" width="5.8" height="19.8" fill="#174a69" rx="1"/>
+  <rect x="498.5" y="367.1" width="5.8" height="10.9" fill="#174a69" rx="1"/>
+  <rect x="507.0" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="507.0" y="332.1" width="5.8" height="8.8" fill="#e08b2c" rx="1"/>
+  <rect x="515.6" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="515.6" y="335.7" width="5.8" height="5.1" fill="#e08b2c" rx="1"/>
+  <rect x="524.1" y="369.2" width="5.8" height="8.8" fill="#174a69" rx="1"/>
+  <rect x="532.6" y="366.8" width="5.8" height="11.2" fill="#174a69" rx="1"/>
+  <rect x="541.1" y="365.6" width="5.8" height="12.4" fill="#174a69" rx="1"/>
+  <rect x="549.6" y="347.2" width="5.8" height="30.8" fill="#174a69" rx="1"/>
+  <rect x="558.2" y="371.2" width="5.8" height="6.8" fill="#174a69" rx="1"/>
+  <rect x="566.7" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="566.7" y="333.5" width="5.8" height="7.4" fill="#e08b2c" rx="1"/>
+  <rect x="575.2" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="575.2" y="335.5" width="5.8" height="5.3" fill="#e08b2c" rx="1"/>
+  <rect x="583.7" y="357.1" width="5.8" height="20.9" fill="#174a69" rx="1"/>
+  <rect x="592.3" y="370.4" width="5.8" height="7.6" fill="#174a69" rx="1"/>
+  <rect x="600.8" y="369.4" width="5.8" height="8.6" fill="#174a69" rx="1"/>
+  <rect x="609.3" y="357.0" width="5.8" height="21.0" fill="#174a69" rx="1"/>
+  <rect x="617.8" y="361.9" width="5.8" height="16.1" fill="#174a69" rx="1"/>
+  <rect x="626.4" y="366.5" width="5.8" height="11.5" fill="#174a69" rx="1"/>
+  <rect x="634.9" y="346.3" width="5.8" height="31.7" fill="#174a69" rx="1"/>
+  <rect x="643.4" y="372.8" width="5.8" height="5.2" fill="#174a69" rx="1"/>
+  <rect x="651.9" y="372.2" width="5.8" height="5.8" fill="#174a69" rx="1"/>
+  <rect x="660.5" y="372.8" width="5.8" height="5.2" fill="#174a69" rx="1"/>
+  <rect x="669.0" y="342.0" width="5.8" height="36.0" fill="#174a69" rx="1"/>
+  <rect x="677.5" y="372.0" width="5.8" height="6.0" fill="#174a69" rx="1"/>
+  <rect x="686.0" y="376.3" width="5.8" height="1.7" fill="#174a69" rx="1"/>
+  <rect x="694.6" y="372.6" width="5.8" height="5.4" fill="#174a69" rx="1"/>
+  <rect x="703.1" y="370.6" width="5.8" height="7.4" fill="#174a69" rx="1"/>
+  <rect x="711.6" y="370.3" width="5.8" height="7.7" fill="#174a69" rx="1"/>
+  <rect x="720.1" y="348.5" width="5.8" height="29.5" fill="#174a69" rx="1"/>
+  <rect x="728.6" y="359.1" width="5.8" height="18.9" fill="#174a69" rx="1"/>
+  <rect x="737.2" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="737.2" y="327.8" width="5.8" height="13.1" fill="#e08b2c" rx="1"/>
+  <rect x="745.7" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="745.7" y="101.8" width="5.8" height="239.0" fill="#e08b2c" rx="1"/>
+  <rect x="754.2" y="371.0" width="5.8" height="7.0" fill="#174a69" rx="1"/>
+  <rect x="762.7" y="340.8" width="5.8" height="37.2" fill="#2a8c8c" rx="1"/>
+  <rect x="762.7" y="340.6" width="5.8" height="1.5" fill="#e08b2c" rx="1"/>
+  <rect x="771.3" y="374.3" width="5.8" height="3.7" fill="#174a69" rx="1"/>
+  <rect x="779.8" y="372.9" width="5.8" height="5.1" fill="#174a69" rx="1"/>
+  <rect x="788.3" y="356.0" width="5.8" height="22.0" fill="#174a69" rx="1"/>
+  <rect x="796.8" y="373.5" width="5.8" height="4.5" fill="#174a69" rx="1"/>
+  <line x1="88" y1="340.8" x2="804" y2="340.8" stroke="#c0392b" stroke-width="2" stroke-dasharray="6,4"/>
+  <rect x="612" y="318.8" width="188" height="19" rx="4" fill="#fff5f5" stroke="#f5c6cb" stroke-width="1"/>
+  <text x="706" y="331.8" font-size="11" font-weight="700" fill="#a62626" text-anchor="middle">XoL Retention Cap M = R150k</text>
+  <line x1="88" y1="378.0" x2="804" y2="378.0" stroke="#0d2742" stroke-width="1.2"/>
+  <text x="92.3" y="404" font-size="11" fill="#5d6c78" text-anchor="middle">Claim 1</text>
+  <text x="254.2" y="404" font-size="11" fill="#5d6c78" text-anchor="middle">Claim 20</text>
+  <text x="424.7" y="404" font-size="11" fill="#5d6c78" text-anchor="middle">Claim 40</text>
+  <text x="595.2" y="404" font-size="11" fill="#5d6c78" text-anchor="middle">Claim 60</text>
+  <text x="799.7" y="404" font-size="11" fill="#5d6c78" text-anchor="middle">Claim 84</text>
+  <text x="446.0" y="426" font-size="12" font-weight="600" fill="#0d2742" text-anchor="middle">Individual claims ordered by occurrence (1 to 84)</text>
+  <g transform="translate(474, 16)">
+    <rect x="0" y="0" width="12" height="12" rx="2" fill="#174a69"/>
+    <text x="17" y="10" font-size="11" fill="#172633">Retained below M</text>
+    <rect x="122" y="0" width="12" height="12" rx="2" fill="#2a8c8c"/>
+    <text x="139" y="10" font-size="11" fill="#172633">Retained at cap M</text>
+    <rect x="246" y="0" width="12" height="12" rx="2" fill="#e08b2c"/>
+    <text x="263" y="10" font-size="11" fill="#172633">Ceded (XoL)</text>
+  </g>
+</svg>
