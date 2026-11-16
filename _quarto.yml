@@ -4,12 +4,14 @@ project:
   resources:
     - assets/markov-ncd-cover.svg
     - assets/life-insurance-reserve-cover.svg
+    - assets/reinsurance-simulation-cover.svg
     - assets/markov-ncd-social.png
     - assets/life-insurance-reserve-social.png
     - assets/automation/*.js
     - assets/automation/*.json
     - assets/automation/*.css
     - assets/automation/*.zip
+    - research/claims-reinsurance-simulation/*.svg
 
 lang: en-GB
 

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Stochastic Claims Simulation and Excess of Loss Reinsurance Cover Graphic</title>
+  <desc id="desc">Simulated claim severity bars capped by a horizontal Excess of Loss retention line alongside Gross versus Net aggregate loss distributions on a navy actuarial background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071b2f"/>
+      <stop offset="0.55" stop-color="#0d2742"/>
+      <stop offset="1" stop-color="#174a69"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6bd1c9"/>
+      <stop offset="1" stop-color="#2a8c8c"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6cf71"/>
+      <stop offset="1" stop-color="#e08b2c"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#051322" flood-opacity="0.38"/>
+    </filter>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+
+  <!-- Subtle background tail waves -->
+  <path d="M0 575 C220 560 320 340 510 350 C690 360 790 520 1200 545 L1200 675 L0 675 Z" fill="#2a8c8c" opacity="0.18"/>
+  <path d="M0 605 C290 595 450 430 680 420 C890 410 1010 535 1200 565 L1200 675 L0 675 Z" fill="#f1c45b" opacity="0.11"/>
+
+  <!-- Header Kicker -->
+  <g font-family="Arial, system-ui, sans-serif" fill="#ffffff">
+    <text x="84" y="84" font-size="28" font-weight="700" letter-spacing="3" fill="#86d9d2">APPLIED ACTUARIAL COMPUTING</text>
+    <text x="84" y="126" font-size="23" opacity="0.82">Collective Risk Simulation &amp; Individual Excess of Loss (XoL) Capping</text>
+  </g>
+
+  <!-- Left Card: Individual Claim Severity & Retention Cap M -->
+  <g transform="translate(84 166)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="500" height="428" rx="28" fill="#ffffff" opacity="0.96"/>
+    <text x="36" y="46" font-family="Arial, system-ui, sans-serif" font-size="20" font-weight="700" fill="#0d2742">Retained vs. Ceded Claim Severities</text>
+    <text x="36" y="72" font-family="Arial, system-ui, sans-serif" font-size="15" fill="#5d6c78">Y = min(X, M) retained · Z = max(X − M, 0) ceded</text>
+
+    <!-- Baseline axis -->
+    <line x1="36" y1="368" x2="464" y2="368" stroke="#174a69" stroke-width="3" opacity="0.35"/>
+
+    <!-- Simulated claim bars: retained portion -->
+    <rect x="48"  y="296" width="24" height="72"  rx="5" fill="#174a69"/>
+    <rect x="84"  y="258" width="24" height="110" rx="5" fill="#174a69"/>
+    <rect x="120" y="218" width="24" height="150" rx="5" fill="url(#tealGrad)"/>
+    <rect x="156" y="312" width="24" height="56"  rx="5" fill="#174a69"/>
+    <rect x="192" y="274" width="24" height="94"  rx="5" fill="#174a69"/>
+    <rect x="228" y="218" width="24" height="150" rx="5" fill="url(#tealGrad)"/>
+    <rect x="264" y="286" width="24" height="82"  rx="5" fill="#174a69"/>
+    <rect x="300" y="242" width="24" height="126" rx="5" fill="#174a69"/>
+    <rect x="336" y="218" width="24" height="150" rx="5" fill="url(#tealGrad)"/>
+    <rect x="372" y="302" width="24" height="66"  rx="5" fill="#174a69"/>
+    <rect x="408" y="218" width="24" height="150" rx="5" fill="url(#tealGrad)"/>
+
+    <!-- Ceded excess layer above M (y = 218) -->
+    <rect x="120" y="146" width="24" height="72"  rx="5" fill="url(#amberGrad)"/>
+    <rect x="228" y="102" width="24" height="116" rx="5" fill="url(#amberGrad)"/>
+    <rect x="336" y="164" width="24" height="54"  rx="5" fill="url(#amberGrad)"/>
+    <rect x="408" y="122" width="24" height="96"  rx="5" fill="url(#amberGrad)"/>
+
+    <!-- Retention Cap M Line -->
+    <line x1="32" y1="218" x2="468" y2="218" stroke="#c0392b" stroke-width="4" stroke-dasharray="10,7"/>
+    <rect x="292" y="184" width="168" height="28" rx="6" fill="#fff5f5" stroke="#e05a47" stroke-width="1.5"/>
+    <text x="376" y="203" font-family="Arial, system-ui, sans-serif" font-size="14" font-weight="700" fill="#a62626" text-anchor="middle">Retention Cap M</text>
+
+    <!-- Legend -->
+    <rect x="36" y="388" width="14" height="14" rx="3" fill="#2a8c8c"/>
+    <text x="58" y="400" font-family="Arial, system-ui, sans-serif" font-size="14" font-weight="600" fill="#172633">Retained Layer</text>
+    <rect x="190" y="388" width="14" height="14" rx="3" fill="#e08b2c"/>
+    <text x="212" y="400" font-family="Arial, system-ui, sans-serif" font-size="14" font-weight="600" fill="#172633">Ceded to Reinsurer (XoL)</text>
+  </g>
+
+  <!-- Right Card: Aggregate Loss Distribution & Tail Compression -->
+  <g transform="translate(616 166)" filter="url(#cardShadow)">
+    <rect x="0" y="0" width="500" height="428" rx="28" fill="#ffffff" opacity="0.96"/>
+    <text x="36" y="46" font-family="Arial, system-ui, sans-serif" font-size="20" font-weight="700" fill="#0d2742">Gross vs. Net Aggregate Loss Tail</text>
+    <text x="36" y="72" font-family="Arial, system-ui, sans-serif" font-size="15" fill="#5d6c78">99.5% VaR (SAM SCR proxy) tail compression</text>
+
+    <!-- Baseline -->
+    <line x1="36" y1="368" x2="464" y2="368" stroke="#174a69" stroke-width="3" opacity="0.35"/>
+
+    <!-- Gross distribution curve (wider, heavy right tail) -->
+    <path d="M 44 368 C 95 366, 135 230, 195 210 C 255 190, 325 320, 458 366 L 458 368 Z"
+          fill="#e08b2c" fill-opacity="0.28" stroke="#e08b2c" stroke-width="4"/>
+
+    <!-- Net retained distribution curve (tighter, compressed tail) -->
+    <path d="M 44 368 C 82 365, 118 145, 162 128 C 206 112, 248 335, 330 366 L 330 368 Z"
+          fill="#2a8c8c" fill-opacity="0.38" stroke="#174a69" stroke-width="4"/>
+
+    <!-- VaR Markers -->
+    <line x1="276" y1="118" x2="276" y2="368" stroke="#0d2742" stroke-width="3.5" stroke-dasharray="8,6"/>
+    <rect x="196" y="96" width="144" height="28" rx="6" fill="#eaf4f4" stroke="#2a8c8c" stroke-width="1.5"/>
+    <text x="268" y="115" font-family="Arial, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0d2742" text-anchor="middle">Net 99.5% VaR</text>
+
+    <line x1="406" y1="158" x2="406" y2="368" stroke="#b85400" stroke-width="3.5" stroke-dasharray="8,6"/>
+    <rect x="318" y="136" width="150" height="28" rx="6" fill="#fff3e6" stroke="#e08b2c" stroke-width="1.5"/>
+    <text x="393" y="155" font-family="Arial, system-ui, sans-serif" font-size="13" font-weight="700" fill="#8a3e00" text-anchor="middle">Gross 99.5% VaR</text>
+
+    <!-- Arrow showing tail relief -->
+    <path d="M 398 248 L 286 248" stroke="#2a8c8c" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="288,240 274,248 288,256" fill="#2a8c8c"/>
+    <text x="342" y="236" font-family="Arial, system-ui, sans-serif" font-size="13" font-weight="700" fill="#1f6f6f" text-anchor="middle">−55% Tail Capital</text>
+
+    <!-- Legend -->
+    <rect x="36" y="388" width="14" height="14" rx="3" fill="#2a8c8c"/>
+    <text x="58" y="400" font-family="Arial, system-ui, sans-serif" font-size="14" font-weight="600" fill="#172633">Net Aggregate (S_net)</text>
+    <rect x="236" y="388" width="14" height="14" rx="3" fill="#e08b2c"/>
+    <text x="258" y="400" font-family="Arial, system-ui, sans-serif" font-size="14" font-weight="600" fill="#172633">Gross Aggregate (S_gross)</text>
+  </g>
+</svg>

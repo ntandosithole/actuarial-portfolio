@@ -1,0 +1,99 @@
+.reins-console {
+  margin: 1.75rem 0 2.25rem;
+  padding: clamp(1rem, 2.5vw, 1.65rem);
+  border: 1px solid var(--portfolio-border, rgb(13 39 66 / 12%));
+  border-top: 0.25rem solid var(--portfolio-teal, #2a8c8c);
+  border-radius: 0.75rem;
+  background: var(--portfolio-surface, #f5f8fa);
+  box-shadow: var(--portfolio-shadow, 0 0.65rem 1.8rem rgb(13 39 66 / 8%));
+}
+
+.reins-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 0.85rem;
+  align-items: end;
+}
+
+.reins-toolbar label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--portfolio-navy, #0d2742);
+}
+
+.reins-toolbar select {
+  min-height: 2.55rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #8696a0;
+  border-radius: 0.35rem;
+  background: #ffffff;
+  color: var(--portfolio-ink, #172633);
+  font-size: 0.9rem;
+}
+
+.reins-status {
+  margin: 0.75rem 0 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--portfolio-muted, #5d6c78);
+}
+
+.reins-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
+}
+
+.reins-kpi {
+  display: grid;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--portfolio-border, rgb(13 39 66 / 11%));
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.reins-kpi strong {
+  font-size: 1.45rem;
+  color: var(--portfolio-navy, #0d2742);
+  font-variant-numeric: tabular-nums;
+}
+
+.reins-kpi span {
+  font-size: 0.78rem;
+  color: var(--portfolio-muted, #5d6c78);
+  line-height: 1.35;
+}
+
+.reins-chart-card {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--portfolio-border, rgb(13 39 66 / 11%));
+  border-radius: 0.55rem;
+  background: #ffffff;
+}
+
+.reins-chart-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 991.98px) {
+  .reins-toolbar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reins-kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .reins-toolbar,
+  .reins-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}

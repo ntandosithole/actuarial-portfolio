@@ -35,6 +35,8 @@ ntandosithole.com
 │   └── Education (Wits BSc & BSc Hons Actuarial Science) & Actuarial Exam Progress
 │
 ├── Research Hub (research.qmd)
+│   ├── Stochastic Claims Simulation and Excess of Loss Reinsurance in R
+│   │   └── (research/claims-reinsurance-simulation/index.qmd — R code + static SVGs + interactive simulator)
 │   ├── Life Insurance Cash Flow Projection and Reserve Sensitivity in R
 │   │   └── (research/life-insurance-reserving/index.qmd)
 │   └── Markov Chain Modelling of No-Claims Discount Systems
@@ -71,7 +73,13 @@ ntandosithole.com
 
 ### C. Reproducible Actuarial Research (`research.qmd` & `research/*`)
 
-#### 1. *Life Insurance Cash Flow Projection and Reserve Sensitivity in R* (`research/life-insurance-reserving/index.qmd`)
+#### 1. *Stochastic Claims Simulation and Excess of Loss Reinsurance in R* (`research/claims-reinsurance-simulation/index.qmd`)
+- **Main Aim:** Combine CS2 collective risk theory ($S = \sum_{i=1}^N X_i$ with Poisson frequency and Lognormal severity) and closed-form Limited Expected Value (LEV) derivations with a 10,000-year Monte Carlo simulation in R and an embedded **Interactive Claims & Reinsurance Simulation Lab** to evaluate Individual Excess of Loss (XoL) retention caps $M$.
+- **How It Is Useful:**
+  - Visually demonstrates how capping individual claims ($Y_i = \min(X_i, M)$ retained vs. $Z_i = \max(X_i - M, 0)$ ceded) compresses the right tail of annual aggregate portfolio losses and cuts the **99.5% Value-at-Risk (SAM SCR 1-in-200 solvency benchmark)** by 55% at $M = \text{R}150{,}000$.
+  - Lets visitors interactively vary the XoL retention cap $M$, claim frequency $\lambda$, and tail skewness $\sigma$ in real time while inspecting both the R implementation and analytical-to-simulated control checks.
+
+#### 2. *Life Insurance Cash Flow Projection and Reserve Sensitivity in R* (`research/life-insurance-reserving/index.qmd`)
 - **Main Aim:** Demonstrate transparent, auditable R implementation of life contingency mathematics—from Gompertz-Makeham mortality construction ($q_x$, ${}_tp_x$) and net/gross level premium calculation ($A^1_{x:\overline{n}|}$, $\ddot{a}_{x:\overline{n}|}$) to 20-year portfolio cash-flow projections, prospective reserve trajectories ($V_k$), and two-way valuation basis sensitivity testing (discount rate vs. mortality scaling).
 - **How It Is Useful:**
   - Shows how policy-level actuarial formulae connect to portfolio-level cash flows and IFRS 17 / SAM valuation movement intuition.
